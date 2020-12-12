@@ -1,0 +1,201 @@
+<ion-content>
+    <div class="flight-create">
+        <div class="header-container">
+            <ion-toolbar class="toolbar-style">
+                <ion-buttons slot="start">
+                    <ion-icon size="large" icon="chevron-back"></ion-icon>
+                </ion-buttons>
+                <ion-title class="header-title">ACTIVE FLIGHT SCHEDULE</ion-title>
+            </ion-toolbar>
+        </div>
+        <form [formGroup]="formSchedule" (ngSubmit)="onSubmit($event)" novalidate>
+            <div class="content-container">
+                <div style="padding: 10px 0px;">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col size="6">
+                                <ion-button class="{{ formType != 0 ? 'button-custom' : '' }}" (click)="onChangeType(0)"
+                                    expand="full" fill="{{ formType == 0 ? 'solid' : 'clear' }}">Arrival
+                                </ion-button>
+                            </ion-col>
+                            <ion-col size="6">
+                                <ion-button class="{{ formType != 1 ? 'button-custom' : '' }}" (click)="onChangeType(1)"
+                                    expand="full" fill="{{ formType == 1 ? 'solid' : 'clear' }}">Departure
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+
+                <div *ngIf="formType == '0'" style="padding: 10px 10px;">
+
+                    <div class="select-container">
+                        <ion-label class="input-label">Terminal</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="terminal_ar" interface="action-sheet" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let terminals of terminalList" [value]="terminals">
+                                    {{terminals.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">From</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="from_ar" interface="action-sheet" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let locations of locationList" [value]="locations">
+                                    {{locations.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">To</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="to_ar" interface="action-sheet" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let locations of locationList" [value]="locations">
+                                    {{locations.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="datepick-container">
+                        <ion-label class="input-label">ETA</ion-label>
+                        <div class="input-date-cont">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-datetime formControlName="eta_ar" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </div>
+
+                    <div class="datepick-container">
+                        <ion-label class="input-label">ATA</ion-label>
+                        <div class="input-date-cont">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-datetime formControlName="ata_ar" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">Reg No</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="regNo_ar" interface="action-sheet" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let regs of regList" [value]="regs">
+                                    {{regs.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Remark</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="remark_ar" class="input-text"
+                                placeholder="e.g Number">
+                            </ion-input>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div *ngIf="formType == '1'" style="padding: 10px 10px;">
+                    
+                    <div class="select-container">
+                        <ion-label class="input-label">Terminal</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="terminal_der" interface="action-sheet" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let terminals of terminalList" [value]="terminals">
+                                    {{terminals.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">From</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="from_der" interface="action-sheet" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let locations of locationList" [value]="locations">
+                                    {{locations.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">To</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="to_der" interface="action-sheet" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let locations of locationList" [value]="locations">
+                                    {{locations.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="datepick-container">
+                        <ion-label class="input-label">ETA</ion-label>
+                        <div class="input-date-cont">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-datetime formControlName="eta_der" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </div>
+
+                    <div class="datepick-container">
+                        <ion-label class="input-label">ATA</ion-label>
+                        <div class="input-date-cont">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-datetime formControlName="ata_der" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">Reg No</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="regNo_der" interface="action-sheet" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let regs of regList" [value]="regs">
+                                    {{regs.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Remark</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="remark_der" class="input-text"
+                                placeholder="e.g Number">
+                            </ion-input>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="footer-style">
+                <ion-toolbar>
+                    <ion-button expand="block">Submit</ion-button>
+                </ion-toolbar>
+            </div>
+        </form>
+    </div>
+</ion-content>

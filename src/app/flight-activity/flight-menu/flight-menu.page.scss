@@ -1,0 +1,56 @@
+.flight-cont{
+	.background-header {
+		position: fixed;
+		width: 150%;
+		height: 50%;
+		left: -25%;
+		top: -30%;
+		border-radius: 50%;
+		background: #146CAB;
+		z-index: 0;
+	}
+	.header-container {
+		position: relative;
+	}
+	.content-container {
+		position: relative;
+
+		.list-container{
+			cursor: pointer;
+			.header-style{
+				font-weight: 600;
+				font-size: 4.5vw;
+
+				color: #146CAB;
+			}
+
+			.title-style{
+				font-weight: normal;
+				font-size: 3.5vw;
+
+				color: #898989;
+			}
+
+			.logo-style {
+				width: 11vw;
+				margin-top: 0.5vw;
+			}
+		}
+		
+	}
+	.toolbar-style {
+		--background: transparent;
+		--color: white;
+	}
+}
+
+
+.header-container {
+    position: relative;
+}
+
+.header-title{
+    text-align: center;
+    margin-left: -48px;
+    text-transform: none !important;
+}

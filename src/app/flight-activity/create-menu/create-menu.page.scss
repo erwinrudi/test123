@@ -1,0 +1,56 @@
+
+.flight-create-list{
+	.header-container {
+		position: relative;
+	}
+	.content-container {
+		position: relative;
+		margin-top: 30px;
+
+		.content-flight {
+			height: 100%;
+			display: flex;
+			width: 100%;
+			&.right {
+				justify-content: flex-end;
+			}
+		}
+
+		.list-container{
+			padding: 0px 20px;
+
+			.header-style{
+				font-weight: 600;
+				font-size: 4.5vw;
+
+				color: #146CAB;
+			}
+
+			.title-style{
+				font-weight: normal;
+				font-size: 3.5vw;
+				color: #898989;
+			}
+
+			.logo-style {
+    			margin-top: auto;
+				margin-bottom: auto;
+				font-size: 9vw;
+			}
+		}
+	}
+	.toolbar-style {
+		--background: #146CAB;
+		--color: white;
+	}
+}
+
+.header-container {
+    position: relative;
+}
+
+.header-title{
+    text-align: center;
+    margin-left: -48px;
+    text-transform: none !important;
+}

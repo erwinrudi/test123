@@ -1,0 +1,38 @@
+.flight-create{
+	.header-container {
+		position: relative;
+	}
+
+	.content-container {
+		position: relative;
+		padding-bottom: 90px;
+	}
+	
+	.toolbar-style {
+		--background: #146CAB;
+		--color: white;
+	}
+
+	.footer-style {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		z-index: 9999;
+		padding: 10px;
+		background: white;
+	}
+
+	.button-custom{
+		border: 1px solid #146CAB;
+	}
+}
+.header-container {
+    position: relative;
+}
+
+.header-title{
+	text-align: center;
+    font-size: 5vw;
+    margin-left: -9px;
+    text-transform: none !important;
+}
