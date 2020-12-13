@@ -2,7 +2,7 @@
     <div class="flight-info">
         <div class="header-container">
             <ion-toolbar class="toolbar-style">
-                <ion-buttons slot="start">
+                <ion-buttons (click)="generalService.goBack()" slot="start">
                     <ion-icon size="large" icon="chevron-back"></ion-icon>
                 </ion-buttons>
                 <ion-title class="header-title">FLIGHT INFO</ion-title>
@@ -15,7 +15,8 @@
                         <ion-row>
                             <ion-col size="8">
                                 <div class="content-flight">
-                                    <img class="logo-style" src="../../../assets/svg/flightact-round.svg" alt="flight act" />
+                                    <img class="logo-style" src="../../../assets/svg/flightact-round.svg"
+                                        alt="flight act" />
                                     <div style="margin-left: 5px;" class="title-style-1">
                                         Landed
                                     </div>
@@ -35,10 +36,9 @@
                             </ion-col>
                             <ion-col size="6">
                                 <div class="content-flight right">
-                                    <span class="title-style-1">GA 001</span> <span
-                                        class="status-style int">Int</span> <span
-                                        class="status-style destination">CGK</span>
-                                    <IonIcon class="arrow-style" icon="arrow-forward-outline" ></IonIcon> <span
+                                    <span class="title-style-1">GA 001</span> <span class="status-style int">Int</span>
+                                    <span class="status-style destination">CGK</span>
+                                    <IonIcon class="arrow-style" icon="arrow-forward-outline"></IonIcon> <span
                                         class="status-style destination">SIN</span>
                                 </div>
                             </ion-col>
@@ -51,9 +51,8 @@
                             </ion-col>
                             <ion-col size="6">
                                 <div class="content-flight right">
-                                    <span class="title-style-1">GA 001</span> <span
-                                        class="status-style int">Int</span> <span
-                                        class="status-style destination">CGK</span>
+                                    <span class="title-style-1">GA 001</span> <span class="status-style int">Int</span>
+                                    <span class="status-style destination">CGK</span>
                                     <IonIcon class="arrow-style" icon="arrow-forward-outline"></IonIcon> <span
                                         class="status-style destination">SIN</span>
                                 </div>

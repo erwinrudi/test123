@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { GeneralService } from "../../general.service";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-list-menu',
@@ -7,6 +9,10 @@ import { Component } from '@angular/core';
 })
 export class FlightListPage {
 
-  constructor() {}
+  constructor(
+    private generalService: GeneralService
+  ) {}
 
+  ngOnInit() {
+  }
 }

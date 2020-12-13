@@ -32,6 +32,7 @@ export class ScheduleSearchPage {
   ) {
 
   }
+  
   ngOnInit() {
     this.formSchedule = this.formBuilder.group({
       startDate: '',
