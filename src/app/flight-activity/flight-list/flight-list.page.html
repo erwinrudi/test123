@@ -9,70 +9,74 @@
             </ion-toolbar>
         </div>
         <div class="content-container">
-            <ion-card>
-                <ion-card-content>
-                    <ion-grid>
-                        <ion-row>
-                            <ion-col size="8">
-                                <div class="content-flight">
-                                    <img class="logo-style" src="../../../assets/svg/flightact-round.svg"
-                                        alt="flight act" />
-                                    <div style="margin-left: 5px;" class="title-style-1">
-                                        Landed
+            <ng-container *ngFor="let data of flightList; let i = index">
+                <ion-card>
+                    <ion-card-content>
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col size="8">
+                                    <div class="content-flight">
+                                        <img class="logo-style" src="../../../assets/svg/flightact-round.svg"
+                                            alt="flight act" />
+                                        <div style="margin-left: 5px;" class="title-style-1">
+                                            Landed
+                                        </div>
                                     </div>
-                                </div>
-                            </ion-col>
-                            <ion-col size="4">
-                                <div class="content-flight right">
-                                    <span class="status-style complete">Complete</span>
-                                </div>
-                            </ion-col>
-                        </ion-row>
-                        <ion-row>
-                            <ion-col size="6">
-                                <div class="content-flight">
-                                    <span class="title-style-1">Arrival</span>
-                                </div>
-                            </ion-col>
-                            <ion-col size="6">
-                                <div class="content-flight right">
-                                    <span class="title-style-1">GA 001</span> <span class="status-style int">Int</span>
-                                    <span class="status-style destination">CGK</span>
-                                    <IonIcon class="arrow-style" icon="arrow-forward-outline"></IonIcon> <span
-                                        class="status-style destination">SIN</span>
-                                </div>
-                            </ion-col>
-                        </ion-row>
-                        <ion-row>
-                            <ion-col size="6">
-                                <div class="content-flight">
-                                    <span class="title-style-1">Departure</span>
-                                </div>
-                            </ion-col>
-                            <ion-col size="6">
-                                <div class="content-flight right">
-                                    <span class="title-style-1">GA 001</span> <span class="status-style int">Int</span>
-                                    <span class="status-style destination">CGK</span>
-                                    <IonIcon class="arrow-style" icon="arrow-forward-outline"></IonIcon> <span
-                                        class="status-style destination">SIN</span>
-                                </div>
-                            </ion-col>
-                        </ion-row>
-                        <ion-row>
-                            <ion-col size="7">
-                                <div class="content-flight">
-                                    <span class="title-style-1">STAD: 5 Nov 2020 09:00</span>
-                                </div>
-                            </ion-col>
-                            <ion-col size="5">
-                                <div class="content-flight right">
-                                    <span class="title-style-1 detail">Detail</span>
-                                </div>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-card-content>
-            </ion-card>
+                                </ion-col>
+                                <ion-col size="4">
+                                    <div class="content-flight right">
+                                        <span class="status-style complete">{{ data.status }}</span>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="6">
+                                    <div class="content-flight">
+                                        <span class="title-style-1">Arrival</span>
+                                    </div>
+                                </ion-col>
+                                <ion-col size="6">
+                                    <div class="content-flight right">
+                                        <span class="title-style-1">{{ data.arrival.flightNo }}</span> <span
+                                            class="status-style int">{{ data.arrival.flightType }}</span>
+                                        <span class="status-style destination">{{ data.arrival.from }}</span>
+                                        <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
+                                            class="status-style destination">{{ data.arrival.to }}</span>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="6">
+                                    <div class="content-flight">
+                                        <span class="title-style-1">Departure</span>
+                                    </div>
+                                </ion-col>
+                                <ion-col size="6">
+                                    <div class="content-flight right">
+                                        <span class="title-style-1">{{ data.derpature.flightNo }}</span> <span
+                                            class="status-style int">{{ data.derpature.flightType }}</span>
+                                        <span class="status-style destination">{{ data.derpature.from }}</span>
+                                        <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
+                                            class="status-style destination">{{ data.derpature.to }}</span>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="7">
+                                    <div class="content-flight">
+                                        <span class="title-style-1">{{ data.stad }}</span>
+                                    </div>
+                                </ion-col>
+                                <ion-col size="5">
+                                    <div class="content-flight right">
+                                        <span class="title-style-1 detail">Detail</span>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-card-content>
+                </ion-card>
+            </ng-container>
         </div>
     </div>
 </ion-content>

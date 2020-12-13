@@ -12,4 +12,5 @@ export class CreateMenuPage {
     private generalService: GeneralService
   ) {}
 
+  
 }

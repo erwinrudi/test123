@@ -73,7 +73,7 @@ export class ScheduleSearchPage {
     }
     if (formValue.status != "") {
       if (nullParam == true) {
-        urlNext = urlNext + "?status=" + formValue.status
+        urlNext = urlNext + "?status=" + formValue.status.value
         nullParam = false
       }
       else {
