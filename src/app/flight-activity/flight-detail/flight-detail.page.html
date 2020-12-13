@@ -83,43 +83,43 @@
                                 </ion-col>
                                 <ion-col size="6">
                                     <div class="content-flight right">
-                                        <span class="title-style-1">{{ flightInfo.derparture.terminal }}</span>
+                                        <span class="title-style-1">{{ flightInfo.departure.terminal }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col>
                                     <div class="content-flight">
-                                        <span class="title-style-1">{{ flightInfo.derparture.flightNo }}</span> <span
-                                            class="status-style int">{{ flightInfo.derparture.flightType }}</span>
-                                        <span class="status-style destination">{{ flightInfo.derparture.from }}</span>
+                                        <span class="title-style-1">{{ flightInfo.departure.flightNo }}</span> <span
+                                            class="status-style int">{{ flightInfo.departure.flightType }}</span>
+                                        <span class="status-style destination">{{ flightInfo.departure.from }}</span>
                                         <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
-                                            class="status-style destination">{{ flightInfo.derparture.to }}</span>
+                                            class="status-style destination">{{ flightInfo.departure.to }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col size="6">
                                     <div class="content-flight">
-                                        <span class="title-style-1">ATA : {{ flightInfo.derparture.ata }}</span>
+                                        <span class="title-style-1">ATA : {{ flightInfo.departure.ata }}</span>
                                     </div>
                                 </ion-col>
                                 <ion-col size="6">
                                     <div class="content-flight right">
-                                        <span class="title-style-1">ETA : {{ flightInfo.derparture.eta }}</span>
+                                        <span class="title-style-1">ETA : {{ flightInfo.departure.eta }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col>
                                     <span class="title-style-1">Reg No: </span><span
-                                        class="title-style-1 destination">{{ flightInfo.derparture.regNo }}</span>
+                                        class="title-style-1 destination">{{ flightInfo.departure.regNo }}</span>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col>
                                     <span class="title-style-1">Remark: </span><span
-                                        class="title-style-1 destination">{{ flightInfo.derparture.remark }}</span>
+                                        class="title-style-1 destination">{{ flightInfo.departure.remark }}</span>
                                 </ion-col>
                             </ion-row>
                         </ion-grid>
@@ -253,12 +253,12 @@
                                     <ion-row>
                                         <ion-col size="6">
                                             <div class="content-flight">
-                                                <span class="status-style">25 November 2020 9.10</span>
+                                                <span class="status-style">{{ avio.arrival.startTime }}</span>
                                             </div>
                                         </ion-col>
                                         <ion-col size="6">
                                             <div class="content-flight">
-                                                <span class="status-style">25 November 2020 9.10</span>
+                                                <span class="status-style">{{ avio.arrival.endTime }}</span>
                                             </div>
                                         </ion-col>
                                     </ion-row>
@@ -277,12 +277,12 @@
                                     <ion-row>
                                         <ion-col size="6">
                                             <div class="content-flight">
-                                                <span class="status-style incomplete">1</span>
+                                                <span class="status-style">{{ avio.arrival.frq }}</span>
                                             </div>
                                         </ion-col>
                                         <ion-col size="6">
                                             <div class="content-flight">
-                                                <span class="status-style">1</span>
+                                                <span class="status-style">{{ avio.arrival.mov }}</span>
                                             </div>
                                         </ion-col>
                                     </ion-row>
@@ -312,12 +312,12 @@
                                     <ion-row>
                                         <ion-col size="6">
                                             <div class="content-flight">
-                                                <span class="status-style">25 November 2020 9.10</span>
+                                                <span class="status-style">{{ avio.departure.startTime }}</span>
                                             </div>
                                         </ion-col>
                                         <ion-col size="6">
                                             <div class="content-flight">
-                                                <span class="status-style">25 November 2020 9.10</span>
+                                                <span class="status-style">{{ avio.departure.endTime }}</span>
                                             </div>
                                         </ion-col>
                                     </ion-row>
@@ -336,12 +336,12 @@
                                     <ion-row>
                                         <ion-col size="6">
                                             <div class="content-flight">
-                                                <span class="status-style incomplete">1</span>
+                                                <span class="status-style">{{ avio.departure.frq }}</span>
                                             </div>
                                         </ion-col>
                                         <ion-col size="6">
                                             <div class="content-flight">
-                                                <span class="status-style">1</span>
+                                                <span class="status-style">{{ avio.departure.mov }}</span>
                                             </div>
                                         </ion-col>
                                     </ion-row>
@@ -476,9 +476,14 @@
                         class="text-style">Estimate Billing Info</span>
                 </div>
             </div>
-            <div class="footer-style">
+            <div *ngIf="type == 'pax'" class="footer-style">
                 <ion-toolbar>
                     <ion-button expand="block">Submit</ion-button>
+                </ion-toolbar>
+            </div>
+            <div *ngIf="type == 'movement'" class="footer-style">
+                <ion-toolbar>
+                    <ion-button fill="outline" expand="block">Add Movement</ion-button>
                 </ion-toolbar>
             </div>
         </span>

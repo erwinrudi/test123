@@ -40,7 +40,7 @@ export class FlightDetailPage {
       regNo: 'PKGLO - 3210',
       remark: ''
     },
-    derparture: {
+    departure: {
       terminal: 'Terminal 3US',
       flightNo: 'GA 001',
       flightType: 'Int',
@@ -100,7 +100,22 @@ export class FlightDetailPage {
       standCode: 'A2',
       movType: 'Normal'
     }
-  ]
+  ];
+
+  avio = {
+    arrival: {
+      startTime: '25 November 2020 9.10',
+      endTime: '25 November 2020 10.10',
+      frq: '1',
+      mov: '1'
+    },
+    departure: {
+      startTime: '26 November 2020 9.10',
+      endTime: '26 November 2020 10.10',
+      frq: '2',
+      mov: '2'
+    }
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -108,7 +123,7 @@ export class FlightDetailPage {
   ) { }
 
   ngOnInit() {
-  //  this.present()
+    //  this.present()
   }
 
   async present(messages = "Please wait...") {
