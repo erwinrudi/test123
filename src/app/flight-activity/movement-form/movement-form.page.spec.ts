@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { PaxFormPage } from './pax-form.page';
+import { MovementFormPage } from './movement-form.page';
 
-describe('PaxFormPage', () => {
-  let component: PaxFormPage;
-  let fixture: ComponentFixture<PaxFormPage>;
+describe('MovementFormPage', () => {
+  let component: MovementFormPage;
+  let fixture: ComponentFixture<MovementFormPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PaxFormPage],
+      declarations: [MovementFormPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PaxFormPage);
+    fixture = TestBed.createComponent(MovementFormPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

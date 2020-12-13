@@ -14,6 +14,7 @@ import { ScheduleSearchPage } from './schedule-search/schedule-search.page';
 import { FlightDetailPage } from './flight-detail/flight-detail.page';
 import { ScheduleFormPage } from './schedule-form/schedule-form.page';
 import { PaxFormPage } from './pax-form/pax-form.page';
+import { MovementFormPage } from './movement-form/movement-form.page';
 
 import { FlightActivityRoutingModule } from './flight-activity-routing.module';
 
@@ -34,7 +35,8 @@ import { FlightActivityRoutingModule } from './flight-activity-routing.module';
     CreateFlightAdPage,
     FlightDetailPage,
     ScheduleFormPage,
-    PaxFormPage
+    PaxFormPage,
+    MovementFormPage
   ]
 })
 export class FlightActivityPageModule {}

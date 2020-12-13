@@ -9,6 +9,7 @@ import { CreateFlightAdPage } from './create-flight-ad/create-flight-ad.page';
 import { FlightDetailPage } from './flight-detail/flight-detail.page';
 import { ScheduleFormPage } from './schedule-form/schedule-form.page';
 import { PaxFormPage } from './pax-form/pax-form.page';
+import { MovementFormPage } from './movement-form/movement-form.page';
 
 const routes: Routes = [
   {
@@ -50,6 +51,14 @@ const routes: Routes = [
   {
     path: 'pax',
     component: PaxFormPage,
+  },
+  {
+    path: 'movement/:id',
+    component: MovementFormPage,
+  },
+  {
+    path: 'movement',
+    component: MovementFormPage,
   }
 ];
 

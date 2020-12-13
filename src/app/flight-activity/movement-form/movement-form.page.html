@@ -1,0 +1,69 @@
+<ion-content>
+    <div class="pax-form">
+        <div class="header-container">
+            <ion-toolbar class="toolbar-style">
+                <ion-buttons slot="start">
+                    <ion-icon size="large" icon="chevron-back"></ion-icon>
+                </ion-buttons>
+                <ion-title class="header-title">Movement</ion-title>
+            </ion-toolbar>
+        </div>
+        <form [formGroup]="formMovement" (ngSubmit)="onSubmit($event)" novalidate>
+            <div class="content-container">
+                <div style="padding: 20px 20px;">
+
+                    <div class="datepick-container">
+                        <ion-label class="input-label">In Block</ion-label>
+                        <div class="input-date-cont">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-datetime formControlName="inBlock" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </div>
+
+                    <div class="datepick-container">
+                        <ion-label class="input-label">Off Block</ion-label>
+                        <div class="input-date-cont">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-datetime formControlName="offBlock" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">Stand Code</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="standCode" interface="action-sheet" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let standCodes of standCodeList" [value]="standCodes">
+                                    {{standCodes.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">Mov Type</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="movType" interface="action-sheet" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let movTypes of movTypeList" [value]="movTypes">
+                                    {{movTypes.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-style">
+                <ion-toolbar>
+                    <ion-button expand="block">Submit</ion-button>
+                </ion-toolbar>
+            </div>
+        </form>
+    </div>
+</ion-content>
