@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import * as moment from "moment";
+import { GeneralService } from "../../general.service";
 
 @Component({
   selector: 'app-schedule-search',
@@ -25,7 +26,8 @@ export class ScheduleSearchPage {
 
   constructor(
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private generalService: GeneralService
   ) {
 
   }

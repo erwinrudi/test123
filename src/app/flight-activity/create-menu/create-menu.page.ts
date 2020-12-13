@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GeneralService } from "../../general.service";
 
 @Component({
   selector: 'app-create-menu',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class CreateMenuPage {
 
-  constructor() {}
+  constructor(
+    private generalService: GeneralService
+  ) {}
 
 }
