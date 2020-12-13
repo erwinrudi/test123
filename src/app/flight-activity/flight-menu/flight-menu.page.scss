@@ -1,4 +1,4 @@
-.flight-cont{
+.flight-cont {
 	.background-header {
 		position: fixed;
 		width: 150%;
@@ -14,29 +14,23 @@
 	}
 	.content-container {
 		position: relative;
-
-		.list-container{
+		.list-container {
 			cursor: pointer;
-			.header-style{
+			.header-style {
 				font-weight: 600;
 				font-size: 4.5vw;
-
 				color: #146CAB;
 			}
-
-			.title-style{
+			.title-style {
 				font-weight: normal;
 				font-size: 3.5vw;
-
 				color: #898989;
 			}
-
 			.logo-style {
 				width: 11vw;
 				margin-top: 0.5vw;
 			}
 		}
-		
 	}
 	.toolbar-style {
 		--background: transparent;
@@ -44,13 +38,38 @@
 	}
 }
 
-
 .header-container {
-    position: relative;
+	position: relative;
 }
 
-.header-title{
-    text-align: center;
-    margin-left: -48px;
-    text-transform: none !important;
+.header-title {
+	text-align: center;
+	text-transform: none !important;
 }
+
+// @media only screen and (min-width: 1024px) {
+// 	.flight-cont {
+// 		.content-container {
+// 			.list-container {
+// 				.header-style {
+// 					font-weight: 600;
+// 					font-size: 2.5vw;
+// 					color: #146CAB;
+// 				}
+// 				.title-style {
+// 					font-weight: normal;
+// 					font-size: 1.5vw;
+// 					color: #898989;
+// 				}
+// 				.logo-style {
+// 					width: 6vw;
+// 					margin-top: 0.5vw;
+// 				}
+// 			}
+// 		}
+// 		.toolbar-style {
+// 			--background: transparent;
+// 			--color: white;
+// 		}
+// 	}
+// }
