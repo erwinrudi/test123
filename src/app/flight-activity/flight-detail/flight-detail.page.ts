@@ -8,6 +8,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class FlightDetailPage {
   modal = null;
+
   typeList = [
     {
       value: 'movement',
@@ -21,8 +22,10 @@ export class FlightDetailPage {
       value: 'pax',
       text: 'Pax'
     },
-  ]
-  type = "";
+  ];
+
+  type = "movement";
+
   pax = {
     type: 'arrival',
 
@@ -51,6 +54,32 @@ export class FlightDetailPage {
       missed: 50,
       counter: 10
     }
+  };
+
+  flightInfo = {
+    id: '',
+    arrival: {
+      terminal: 'Terminal 3U',
+      flightNo: 'GA 001',
+      flightType: 'Int',
+      from: 'SIN',
+      to: 'CGK',
+      ata: '5 Nov 2020 09:00',
+      eta: '5 Nov 2020 09:00',
+      regNo: 'PKGLO - 3210',
+      remark: ''
+    },
+    derparture: {
+      terminal: 'Terminal 3US',
+      flightNo: 'GA 001',
+      flightType: 'Int',
+      from: 'SIN',
+      to: 'CGK',
+      ata: '5 Nov 2020 09:00',
+      eta: '5 Nov 2020 09:00',
+      regNo: 'PKGLO - 3220',
+      remark: ''
+    }
   }
 
 
@@ -62,7 +91,7 @@ export class FlightDetailPage {
   }
 
   onChangeType(e) {
-    this.type = e.value
+    this.type = e
   }
 
   onChangePaxType(val) {

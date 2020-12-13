@@ -33,44 +33,43 @@
                                 </ion-col>
                                 <ion-col size="6">
                                     <div class="content-flight right">
-                                        <span class="title-style-1">Terminal 3U</span>
+                                        <span class="title-style-1">{{ flightInfo.arrival.terminal }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col>
                                     <div class="content-flight">
-                                        <span class="title-style-1">GA 001</span> <span
-                                            class="status-style int">Int</span>
-                                        <span class="status-style destination">CGK</span>
-                                        <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
-                                            class="status-style destination">SIN</span>
+                                        <span class="title-style-1">{{ flightInfo.arrival.flightNo }}</span> <span
+                                        class="status-style int">{{ flightInfo.arrival.flightType }}</span>
+                                    <span class="status-style destination">{{ flightInfo.arrival.from }}</span>
+                                    <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
+                                        class="status-style destination">{{ flightInfo.arrival.to }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col size="6">
                                     <div class="content-flight">
-                                        <span class="title-style-1">ATA : 5 Nov 2020 09.05</span>
+                                        <span class="title-style-1">ATA : {{ flightInfo.arrival.ata }}</span>
                                     </div>
                                 </ion-col>
                                 <ion-col size="6">
                                     <div class="content-flight right">
-                                        <span class="title-style-1">ETA : 5 Nov 2020 09.05</span>
+                                        <span class="title-style-1">ETA : {{ flightInfo.arrival.eta }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col>
                                     <span class="title-style-1">Reg No: </span><span
-                                        class="title-style-1 destination">PKGLO
-                                        - 3210</span>
+                                        class="title-style-1 destination">{{ flightInfo.arrival.regNo }}</span>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col>
                                     <span class="title-style-1">Remark: </span><span
-                                        class="title-style-1 destination"></span>
+                                        class="title-style-1 destination">{{ flightInfo.arrival.remark }}</span>
                                 </ion-col>
                             </ion-row>
                         </ion-grid>
@@ -84,44 +83,43 @@
                                 </ion-col>
                                 <ion-col size="6">
                                     <div class="content-flight right">
-                                        <span class="title-style-1">Terminal 3U</span>
+                                        <span class="title-style-1">{{ flightInfo.derparture.terminal }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col>
                                     <div class="content-flight">
-                                        <span class="title-style-1">GA 001</span> <span
-                                            class="status-style int">Int</span>
-                                        <span class="status-style destination">CGK</span>
-                                        <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
-                                            class="status-style destination">SIN</span>
+                                        <span class="title-style-1">{{ flightInfo.derparture.flightNo }}</span> <span
+                                        class="status-style int">{{ flightInfo.derparture.flightType }}</span>
+                                    <span class="status-style destination">{{ flightInfo.derparture.from }}</span>
+                                    <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
+                                        class="status-style destination">{{ flightInfo.derparture.to }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col size="6">
                                     <div class="content-flight">
-                                        <span class="title-style-1">ATA : 5 Nov 2020 09.05</span>
+                                        <span class="title-style-1">ATA : {{ flightInfo.derparture.ata }}</span>
                                     </div>
                                 </ion-col>
                                 <ion-col size="6">
                                     <div class="content-flight right">
-                                        <span class="title-style-1">ETA : 5 Nov 2020 09.05</span>
+                                        <span class="title-style-1">ETA : {{ flightInfo.derparture.eta }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col>
                                     <span class="title-style-1">Reg No: </span><span
-                                        class="title-style-1 destination">PKGLO
-                                        - 3210</span>
+                                        class="title-style-1 destination">{{ flightInfo.derparture.regNo }}</span>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col>
                                     <span class="title-style-1">Remark: </span><span
-                                        class="title-style-1 destination"></span>
+                                        class="title-style-1 destination">{{ flightInfo.derparture.remark }}</span>
                                 </ion-col>
                             </ion-row>
                         </ion-grid>
@@ -139,8 +137,8 @@
                                 <ion-label class="input-label"></ion-label>
                                 <div class="input-select-cont">
                                     <ion-select (ionChange)="onChangeType($event.target.value)" interface="action-sheet"
-                                        class="input-select" placeholder="Select One">
-                                        <ion-select-option *ngFor="let types of typeList" [value]="types">
+                                        [value]="type" class="input-select" placeholder="Select One">
+                                        <ion-select-option *ngFor="let types of typeList" [value]="types.value">
                                             {{types.text}}</ion-select-option>
                                     </ion-select>
                                 </div>

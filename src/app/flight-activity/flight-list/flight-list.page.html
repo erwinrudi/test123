@@ -10,7 +10,7 @@
         </div>
         <div class="content-container">
             <ng-container *ngFor="let data of flightList; let i = index">
-                <ion-card>
+                <ion-card [routerLink]="['/flight/flight-detail/', data.id]">
                     <ion-card-content>
                         <ion-grid>
                             <ion-row>
@@ -64,7 +64,7 @@
                             <ion-row>
                                 <ion-col size="7">
                                     <div class="content-flight">
-                                        <span class="title-style-1">{{ data.stad }}</span>
+                                        <span class="title-style-1">STAD: {{ data.stad }}</span>
                                     </div>
                                 </ion-col>
                                 <ion-col size="5">

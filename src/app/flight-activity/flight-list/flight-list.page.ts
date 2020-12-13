@@ -55,10 +55,10 @@ export class FlightListPage {
         from: 'SIN',
         to: 'CGK'
       },
-      stad: "STAD: 5 Nov 2020 09:00",
+      stad: "5 Nov 2020 09:00",
     },
     {
-      id: 0,
+      id: 1,
       status: "Complete",
       arrival: {
         flightNo: 'GA 002',
@@ -72,7 +72,7 @@ export class FlightListPage {
         from: 'SIN',
         to: 'CGK'
       },
-      stad: "STAD: 5 Nov 2020 09:00",
+      stad: "5 Nov 2020 09:00",
     }
   ]
 
