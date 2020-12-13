@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detail-menu',
@@ -8,7 +9,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class FlightDetailPage {
   modal = null;
-
+  isLoading: boolean;
   typeList = [
     {
       value: 'movement',
@@ -51,7 +52,7 @@ export class FlightDetailPage {
       remark: ''
     }
   };
-  
+
   pax = {
     type: 'arrival',
 
@@ -82,11 +83,11 @@ export class FlightDetailPage {
     }
   };
 
-  movementList= [
+  movementList = [
     {
       id: '0',
       title: 'Flight Activity Movement',
-      inBlock :'25 November 2020 9.10',
+      inBlock: '25 November 2020 9.10',
       offBlock: '25 November 2020 9.10',
       standCode: 'A1',
       movType: 'Normal'
@@ -94,7 +95,7 @@ export class FlightDetailPage {
     {
       id: '1',
       title: 'Flight Activity Movement',
-      inBlock :'26 November 2020 9.10',
+      inBlock: '26 November 2020 9.10',
       offBlock: '26 November 2020 9.10',
       standCode: 'A2',
       movType: 'Normal'
@@ -102,10 +103,31 @@ export class FlightDetailPage {
   ]
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public loadingController: LoadingController
   ) { }
 
   ngOnInit() {
+  //  this.present()
+  }
+
+  async present(messages = "Please wait...") {
+    this.isLoading = true;
+    return await this.loadingController.create({
+      message: messages
+      // duration: 5000,
+    }).then(a => {
+      a.present().then(() => {
+        if (!this.isLoading) {
+          a.dismiss()
+        }
+      });
+    });
+  }
+
+  async dismiss() {
+    this.isLoading = false;
+    return await this.loadingController.dismiss()
   }
 
   onChangeType(e) {
