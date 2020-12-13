@@ -26,6 +26,32 @@ export class FlightDetailPage {
 
   type = "movement";
 
+  flightInfo = {
+    id: '',
+    arrival: {
+      terminal: 'Terminal 3U',
+      flightNo: 'GA 001',
+      flightType: 'Int',
+      from: 'SIN',
+      to: 'CGK',
+      ata: '5 Nov 2020 09:00',
+      eta: '5 Nov 2020 09:00',
+      regNo: 'PKGLO - 3210',
+      remark: ''
+    },
+    derparture: {
+      terminal: 'Terminal 3US',
+      flightNo: 'GA 001',
+      flightType: 'Int',
+      from: 'SIN',
+      to: 'CGK',
+      ata: '5 Nov 2020 09:00',
+      eta: '5 Nov 2020 09:00',
+      regNo: 'PKGLO - 3220',
+      remark: ''
+    }
+  };
+  
   pax = {
     type: 'arrival',
 
@@ -56,32 +82,24 @@ export class FlightDetailPage {
     }
   };
 
-  flightInfo = {
-    id: '',
-    arrival: {
-      terminal: 'Terminal 3U',
-      flightNo: 'GA 001',
-      flightType: 'Int',
-      from: 'SIN',
-      to: 'CGK',
-      ata: '5 Nov 2020 09:00',
-      eta: '5 Nov 2020 09:00',
-      regNo: 'PKGLO - 3210',
-      remark: ''
+  movementList= [
+    {
+      id: '0',
+      title: 'Flight Activity Movement',
+      inBlock :'25 November 2020 9.10',
+      offBlock: '25 November 2020 9.10',
+      standCode: 'A1',
+      movType: 'Normal'
     },
-    derparture: {
-      terminal: 'Terminal 3US',
-      flightNo: 'GA 001',
-      flightType: 'Int',
-      from: 'SIN',
-      to: 'CGK',
-      ata: '5 Nov 2020 09:00',
-      eta: '5 Nov 2020 09:00',
-      regNo: 'PKGLO - 3220',
-      remark: ''
+    {
+      id: '1',
+      title: 'Flight Activity Movement',
+      inBlock :'26 November 2020 9.10',
+      offBlock: '26 November 2020 9.10',
+      standCode: 'A2',
+      movType: 'Normal'
     }
-  }
-
+  ]
 
   constructor(
     private route: ActivatedRoute

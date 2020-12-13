@@ -41,10 +41,10 @@
                                 <ion-col>
                                     <div class="content-flight">
                                         <span class="title-style-1">{{ flightInfo.arrival.flightNo }}</span> <span
-                                        class="status-style int">{{ flightInfo.arrival.flightType }}</span>
-                                    <span class="status-style destination">{{ flightInfo.arrival.from }}</span>
-                                    <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
-                                        class="status-style destination">{{ flightInfo.arrival.to }}</span>
+                                            class="status-style int">{{ flightInfo.arrival.flightType }}</span>
+                                        <span class="status-style destination">{{ flightInfo.arrival.from }}</span>
+                                        <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
+                                            class="status-style destination">{{ flightInfo.arrival.to }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
@@ -91,10 +91,10 @@
                                 <ion-col>
                                     <div class="content-flight">
                                         <span class="title-style-1">{{ flightInfo.derparture.flightNo }}</span> <span
-                                        class="status-style int">{{ flightInfo.derparture.flightType }}</span>
-                                    <span class="status-style destination">{{ flightInfo.derparture.from }}</span>
-                                    <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
-                                        class="status-style destination">{{ flightInfo.derparture.to }}</span>
+                                            class="status-style int">{{ flightInfo.derparture.flightType }}</span>
+                                        <span class="status-style destination">{{ flightInfo.derparture.from }}</span>
+                                        <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
+                                            class="status-style destination">{{ flightInfo.derparture.to }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
@@ -147,75 +147,77 @@
                     </ion-card-content>
                 </ion-card>
                 <ng-container *ngIf="type == 'movement'">
-                    <ion-card>
-                        <ion-card-content>
-                            <ion-grid>
-                                <ion-row>
-                                    <ion-col size="9">
-                                        <div class="content-flight">
-                                            <span class="title-style-1 title-movement">Flight Activity Movement</span>
-                                        </div>
-                                    </ion-col>
-                                    <ion-col size="3">
-                                        <div class="content-flight">
-                                            <ion-button fill="outline" expand="block">EDIT</ion-button>
-                                        </div>
-                                    </ion-col>
-                                </ion-row>
+                    <ng-container *ngFor="let data of movementList; let i = index">
+                        <ion-card>
+                            <ion-card-content>
+                                <ion-grid>
+                                    <ion-row>
+                                        <ion-col size="9">
+                                            <div class="content-flight">
+                                                <span class="title-style-1 title-movement">{{ data.title }}</span>
+                                            </div>
+                                        </ion-col>
+                                        <ion-col size="3">
+                                            <div class="content-flight">
+                                                <ion-button fill="outline" expand="block">EDIT</ion-button>
+                                            </div>
+                                        </ion-col>
+                                    </ion-row>
 
-                                <div style="margin-top: 20px;">
-                                    <ion-row>
-                                        <ion-col size="6">
-                                            <div class="content-flight">
-                                                <span class="title-style-1">In Block</span>
-                                            </div>
-                                        </ion-col>
-                                        <ion-col size="6">
-                                            <div class="content-flight">
-                                                <span class="title-style-1">Stand Code</span>
-                                            </div>
-                                        </ion-col>
-                                    </ion-row>
-                                    <ion-row>
-                                        <ion-col size="6">
-                                            <div class="content-flight">
-                                                <span class="status-style">25 November 2020 9.10</span>
-                                            </div>
-                                        </ion-col>
-                                        <ion-col size="6">
-                                            <div class="content-flight">
-                                                <span class="status-style incomplete">Incomplete</span>
-                                            </div>
-                                        </ion-col>
-                                    </ion-row>
-                                    <ion-row>
-                                        <ion-col size="6">
-                                            <div class="content-flight">
-                                                <span class="title-style-1">Off Block</span>
-                                            </div>
-                                        </ion-col>
-                                        <ion-col size="6">
-                                            <div class="content-flight">
-                                                <span class="title-style-1">Move Type</span>
-                                            </div>
-                                        </ion-col>
-                                    </ion-row>
-                                    <ion-row>
-                                        <ion-col size="6">
-                                            <div class="content-flight">
-                                                <span class="status-style incomplete">Incomplete</span>
-                                            </div>
-                                        </ion-col>
-                                        <ion-col size="6">
-                                            <div class="content-flight">
-                                                <span class="status-style">Normal</span>
-                                            </div>
-                                        </ion-col>
-                                    </ion-row>
-                                </div>
-                            </ion-grid>
-                        </ion-card-content>
-                    </ion-card>
+                                    <div style="margin-top: 20px;">
+                                        <ion-row>
+                                            <ion-col size="6">
+                                                <div class="content-flight">
+                                                    <span class="title-style-1">In Block</span>
+                                                </div>
+                                            </ion-col>
+                                            <ion-col size="6">
+                                                <div class="content-flight">
+                                                    <span class="title-style-1">Stand Code</span>
+                                                </div>
+                                            </ion-col>
+                                        </ion-row>
+                                        <ion-row>
+                                            <ion-col size="6">
+                                                <div class="content-flight">
+                                                    <span class="status-style">{{ data.inBlock }}</span>
+                                                </div>
+                                            </ion-col>
+                                            <ion-col size="6">
+                                                <div class="content-flight">
+                                                    <span class="status-style">{{ data.standCode }}</span>
+                                                </div>
+                                            </ion-col>
+                                        </ion-row>
+                                        <ion-row>
+                                            <ion-col size="6">
+                                                <div class="content-flight">
+                                                    <span class="title-style-1">Off Block</span>
+                                                </div>
+                                            </ion-col>
+                                            <ion-col size="6">
+                                                <div class="content-flight">
+                                                    <span class="title-style-1">Move Type</span>
+                                                </div>
+                                            </ion-col>
+                                        </ion-row>
+                                        <ion-row>
+                                            <ion-col size="6">
+                                                <div class="content-flight">
+                                                    <span class="status-style">{{ data.offBlock }}</span>
+                                                </div>
+                                            </ion-col>
+                                            <ion-col size="6">
+                                                <div class="content-flight">
+                                                    <span class="status-style">{{ data.movType }}</span>
+                                                </div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </div>
+                                </ion-grid>
+                            </ion-card-content>
+                        </ion-card>
+                    </ng-container>
                 </ng-container>
 
                 <ng-container *ngIf="type == 'avio'">
