@@ -5,7 +5,8 @@
                 <ion-buttons slot="start">
                     <ion-icon size="large" icon="chevron-back"></ion-icon>
                 </ion-buttons>
-                <ion-title class="header-title">Movement</ion-title>
+                <ion-title *ngIf="pageType == 'new'" class="header-title">Create Movement</ion-title>
+                <ion-title *ngIf="pageType == 'edit'" class="header-title">Edit Movement</ion-title>
             </ion-toolbar>
         </div>
         <form [formGroup]="formMovement" (ngSubmit)="onSubmit($event)" novalidate>

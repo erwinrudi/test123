@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Location } from '@angular/common';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import * as moment from "moment";
 import { GeneralService } from "../../general.service";
 
@@ -26,6 +26,7 @@ export class ScheduleSearchPage {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private formBuilder: FormBuilder,
     private generalService: GeneralService,
     private location: Location
@@ -80,8 +81,8 @@ export class ScheduleSearchPage {
         urlNext = urlNext + "&status=" + formValue.status.value
       }
     }
-    urlNext = encodeURI(urlNext)
-    window.location.href = urlNext
+    // urlNext = encodeURI(urlNext)
+    this.router.navigateByUrl(urlNext)
   }
 
 }

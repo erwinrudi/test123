@@ -1,0 +1,53 @@
+<ion-content>
+    <div class="flight-cont">
+        <div class="background-header"></div>
+        <div class="header-container">
+            <ion-toolbar class="toolbar-style">
+                <ion-buttons (click)="generalService.goBack()" slot="start">
+                    <ion-icon size="large" icon="chevron-back"></ion-icon>
+                </ion-buttons>
+                <ion-title class="header-title">FLIGHT ACTIVITY</ion-title>
+            </ion-toolbar>
+        </div>
+        <div class="content-container">
+            <ion-card [routerLink]="['/flight/schedule-search']">
+                <ion-card-content>
+                    <div class="list-container">
+                        <ion-row>
+                            <ion-col>
+                                <img class="logo-style" src="../../../assets/svg/flightact-round.svg" alt="flight act" />
+                            </ion-col>
+                            <ion-col size="10">
+                                <div class="header-style">
+                                    Search Flight
+                                </div>
+                                <div class="title-style">
+                                    Lorem ipsum dolor sit amet, consectetur
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+            <ion-card [routerLink]="['/flight/create-menu']">
+                <ion-card-content>
+                    <div class="list-container">
+                        <ion-row>
+                            <ion-col>
+                                <img class="logo-style" src="../../../assets/svg/document-round.svg" alt="flight act" />
+                            </ion-col>
+                            <ion-col size="10">
+                                <div class="header-style">
+                                    Create Flight Activity
+                                </div>
+                                <div class="title-style">
+                                    Lorem ipsum dolor sit amet, consectetur
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </div>
+</ion-content>

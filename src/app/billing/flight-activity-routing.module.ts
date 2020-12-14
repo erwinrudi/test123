@@ -10,7 +10,6 @@ import { FlightDetailPage } from './flight-detail/flight-detail.page';
 import { ScheduleFormPage } from './schedule-form/schedule-form.page';
 import { PaxFormPage } from './pax-form/pax-form.page';
 import { MovementFormPage } from './movement-form/movement-form.page';
-import { AvioFormPage } from './avio-form/avio-form.page';
 
 const routes: Routes = [
   {
@@ -60,14 +59,6 @@ const routes: Routes = [
   {
     path: 'movement',
     component: MovementFormPage,
-  },
-  {
-    path: 'avio/:id',
-    component: AvioFormPage,
-  },
-  {
-    path: 'avio',
-    component: AvioFormPage,
   }
 ];
 

@@ -103,6 +103,7 @@ export class FlightDetailPage {
   ];
 
   avio = {
+    id: 0,
     arrival: {
       startTime: '25 November 2020 9.10',
       endTime: '25 November 2020 10.10',
