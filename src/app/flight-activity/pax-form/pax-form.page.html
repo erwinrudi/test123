@@ -2,10 +2,11 @@
     <div class="pax-form">
         <div class="header-container">
             <ion-toolbar class="toolbar-style">
-                <ion-buttons slot="start">
+                <ion-buttons (click)="generalService.goBack()" slot="start">
                     <ion-icon size="large" icon="chevron-back"></ion-icon>
                 </ion-buttons>
-                <ion-title class="header-title">PAX</ion-title>
+                <ion-title *ngIf="pageType == 'new'" class="header-title">Create PAX</ion-title>
+                <ion-title *ngIf="pageType == 'edit'" class="header-title">Edit PAX</ion-title>
             </ion-toolbar>
         </div>
         <form [formGroup]="formPax" (ngSubmit)="onSubmit($event)" novalidate>

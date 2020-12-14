@@ -25,7 +25,7 @@ import { FlightActivityRoutingModule } from './flight-activity-routing.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    FlightActivityRoutingModule,
+    FlightActivityRoutingModule
   ],
   declarations: [
     FlightMenuPage,

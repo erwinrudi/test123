@@ -372,7 +372,7 @@
                                     </ion-col>
                                     <ion-col size="3">
                                         <div class="content-flight">
-                                            <ion-button fill="outline" expand="block">EDIT</ion-button>
+                                            <ion-button [routerLink]="['/flight/pax/', pax.id]" fill="outline" expand="block">EDIT</ion-button>
                                         </div>
                                     </ion-col>
                                 </ion-row>
@@ -499,7 +499,7 @@
                         <ion-buttons (click)="showModal()" slot="start">
                             <ion-icon size="large" icon="close"></ion-icon>
                         </ion-buttons>
-                        <ion-title>Estimate Billing</ion-title>
+                        <ion-title class="header-title">Estimate Billing</ion-title>
                     </ion-toolbar>
                 </div>
             </ion-header>

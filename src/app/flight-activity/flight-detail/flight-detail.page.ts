@@ -55,7 +55,7 @@ export class FlightDetailPage {
 
   pax = {
     type: 'arrival',
-
+    id: 0,
     arrival: {
       adult: 50,
       child: 10,
