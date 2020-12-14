@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'flight',
     loadChildren: './flight-activity/flight-activity.module#FlightActivityPageModule'
   },
+  {
+    path: 'billing',
+    loadChildren: './billing/billing.module#BillingPageModule'
+  },
 ];
 @NgModule({
   imports: [
