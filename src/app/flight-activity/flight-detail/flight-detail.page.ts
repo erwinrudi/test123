@@ -124,6 +124,9 @@ export class FlightDetailPage {
 
   ngOnInit() {
     //  this.present()
+    this.route.params.subscribe(param => {
+      this.flightInfo.id = param.id;
+    });
   }
 
   async present(messages = "Please wait...") {
