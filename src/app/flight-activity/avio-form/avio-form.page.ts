@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import { GeneralService } from "../../general.service";
 
 @Component({
   selector: 'app-avio-form',
@@ -39,7 +40,8 @@ export class AvioFormPage {
 
   constructor(
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private generalService: GeneralService
   ) {
 
   }
@@ -58,11 +60,12 @@ export class AvioFormPage {
 
     const id = this.route.snapshot.params["id"];
 
-    if (id === "new") {
-      this.pageType = "new";
-    } else {
+    if (id) {
       this.pageType = "edit";
+    } else {
+      this.pageType = "new";
     }
+
 
     this.isLoading = false;
   }

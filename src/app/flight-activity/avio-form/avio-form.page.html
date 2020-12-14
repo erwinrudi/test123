@@ -2,10 +2,11 @@
     <div class="pax-form">
         <div class="header-container">
             <ion-toolbar class="toolbar-style">
-                <ion-buttons slot="start">
+                <ion-buttons (click)="generalService.goBack()" slot="start">
                     <ion-icon size="large" icon="chevron-back"></ion-icon>
                 </ion-buttons>
-                <ion-title class="header-title">AVIO</ion-title>
+                <ion-title *ngIf="pageType == 'new'" class="header-title">Create Avio</ion-title>
+                <ion-title *ngIf="pageType == 'edit'" class="header-title">Edit Avio</ion-title>
             </ion-toolbar>
         </div>
         <form [formGroup]="formAvio" (ngSubmit)="onSubmit($event)" novalidate>
@@ -55,12 +56,11 @@
                     <div class="textbox-container">
                         <ion-label class="input-label">Frq</ion-label>
                         <div class="input-text-cont">
-                            <ion-input formControlName="frq_ar" class="input-text"
-                                placeholder="e.g Number">
+                            <ion-input formControlName="frq_ar" class="input-text" placeholder="e.g Number">
                             </ion-input>
                         </div>
                     </div>
-            
+
                     <div class="select-container">
                         <ion-label class="input-label">Mov</ion-label>
                         <div class="input-select-cont">
@@ -101,12 +101,11 @@
                     <div class="textbox-container">
                         <ion-label class="input-label">Frq</ion-label>
                         <div class="input-text-cont">
-                            <ion-input formControlName="frq_der" class="input-text"
-                                placeholder="e.g Number">
+                            <ion-input formControlName="frq_der" class="input-text" placeholder="e.g Number">
                             </ion-input>
                         </div>
                     </div>
-            
+
                     <div class="select-container">
                         <ion-label class="input-label">Mov</ion-label>
                         <div class="input-select-cont">
