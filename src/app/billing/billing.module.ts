@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BillingMenuPage } from './billing-menu/billing-menu.page';
 import { BillingSearchPage } from './billing-search/billing-search.page';
 import { InvoiceSearchPage } from './invoice-search/invoice-search.page';
+import { BillingListPage } from './billing-list/billing-list.page';
+
 
 import { BillingRoutingModule } from './billing-routing.module';
 
@@ -21,7 +23,8 @@ import { BillingRoutingModule } from './billing-routing.module';
   declarations: [
     BillingMenuPage,
     BillingSearchPage,
-    InvoiceSearchPage
+    InvoiceSearchPage,
+    BillingListPage
   ]
 })
 export class BillingPageModule {}

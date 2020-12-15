@@ -1,0 +1,79 @@
+
+.billing-info {
+	// .background-header {
+	//     position: fixed;
+	//     width: 150%;
+	//     height: 50%;
+	//     left: -25%;
+	//     top: -20%;
+	//     border-radius: 50%;
+	//     background: #146CAB;
+	//     z-index: 0;
+	// }
+	.header-container {
+		position: relative;
+	}
+	.content-container {
+		position: relative;
+		margin-top: 25px;
+		.content-flight {
+			height: 100%;
+			display: flex;
+			width: 100%;
+			&.right {
+				justify-content: flex-end;
+			}
+		}
+		.logo-style {
+			width: 9vw;
+		}
+		.title-style-1 {
+			font-style: normal;
+			font-weight: bold;
+			font-size: 3vw;
+			align-items: center;
+			color: #000000;
+			margin-top: auto;
+			margin-bottom: auto;
+			&.detail {
+				font-size: 3.5vw;
+				color: #146CAB;
+			}
+		}
+		.status-style {
+			font-size: 3vw;
+			text-align: right;
+			margin-top: auto;
+			margin-bottom: auto;
+			&.complete {
+				color: #27AE60;
+			}
+			&.destination {
+				color: #146CAB;
+			}
+			&.int {
+				color: #898989;
+				margin: 0px 2px;
+			}
+		}
+		.arrow-style {
+			font-size: 3vw;
+			margin: 0px 2px;
+			margin-top: 0.5vw;
+		}
+	}
+	.toolbar-style {
+		--background: #146CAB;
+		--color: white;
+	}
+}
+
+.header-container {
+    position: relative;
+}
+
+.header-title{
+    text-align: center;
+    margin-left: -38px;
+    text-transform: none !important;
+}

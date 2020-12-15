@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BillingMenuPage } from './billing-menu/billing-menu.page';
 import { BillingSearchPage } from './billing-search/billing-search.page';
 import { InvoiceSearchPage } from './invoice-search/invoice-search.page';
+import { BillingListPage } from './billing-list/billing-list.page';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'invoice-search',
     component: InvoiceSearchPage,
+  },
+  {
+    path: 'billing-list',
+    component: BillingListPage,
   },
 ];
 

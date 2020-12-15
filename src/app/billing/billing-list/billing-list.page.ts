@@ -5,11 +5,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-flight-list',
-  templateUrl: 'flight-list.page.html',
-  styleUrls: ['flight-list.page.scss']
+  selector: 'app-billing-list',
+  templateUrl: 'billing-list.page.html',
+  styleUrls: ['billing-list.page.scss']
 })
-export class FlightListPage {
+export class BillingListPage {
 
   isLoading: boolean;
 
@@ -39,7 +39,7 @@ export class FlightListPage {
     status: ''
   }
 
-  flightList: any = [
+  billingList: any = [
     {
       id: 0,
       status: "Complete",
