@@ -36,8 +36,8 @@ export class ScheduleSearchPage {
   
   ngOnInit() {
     this.formSchedule = this.formBuilder.group({
-      startDate: '',
-      endDate: '',
+      startDate: moment().format(),
+      endDate: moment().format(),
       flightNumber: '',
       status: ''
     })

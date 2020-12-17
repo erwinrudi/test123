@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { FlightActivityService } from './flight-activity.service';
+
 
 import { CreateFlightAdPage } from './create-flight-ad/create-flight-ad.page';
 import { CreateFlightSinglePage } from './create-flight-single/create-flight-single.page';
@@ -39,6 +41,9 @@ import { FlightActivityRoutingModule } from './flight-activity-routing.module';
     PaxFormPage,
     AvioFormPage,
     MovementFormPage
+  ],
+  providers: [
+    FlightActivityService
   ]
 })
 export class FlightActivityPageModule {}

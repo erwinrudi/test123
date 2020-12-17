@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'https://labunictive.angkasapura2.co.id/ap2_aero_api',
 };
 
 /*
