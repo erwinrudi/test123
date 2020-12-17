@@ -16,15 +16,15 @@ export class FlightListPage {
 
   props: any = [
     {
-      field: 'startDate',
+      field: 'startdate',
       value: ''
     },
     {
-      field: 'endDate',
+      field: 'enddate',
       value: ''
     },
     {
-      field: 'flightNumber',
+      field: 'flightno',
       value: ''
     },
     {
@@ -34,40 +34,7 @@ export class FlightListPage {
   ];
 
   flightList: any = [
-    {
-      id: 0,
-      status: "Complete",
-      arrival: {
-        flightNo: 'GA 001',
-        flightType: 'Int',
-        from: 'CGK',
-        to: 'SIN'
-      },
-      derpature: {
-        flightNo: 'GA 001',
-        flightType: 'Int',
-        from: 'SIN',
-        to: 'CGK'
-      },
-      stad: "5 Nov 2020 09:00",
-    },
-    {
-      id: 1,
-      status: "Complete",
-      arrival: {
-        flightNo: 'GA 002',
-        flightType: 'Int',
-        from: 'CGK',
-        to: 'SIN'
-      },
-      derpature: {
-        flightNo: 'GA 002',
-        flightType: 'Int',
-        from: 'SIN',
-        to: 'CGK'
-      },
-      stad: "5 Nov 2020 09:00",
-    }
+  
   ]
 
   constructor(
@@ -88,7 +55,7 @@ export class FlightListPage {
     let tempProp = this.props
     this.props.map((prop, index) => {
       if (params[prop.field]) {
-        if (prop.field == 'startDate' || prop.field == 'endDate') {
+        if (prop.field == 'startdate' || prop.field == 'enddate') {
           tempProp[index].value = moment(params[prop.field], "YYYY-MM-DDTHH:mmZ").format("YYYY/MM/DD")
         }
         else {
@@ -100,7 +67,7 @@ export class FlightListPage {
 
   getData() {
     this.flightActivityService.getListFlight(this.props).subscribe((rows: any) => {
-      
+      this.flightList = rows.data
     },
       error => {
         if(error.response){
@@ -111,5 +78,10 @@ export class FlightListPage {
         }
       }
     );
+  }
+
+  onClickList(value){
+    let urlNext = "/flight/flight-detail"
+    this.router.navigateByUrl(urlNext)
   }
 }

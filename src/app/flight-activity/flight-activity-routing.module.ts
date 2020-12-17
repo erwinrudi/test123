@@ -30,7 +30,7 @@ const routes: Routes = [
     component: FlightListPage,
   },
   {
-    path: 'flight-detail/:id',
+    path: 'flight-detail',
     component: FlightDetailPage,
   },
   {

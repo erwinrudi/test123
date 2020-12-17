@@ -10,7 +10,7 @@
         </div>
         <div class="content-container">
             <ng-container *ngFor="let data of flightList; let i = index">
-                <ion-card [routerLink]="['/flight/flight-detail/', data.id]">
+                <ion-card (click)="onClickList(data)">
                     <ion-card-content>
                         <ion-grid>
                             <ion-row>
@@ -25,7 +25,7 @@
                                 </ion-col>
                                 <ion-col size="4">
                                     <div class="content-flight right">
-                                        <span class="status-style complete">{{ data.status }}</span>
+                                        <span class="status-style complete">Complete</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
@@ -37,11 +37,14 @@
                                 </ion-col>
                                 <ion-col size="6">
                                     <div class="content-flight right">
-                                        <span class="title-style-1">{{ data.arrival.flightNo }}</span> <span
-                                            class="status-style int">{{ data.arrival.flightType }}</span>
-                                        <span class="status-style destination">{{ data.arrival.from }}</span>
+                                        <span class="title-style-1">{{ data?.ARRIVAL?.FLIGHT_NO }}</span>
+                                        <span *ngIf="data.ARRIVAL.CATEGORY_CODE == 'I'" class="status-style int"> Int
+                                        </span>
+                                        <span *ngIf="data.ARRIVAL.CATEGORY_CODE == 'D'" class="status-style int"> Dom
+                                        </span>
+                                        <span class="status-style destination">{{ data?.ARRIVAL?.STATION1 }}</span>
                                         <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
-                                            class="status-style destination">{{ data.arrival.to }}</span>
+                                            class="status-style destination">{{ data?.ARRIVAL?.STATION2 }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
@@ -53,18 +56,21 @@
                                 </ion-col>
                                 <ion-col size="6">
                                     <div class="content-flight right">
-                                        <span class="title-style-1">{{ data.derpature.flightNo }}</span> <span
-                                            class="status-style int">{{ data.derpature.flightType }}</span>
-                                        <span class="status-style destination">{{ data.derpature.from }}</span>
+                                        <span class="title-style-1">{{ data?.DEPARTURE?.FLIGHT_NO }}</span>
+                                        <span *ngIf="data.DEPARTURE.CATEGORY_CODE == 'I'" class="status-style int"> Int
+                                        </span>
+                                        <span *ngIf="data.DEPARTURE.CATEGORY_CODE == 'D'" class="status-style int"> Dom
+                                        </span>
+                                        <span class="status-style destination">{{ data?.DEPARTURE?.STATION1 }}</span>
                                         <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
-                                            class="status-style destination">{{ data.derpature.to }}</span>
+                                            class="status-style destination">{{ data?.DEPARTURE?.STATION2 }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
                             <ion-row>
                                 <ion-col size="7">
                                     <div class="content-flight">
-                                        <span class="title-style-1">STAD: {{ data.stad }}</span>
+                                        <span class="title-style-1">STAD: {{ data.ARRIVAL?.STAD }}</span>
                                     </div>
                                 </ion-col>
                                 <ion-col size="5">

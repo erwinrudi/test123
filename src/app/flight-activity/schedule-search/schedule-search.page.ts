@@ -51,25 +51,25 @@ export class ScheduleSearchPage {
     let urlNext = "/flight/flight-list"
     let nullParam = true
     if (formValue.startDate != "") {
-      urlNext = urlNext + "?startDate=" + formValue.startDate
+      urlNext = urlNext + "?startdate=" + formValue.startDate
       nullParam = false
     }
     if (formValue.endDate != "") {
       if (nullParam == true) {
-        urlNext = urlNext + "?endDate=" + formValue.endDate
+        urlNext = urlNext + "?enddate=" + formValue.endDate
         nullParam = false
       }
       else {
-        urlNext = urlNext + "&endDate=" + formValue.endDate
+        urlNext = urlNext + "&enddate=" + formValue.endDate
       }
     }
     if (formValue.flightNumber != "") {
       if (nullParam == true) {
-        urlNext = urlNext + "?flightNumber=" + formValue.flightNumber
+        urlNext = urlNext + "?flightno=" + formValue.flightNumber
         nullParam = false
       }
       else {
-        urlNext = urlNext + "&flightNumber=" + formValue.flightNumber
+        urlNext = urlNext + "&flightno=" + formValue.flightNumber
       }
     }
     if (formValue.status != "") {
