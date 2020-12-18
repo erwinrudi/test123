@@ -43,11 +43,15 @@ export class FlightListPage {
     private location: Location,
     private router: Router,
     private flightActivityService: FlightActivityService
-  ) { }
+  ) {
+    activatedRoute.params.subscribe(val => {
+      this.getQueryParams();
+      this.getData();
+    })
+  }
 
   ngOnInit() {
-    this.getQueryParams();
-    this.getData();
+
   }
 
   getQueryParams() {

@@ -69,4 +69,12 @@ export class FlightActivityService {
             .map((response: Response) => response)
             .catch((error: Response) => Observable.throw(error));
     }
+
+    submitPax(values): Observable<any> {
+        const body = JSON.stringify(values);
+        return this.http
+            .post(this.generalService.apiUrl + '/pax', body)
+            .map((response: Response) => response)
+            .catch((error: Response) => Observable.throw(error));
+    }
 }

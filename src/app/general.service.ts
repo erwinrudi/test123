@@ -12,7 +12,7 @@ import { LoadingController } from '@ionic/angular';
 @Injectable()
 export class GeneralService {
     readonly apiUrl: string = environment.apiUrl;
-
+    loaderToShow: any;
 
     constructor(
         private router: Router,
@@ -35,6 +35,17 @@ export class GeneralService {
         toast.present();
     }
 
+    async presentLoading(messages = "Please wait...") {
+        return this.loadingController.create({
+            message: messages
+            // duration: 5000,
+        });
+    }
+
+    async dismissLoading() {
+        return this.loadingController.dismiss();
+    }
+
 
     async showLoading(messages = "Please wait...") {
         return await this.loadingController.create({
@@ -42,7 +53,7 @@ export class GeneralService {
             // duration: 5000,
         }).then(a => {
             a.present().then(() => {
-             
+
             });
         });
     }
@@ -50,4 +61,17 @@ export class GeneralService {
     async hideLoading() {
         return await this.loadingController.dismiss()
     }
+
+    showLoader() {
+        this.loaderToShow = this.loadingController.create({
+            message: 'This Loader will Not AutoHide'
+        }).then((res) => {
+            res.present();
+        });
+    }
+
+    hideLoader() {
+        this.loadingController.dismiss();
+    }
+
 }
