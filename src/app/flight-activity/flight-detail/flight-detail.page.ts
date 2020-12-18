@@ -108,24 +108,26 @@ export class FlightDetailPage {
     }
   };
 
-  movementList = [
-    {
-      id: '0',
-      title: 'Flight Activity Movement',
-      inBlock: '25 November 2020 9.10',
-      offBlock: '25 November 2020 9.10',
-      standCode: 'A1',
-      movType: 'Normal'
-    },
-    {
-      id: '1',
-      title: 'Flight Activity Movement',
-      inBlock: '26 November 2020 9.10',
-      offBlock: '26 November 2020 9.10',
-      standCode: 'A2',
-      movType: 'Normal'
-    }
-  ];
+  movement = {
+    list: [
+      {
+        id: '0',
+        title: 'Flight Activity Movement',
+        inBlock: '25 November 2020 9.10',
+        offBlock: '25 November 2020 9.10',
+        standCode: 'A1',
+        movType: 'Normal'
+      },
+      {
+        id: '1',
+        title: 'Flight Activity Movement',
+        inBlock: '26 November 2020 9.10',
+        offBlock: '26 November 2020 9.10',
+        standCode: 'A2',
+        movType: 'Normal'
+      }
+    ]
+  }
 
   avio = {
     id: 0,
