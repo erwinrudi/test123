@@ -64,7 +64,7 @@ export class FlightDetailPage {
       remark: '',
       afskey: ''
     },
-    departure:  {
+    departure: {
       terminal: '',
       flightNo: '',
       flightType: '',
@@ -82,29 +82,29 @@ export class FlightDetailPage {
     type: 'arrival',
     id: 0,
     arrival: {
-      adult: 50,
-      child: 10,
-      infant: 50,
-      transit: 10,
-      transfer: 50,
-      ctew: 10,
-      exCrew: 50,
-      divert: 10,
-      missed: 50,
-      counter: 10
+      adult: '',
+      child: '',
+      infant: '',
+      transit: '',
+      transfer: '',
+      ctew: '',
+      exCrew: '',
+      divert: '',
+      missed: '',
+      counter: ''
     },
 
     departure: {
-      adult: 50,
-      child: 10,
-      infant: 50,
-      transit: 10,
-      transfer: 50,
-      ctew: 10,
-      exCrew: 50,
-      divert: 10,
-      missed: 50,
-      counter: 10
+      adult: '',
+      child: '',
+      infant: '',
+      transit: '',
+      transfer: '',
+      ctew: '',
+      exCrew: '',
+      divert: '',
+      missed: '',
+      counter: ''
     }
   };
 
@@ -154,6 +154,7 @@ export class FlightDetailPage {
   ngOnInit() {
     this.getQueryParams();
     this.getDetail();
+    this.getPax();
   }
 
   onChangeType(e) {
@@ -181,6 +182,7 @@ export class FlightDetailPage {
         }
         if (prop.field == 'codeDeparture') {
           this.flightInfo.departure.afskey = params[prop.field]
+          this.pax.id = params[prop.field]
         }
         tempProp[index].value = params[prop.field]
       }
@@ -237,7 +239,50 @@ export class FlightDetailPage {
     );
   }
 
-  getPax(){
-    
+  getPax() {
+    this.flightActivityService.getFlightPax(this.props).subscribe((res: any) => {
+      let data = res.data
+
+      let arrivalTemp = data.ARRIVAL;
+      let departureTemp = data.DEPARTURE;
+
+      let arrival = this.pax.arrival;
+      let departure = this.pax.departure;
+
+      arrival.adult = arrivalTemp.ADULT;
+      arrival.child = arrivalTemp.CHILD;
+      arrival.counter = arrivalTemp.CHILD;
+      arrival.ctew = arrivalTemp.CREW;
+      arrival.divert = arrivalTemp.DIVERT;
+      arrival.exCrew = arrivalTemp.EXTRA_CREW;
+      arrival.infant = arrivalTemp.INFANT;
+      arrival.missed = arrivalTemp.MISSED;
+      arrival.transfer = arrivalTemp.TRANSFER;
+      arrival.transit = arrivalTemp.TRANSIT;
+
+      departure.adult = departureTemp.ADULT;
+      departure.child = departureTemp.CHILD;
+      departure.counter = departureTemp.CHILD;
+      departure.ctew = departureTemp.CREW;
+      departure.divert = departureTemp.DIVERT;
+      departure.exCrew = departureTemp.EXTRA_CREW;
+      departure.infant = departureTemp.INFANT;
+      departure.missed = departureTemp.MISSED;
+      departure.transfer = departureTemp.TRANSFER;
+      departure.transit = departureTemp.TRANSIT;
+      
+      this.pax.arrival = arrival;
+      this.pax.departure = departure;
+      //map UI
+    },
+      error => {
+        if (error.response) {
+          this.generalService.notification(error.response.message)
+        }
+        else {
+          this.generalService.notification("ERROR CONNECTION")
+        }
+      }
+    );
   }
 }
