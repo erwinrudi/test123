@@ -110,22 +110,14 @@ export class FlightDetailPage {
 
   movement = {
     list: [
-      {
-        id: '0',
-        title: 'Flight Activity Movement',
-        inBlock: '25 November 2020 9.10',
-        offBlock: '25 November 2020 9.10',
-        standCode: 'A1',
-        movType: 'Normal'
-      },
-      {
-        id: '1',
-        title: 'Flight Activity Movement',
-        inBlock: '26 November 2020 9.10',
-        offBlock: '26 November 2020 9.10',
-        standCode: 'A2',
-        movType: 'Normal'
-      }
+      // {
+      //   id: '0',
+      //   title: 'Flight Activity Movement',
+      //   inBlock: '25 November 2020 9.10',
+      //   offBlock: '25 November 2020 9.10',
+      //   standCode: 'A1',
+      //   movType: 'Normal'
+      // },
     ]
   }
 
@@ -158,7 +150,8 @@ export class FlightDetailPage {
       new Promise((resolve, reject) => {
         Promise.all([
           this.getDetail(),
-          this.getPax()
+          this.getPax(),
+          this.getMovement()
         ]).then(([]) => {
         })
       })
@@ -166,17 +159,7 @@ export class FlightDetailPage {
   }
 
   ngOnInit() {
-    // this.getQueryParams();
 
-    // new Promise((resolve, reject) => {
-    //   Promise.all([
-    //     this.getDetail(),
-    //     this.getPax()
-    //   ]).then(([]) => {
-    //   })
-    // })
-    // this.getDetail();
-    // this.getPax();
   }
 
   onChangeType(e) {
@@ -306,6 +289,26 @@ export class FlightDetailPage {
         let localPax = JSON.stringify(this.pax)
         localStorage.setItem('pax', localPax)
         //map UI
+        resolve(true)
+      },
+        error => {
+          if (error.response) {
+            this.generalService.notification(error.response.message)
+          }
+          else {
+            this.generalService.notification("ERROR CONNECTION")
+          }
+          resolve(true)
+        }
+      );
+    });
+  }
+
+  getMovement() {
+    return new Promise((resolve, reject) => {
+      this.flightActivityService.getFlightMovement(this.props).subscribe((res: any) => {
+        let data = res.data
+        debugger
         resolve(true)
       },
         error => {
