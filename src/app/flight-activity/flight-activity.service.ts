@@ -36,4 +36,20 @@ export class FlightActivityService {
             .catch((error: Response) => Observable.throw(error));
     }
 
+    getFlightDetail(paramsValue): Observable<any> {
+        let httpParams = new HttpParams();
+        paramsValue.map(x => {
+            if(x.value != "" && (x.field == 'codeArrival' || x.field == 'codeDeparture' )){
+                httpParams = httpParams.append(x.field, x.value);
+            }
+           
+        })
+        return this.http
+            .get(
+                this.generalService.apiUrl + '/search/general', { params: httpParams }
+            )
+            .map((response: Response) => response)
+            .catch((error: Response) => Observable.throw(error));
+    }
+
 }

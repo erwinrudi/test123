@@ -8,6 +8,7 @@ import 'rxjs/Rx';
 import { Observable, Subject } from 'rxjs';
 import { ToastController } from '@ionic/angular';
 
+import { LoadingController } from '@ionic/angular';
 @Injectable()
 export class GeneralService {
     readonly apiUrl: string = environment.apiUrl;
@@ -17,7 +18,8 @@ export class GeneralService {
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private location: Location,
-        public toastController: ToastController
+        public toastController: ToastController,
+        public loadingController: LoadingController
     ) { }
 
 
@@ -31,5 +33,21 @@ export class GeneralService {
             duration: 3000
         });
         toast.present();
+    }
+
+
+    async showLoading(messages = "Please wait...") {
+        return await this.loadingController.create({
+            message: messages
+            // duration: 5000,
+        }).then(a => {
+            a.present().then(() => {
+             
+            });
+        });
+    }
+
+    async hideLoading() {
+        return await this.loadingController.dismiss()
     }
 }

@@ -34,7 +34,7 @@ export class FlightListPage {
   ];
 
   flightList: any = [
-  
+
   ]
 
   constructor(
@@ -70,18 +70,22 @@ export class FlightListPage {
       this.flightList = rows.data
     },
       error => {
-        if(error.response){
-
+        if (error.response) {
+          this.generalService.notification(error.response.message)
         }
-        else{
+        else {
           this.generalService.notification("ERROR CONNECTION")
         }
       }
     );
   }
 
-  onClickList(value){
+  onClickList(value) {
     let urlNext = "/flight/flight-detail"
+    urlNext = urlNext + "?codeArrival=" + value.ARRIVAL.AFSKEY
+    urlNext = urlNext + "&codeDeparture=" + value.DEPARTURE.AFSKEY
+    urlNext = urlNext + "&afsKey=" + value.REMARK
+
     this.router.navigateByUrl(urlNext)
   }
 }
