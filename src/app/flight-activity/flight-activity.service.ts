@@ -115,4 +115,12 @@ export class FlightActivityService {
             .map((response: Response) => response)
             .catch((error: Response) => Observable.throw(error));
     }
+
+    submitEditAirline(values): Observable<any> {
+        const body = JSON.stringify(values);
+        return this.http
+            .post(this.generalService.apiUrl + '/airline', body)
+            .map((response: Response) => response)
+            .catch((error: Response) => Observable.throw(error));
+    }
 }

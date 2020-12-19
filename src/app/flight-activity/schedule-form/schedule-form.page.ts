@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { GeneralService } from "../../general.service";
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import * as moment from "moment";
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { FlightActivityService } from './../flight-activity.service';
 
 @Component({
   selector: 'app-schedule-form',
@@ -60,8 +64,12 @@ export class ScheduleFormPage {
 
 
   constructor(
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private generalService: GeneralService,
+    private activatedRoute: ActivatedRoute,
+    private location: Location,
+    private router: Router,
+    private flightActivityService: FlightActivityService
   ) {
 
   }
@@ -111,7 +119,73 @@ export class ScheduleFormPage {
   }
 
   onSubmit(e) {
+    const formValue = this.formSchedule.value;
+    let flightInfo = null
+    flightInfo = JSON.parse(localStorage.getItem('flightInfo'))
+    let eta_ar = moment(formValue.eta_ar, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
+    let ata_ar = moment(formValue.ata_ar, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
+    let eta_der = moment(formValue.eta_der, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
+    let ata_der = moment(formValue.ata_der, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
+    
+    let body = {
+      "ARRIVAL":
+      {
+        "IATA_AIRLINE_CODE": flightInfo.detailTemp.arrival.IATA_AIRLINE_CODE,
+        "SUFFIX": flightInfo.detailTemp.arrival.SUFFIX,
+        "LEG": flightInfo.detailTemp.arrival.LEG,
+        "TERMINAL_ID": formValue.terminal_ar,
+        "STATION1": formValue.from_ar,
+        "STATION2": formValue.to_ar,
+        "STATION3": flightInfo.detailTemp.arrival.STATION3,
+        "STATION4": flightInfo.detailTemp.arrival.STATION4,
+        "ATMSATAD": ata_ar,
+        "REMARK_CODE": flightInfo.detailTemp.arrival.REMARK_CODE,
+        "AIRCRAFT_SUBTYPE": flightInfo.detailTemp.arrival.AIRCRAFT_SUBTYPE,
+        "NOTE_DELAY": flightInfo.detailTemp.arrival.NOTE_DELAY,
+        "FLIGHT_NUMBER": flightInfo.detailTemp.arrival.FLIGHT_NO,
+        "AIRCRAFT_REG_NO": formValue.regNo_ar,
+        "CATEGORY_CODE": flightInfo.detailTemp.arrival.CATEGORY_CODE,
+        "STAD": flightInfo.detailTemp.arrival.STAD,
+        "AIRETAD": eta_ar,
+        "RUNWAY": flightInfo.detailTemp.arrival.RUNWAY,
+        "REMARK_NOTE": formValue.remark_ar,
+      },
+      "DEPARTURE": {
+        "IATA_AIRLINE_CODE": flightInfo.detailTemp.departure.IATA_AIRLINE_CODE,
+        "SUFFIX": flightInfo.detailTemp.departure.SUFFIX,
+        "LEG": flightInfo.detailTemp.departure.LEG,
+        "TERMINAL_ID": formValue.terminal_der,
+        "STATION1": formValue.from_der,
+        "STATION2": formValue.to_der,
+        "STATION3": flightInfo.detailTemp.departure.STATION3,
+        "STATION4": flightInfo.detailTemp.departure.STATION4,
+        "ATMSATAD": ata_der,
+        "REMARK_CODE": flightInfo.detailTemp.departure.REMARK_CODE,
+        "AIRCRAFT_SUBTYPE": flightInfo.detailTemp.departure.AIRCRAFT_SUBTYPE,
+        "NOTE_DELAY": flightInfo.detailTemp.departure.NOTE_DELAY,
+        "FLIGHT_NUMBER": flightInfo.detailTemp.departure.FLIGHT_NO,
+        "AIRCRAFT_REG_NO": formValue.regNo_der,
+        "CATEGORY_CODE": flightInfo.detailTemp.departure.CATEGORY_CODE,
+        "STAD": flightInfo.detailTemp.departure.STAD,
+        "AIRETAD": eta_der,
+        "RUNWAY": flightInfo.detailTemp.departure.RUNWAY,
+        "REMARK_NOTE": formValue.remark_der,
+      }
+    }
 
+    this.flightActivityService.submitEditAirline(body).subscribe((res: any) => {
+      this.generalService.notification("SUKSES")
+      this.generalService.goBack();
+    },
+      error => {
+        if (error.response) {
+          this.generalService.notification(error.response.message)
+        }
+        else {
+          this.generalService.notification("ERROR CONNECTION")
+        }
+      }
+    );
   }
 
   onChangeType(type) {
