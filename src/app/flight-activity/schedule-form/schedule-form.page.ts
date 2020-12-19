@@ -84,7 +84,30 @@ export class ScheduleFormPage {
       remark_der: ''
     })
 
-    this.isLoading = false;
+    this.getData();
+  }
+
+  getData() {
+    let data = null
+    data = localStorage.getItem('flightInfo')
+    data = JSON.parse(data)
+    this.formSchedule.patchValue({
+      terminal_ar: data.arrival.terminal,
+      from_ar: data.arrival.from,
+      to_ar: data.arrival.to,
+      eta_ar: data.arrival.eta,
+      ata_ar: data.arrival.ata,
+      regNo_ar: data.arrival.reg,
+      remark_ar: data.arrival.remarkNote,
+
+      terminal_der: data.departure.terminal,
+      from_der: data.departure.from,
+      to_der: data.departure.to,
+      eta_der: data.departure.eta,
+      ata_der: data.departure.ata,
+      regNo_der: data.departure.reg,
+      remark_der: data.departure.remarkNote,
+    })
   }
 
   onSubmit(e) {

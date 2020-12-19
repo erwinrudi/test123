@@ -29,7 +29,7 @@
 
                 <div *ngIf="formType == '0'" style="padding: 10px 10px;">
 
-                    <div class="select-container">
+                    <!-- <div class="select-container">
                         <ion-label class="input-label">Terminal</ion-label>
                         <div class="input-select-cont">
                             <ion-select formControlName="terminal_ar" interface="action-sheet" class="input-select"
@@ -38,9 +38,18 @@
                                     {{terminals.text}}</ion-select-option>
                             </ion-select>
                         </div>
+                    </div> -->
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Terminal</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="terminal_ar" class="input-text"
+                                placeholder="">
+                            </ion-input>
+                        </div>
                     </div>
 
-                    <div class="select-container">
+                    <!-- <div class="select-container">
                         <ion-label class="input-label">From</ion-label>
                         <div class="input-select-cont">
                             <ion-select formControlName="from_ar" interface="action-sheet" class="input-select"
@@ -59,6 +68,24 @@
                                 <ion-select-option *ngFor="let locations of locationList" [value]="locations">
                                     {{locations.text}}</ion-select-option>
                             </ion-select>
+                        </div>
+                    </div> -->
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">From</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="from_ar" class="input-text"
+                                placeholder="">
+                            </ion-input>
+                        </div>
+                    </div>
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">To</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="to_ar" class="input-text"
+                                placeholder="">
+                            </ion-input>
                         </div>
                     </div>
 
@@ -86,7 +113,7 @@
                         </div>
                     </div>
 
-                    <div class="select-container">
+                    <!-- <div class="select-container">
                         <ion-label class="input-label">Reg No</ion-label>
                         <div class="input-select-cont">
                             <ion-select formControlName="regNo_ar" interface="action-sheet" class="input-select"
@@ -94,6 +121,15 @@
                                 <ion-select-option *ngFor="let regs of regList" [value]="regs">
                                     {{regs.text}}</ion-select-option>
                             </ion-select>
+                        </div>
+                    </div> -->
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Reg No</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="regNo_ar" class="input-text"
+                                placeholder="">
+                            </ion-input>
                         </div>
                     </div>
 
@@ -110,7 +146,7 @@
 
                 <div *ngIf="formType == '1'" style="padding: 10px 10px;">
                     
-                    <div class="select-container">
+                    <!-- <div class="select-container">
                         <ion-label class="input-label">Terminal</ion-label>
                         <div class="input-select-cont">
                             <ion-select formControlName="terminal_der" interface="action-sheet" class="input-select"
@@ -119,9 +155,18 @@
                                     {{terminals.text}}</ion-select-option>
                             </ion-select>
                         </div>
+                    </div> -->
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Terminal</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="terminal_der" class="input-text"
+                                placeholder="">
+                            </ion-input>
+                        </div>
                     </div>
 
-                    <div class="select-container">
+                    <!-- <div class="select-container">
                         <ion-label class="input-label">From</ion-label>
                         <div class="input-select-cont">
                             <ion-select formControlName="from_der" interface="action-sheet" class="input-select"
@@ -140,6 +185,24 @@
                                 <ion-select-option *ngFor="let locations of locationList" [value]="locations">
                                     {{locations.text}}</ion-select-option>
                             </ion-select>
+                        </div>
+                    </div> -->
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">From</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="from_der" class="input-text"
+                                placeholder="">
+                            </ion-input>
+                        </div>
+                    </div>
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">To</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="to_der" class="input-text"
+                                placeholder="">
+                            </ion-input>
                         </div>
                     </div>
 
@@ -167,7 +230,7 @@
                         </div>
                     </div>
 
-                    <div class="select-container">
+                    <!-- <div class="select-container">
                         <ion-label class="input-label">Reg No</ion-label>
                         <div class="input-select-cont">
                             <ion-select formControlName="regNo_der" interface="action-sheet" class="input-select"
@@ -175,6 +238,15 @@
                                 <ion-select-option *ngFor="let regs of regList" [value]="regs">
                                     {{regs.text}}</ion-select-option>
                             </ion-select>
+                        </div>
+                    </div> -->
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Reg No</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="regNo_der" class="input-text"
+                                placeholder="">
+                            </ion-input>
                         </div>
                     </div>
 

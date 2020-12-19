@@ -62,7 +62,10 @@ export class FlightDetailPage {
       eta: '',
       regNo: '',
       remark: '',
-      afskey: ''
+      afskey: '',
+      reg: '',
+      typeFlight: '',
+      remarkNote: ''
     },
     departure: {
       terminal: '',
@@ -74,7 +77,10 @@ export class FlightDetailPage {
       eta: '',
       regNo: '',
       remark: '',
-      afskey: ''
+      afskey: '',
+      reg: '',
+      typeFlight: '',
+      remarkNote: ''
     }
   };
 
@@ -218,6 +224,9 @@ export class FlightDetailPage {
         arrival.regNo = arrivalTemp.AIRCRAFT_REG_NO + " - " + arrivalTemp.AIRCRAFT_TYPE
         arrival.remark = arrival.remark
         arrival.afskey = arrival.afskey
+        arrival.typeFlight = arrivalTemp.CATEGORY_CODE
+        arrival.reg = arrivalTemp.AIRCRAFT_REG_NO
+        arrival.remarkNote = arrivalTemp.REMARK_NOTE ? arrivalTemp.REMARK_NOTE : ''
 
         departure.terminal = departureTemp.TERMINAL_ID;
         departure.flightNo = departureTemp.FLIGHT_NO;
@@ -229,6 +238,9 @@ export class FlightDetailPage {
         departure.regNo = departureTemp.AIRCRAFT_REG_NO + " - " + departureTemp.AIRCRAFT_TYPE
         departure.remark = departure.remark
         departure.afskey = departure.afskey
+        departure.typeFlight = departureTemp.CATEGORY_CODE
+        departure.reg = departureTemp.AIRCRAFT_REG_NO
+        departure.remarkNote = departureTemp.REMARK_NOTE ? departureTemp.REMARK_NOTE : ''
 
         this.flightInfo.arrival = arrival
         this.flightInfo.departure = departure
@@ -308,7 +320,7 @@ export class FlightDetailPage {
     return new Promise((resolve, reject) => {
       this.flightActivityService.getFlightMovement(this.props).subscribe((res: any) => {
         let data = res.data
-        debugger
+        
         resolve(true)
       },
         error => {
