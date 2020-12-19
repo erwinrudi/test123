@@ -85,6 +85,21 @@ export class FlightActivityService {
             .catch((error: Response) => Observable.throw(error));
     }
 
+    getFlightAvio(paramsValue): Observable<any> {
+        let httpParams = new HttpParams();
+        paramsValue.map(x => {
+            if (x.value != "" && x.field == 'afsKey') {
+                httpParams = httpParams.append('afskey', x.value);
+            }
+        })
+        return this.http
+            .get(
+                this.generalService.apiUrl + '/avio', { params: httpParams }
+            )
+            .map((response: Response) => response)
+            .catch((error: Response) => Observable.throw(error));
+    }
+
     submitPax(values): Observable<any> {
         const body = JSON.stringify(values);
         return this.http

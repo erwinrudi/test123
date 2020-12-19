@@ -144,7 +144,9 @@ export class FlightDetailPage {
       endTime: '26 November 2020 10.10',
       frq: '2',
       mov: '2'
-    }
+    },
+    list: [],
+    avioTypeList: []
   }
 
   constructor(
@@ -359,6 +361,26 @@ export class FlightDetailPage {
         movement.landing = data.LANDING[0]
         localStorage.setItem('movement', JSON.stringify(movement))
         this.movement = movement
+        this.getAvio()
+      },
+        error => {
+          if (error.response) {
+            this.generalService.notification(error.response.message)
+          }
+          else {
+            this.generalService.notification("ERROR CONNECTION")
+          }
+          this.getAvio()
+        }
+      );
+    });
+  }
+
+  getAvio() {
+    return new Promise((resolve, reject) => {
+      this.flightActivityService.getFlightAvio(this.props).subscribe((res: any) => {
+        let data = res.data
+        debugger
         resolve(true)
       },
         error => {
