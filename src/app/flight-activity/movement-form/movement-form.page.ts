@@ -20,7 +20,7 @@ export class MovementFormPage {
   formType = 0;
   movement = null
   standCodeList = [];
-seq = 1;
+  seq = 1;
   movTypeList = [];
 
   constructor(
@@ -53,7 +53,7 @@ seq = 1;
       movement = JSON.parse(movement)
       this.movTypeList = movement.moveTypeList
       this.standCodeList = movement.standCodeList
-      if(movement.tempList.length > 0){
+      if (movement.tempList.length > 0) {
         let tempSeq = movement.tempList[movement.tempList.length - 1]
         tempSeq = parseInt(tempSeq.AIRCRAFT_VISIT_SEQ)
         this.seq = tempSeq + 1
