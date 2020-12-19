@@ -45,15 +45,13 @@
 			text-align: right;
 			margin-top: auto;
 			margin-bottom: auto;
+			color:black;
 			&.complete {
 				color: #27AE60;
 			}
-			&.destination {
+			&.detail {
 				color: #146CAB;
-			}
-			&.int {
-				color: #898989;
-				margin: 0px 2px;
+				font-weight: bold;
 			}
 		}
 		.arrow-style {
