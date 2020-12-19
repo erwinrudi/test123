@@ -42,7 +42,7 @@
                         <div class="input-select-cont">
                             <ion-select formControlName="standCode" interface="action-sheet" class="input-select"
                                 placeholder="Select One">
-                                <ion-select-option *ngFor="let standCodes of standCodeList" [value]="standCodes">
+                                <ion-select-option *ngFor="let standCodes of standCodeList" [value]="standCodes.value">
                                     {{standCodes.text}}</ion-select-option>
                             </ion-select>
                         </div>
@@ -53,7 +53,7 @@
                         <div class="input-select-cont">
                             <ion-select formControlName="movType" interface="action-sheet" class="input-select"
                                 placeholder="Select One">
-                                <ion-select-option *ngFor="let movTypes of movTypeList" [value]="movTypes">
+                                <ion-select-option *ngFor="let movTypes of movTypeList" [value]="movTypes.value">
                                     {{movTypes.text}}</ion-select-option>
                             </ion-select>
                         </div>
@@ -62,7 +62,7 @@
             </div>
             <div class="footer-style">
                 <ion-toolbar>
-                    <ion-button expand="block">Submit</ion-button>
+                    <ion-button type="submit" expand="block">Submit</ion-button>
                 </ion-toolbar>
             </div>
         </form>

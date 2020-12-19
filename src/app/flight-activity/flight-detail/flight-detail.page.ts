@@ -118,6 +118,7 @@ export class FlightDetailPage {
     tempList: [],
     moveTypeList: [],
     standCodeList: [],
+    landing: null,
     list: [
       // {
       //   id: '0',
@@ -325,6 +326,7 @@ export class FlightDetailPage {
         let data = res.data
         let movement = this.movement
         movement.tempList = data.STAND_ALL
+        movement.moveTypeList = []
         Object.keys(data.VALUE).forEach(function (key) {
           let optionVal = {
             value: key,
@@ -332,6 +334,7 @@ export class FlightDetailPage {
           }
           movement.moveTypeList.push(optionVal)
         });
+        movement.standCodeList = []
         data.STAND_CODE.map(x => {
           let optionVal = x
           optionVal['value'] = optionVal.STAND_CODE
@@ -339,7 +342,7 @@ export class FlightDetailPage {
 
           movement.standCodeList.push(optionVal)
         })
-
+        movement.list = []
         movement.tempList.map((x, index) => {
           let movType = movement.moveTypeList.find(type => type.value == x.VALUE)
           let body = {
@@ -353,6 +356,7 @@ export class FlightDetailPage {
           }
           movement.list.push(body)
         })
+        movement.landing = data.LANDING[0]
         localStorage.setItem('movement', JSON.stringify(movement))
         this.movement = movement
         resolve(true)
