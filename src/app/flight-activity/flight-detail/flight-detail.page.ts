@@ -115,6 +115,9 @@ export class FlightDetailPage {
   };
 
   movement = {
+    tempList: [],
+    moveTypeList: [],
+    standCodeList: [],
     list: [
       // {
       //   id: '0',
@@ -320,7 +323,38 @@ export class FlightDetailPage {
     return new Promise((resolve, reject) => {
       this.flightActivityService.getFlightMovement(this.props).subscribe((res: any) => {
         let data = res.data
-        
+        let movement = this.movement
+        movement.tempList = data.STAND_ALL
+        Object.keys(data.VALUE).forEach(function (key) {
+          let optionVal = {
+            value: key,
+            text: data.VALUE[key]
+          }
+          movement.moveTypeList.push(optionVal)
+        });
+        data.STAND_CODE.map(x => {
+          let optionVal = x
+          optionVal['value'] = optionVal.STAND_CODE
+          optionVal['text'] = optionVal.STAND_CODE
+
+          movement.standCodeList.push(optionVal)
+        })
+
+        movement.tempList.map((x, index) => {
+          let movType = movement.moveTypeList.find(type => type.value == x.VALUE)
+          let body = {
+            id: x.IDDATA,
+            title: 'Flight Activity Movement',
+            inBlock: x.ON_BLOCK_TIME,
+            offBlock: x.OFF_BLOCK_TIME,
+            standCode: x.STAND_CODE,
+            movType: movType.text,
+            movTypeId: movType.value
+          }
+          movement.list.push(body)
+        })
+        localStorage.setItem('movement', JSON.stringify(movement))
+        this.movement = movement
         resolve(true)
       },
         error => {
