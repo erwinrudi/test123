@@ -354,7 +354,8 @@ export class FlightDetailPage {
             offBlock: x.OFF_BLOCK_TIME,
             standCode: x.STAND_CODE,
             movType: movType.text,
-            movTypeId: movType.value
+            movTypeId: movType.value,
+            sort: index + 1
           }
           movement.list.push(body)
         })
@@ -379,8 +380,28 @@ export class FlightDetailPage {
   getAvio() {
     return new Promise((resolve, reject) => {
       this.flightActivityService.getFlightAvio(this.props).subscribe((res: any) => {
-        let data = res.data
-        debugger
+        let data = res.data;
+        let avio = this.avio;
+        avio.avioTypeList = [];
+        data.MASTER.map(x => {
+          let optionVal = x
+          optionVal['value'] = x.SERVICE_ID;
+          optionVal['text'] = x.SERVICE_NAME;
+
+          avio.avioTypeList.push(optionVal);
+        })
+
+        avio.list = [];
+        data.LIST.map(x => {
+          let listVal = x;
+          let mov = this.movement.list.find(mov => mov.id == x.IDDATA_SP);
+          listVal['MOVEMENT'] = mov;
+          let avioType = avio.avioTypeList.find(type => type.value == x.SERVICE_CODE)
+          listVal['AVIO_TYPE'] = avioType
+          avio.list.push(listVal);
+        })
+        localStorage.setItem('avio', JSON.stringify(avio))
+        this.avio = avio;
         resolve(true)
       },
         error => {
