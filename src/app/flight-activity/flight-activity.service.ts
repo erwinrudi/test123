@@ -100,6 +100,13 @@ export class FlightActivityService {
             .catch((error: Response) => Observable.throw(error));
     }
 
+    getMasterAirline(): Observable<any> {
+        return this.http
+            .get(this.generalService.apiUrl + '/airline/masterdata')
+            .map((response: Response) => response)
+            .catch((error: Response) => Observable.throw(error));
+    }
+
     submitPax(values): Observable<any> {
         const body = JSON.stringify(values);
         return this.http
@@ -124,7 +131,7 @@ export class FlightActivityService {
             .catch((error: Response) => Observable.throw(error));
     }
 
-    
+
     submitAvio(values): Observable<any> {
         const body = JSON.stringify(values);
         return this.http

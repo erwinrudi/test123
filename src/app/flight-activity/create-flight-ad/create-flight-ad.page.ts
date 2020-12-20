@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
+import { GeneralService } from "../../general.service";
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import * as moment from "moment";
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { FlightActivityService } from './../flight-activity.service';
+
 
 @Component({
   selector: 'app-create-flight-ad',
@@ -11,7 +16,7 @@ export class CreateFlightAdPage {
   formFlight: FormGroup;
   isLoading: boolean;
 
-  formType= 0;
+  formType = 0;
 
   airlineList = [
     {
@@ -85,12 +90,22 @@ export class CreateFlightAdPage {
     }
   ]
 
+  suffixList = []
+  remarkList = []
+  runawayList = []
+  serviceTypeList = []
+
   constructor(
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private generalService: GeneralService,
+    private activatedRoute: ActivatedRoute,
+    private location: Location,
+    private router: Router,
+    private flightActivityService: FlightActivityService
   ) {
 
   }
+
   ngOnInit() {
     this.formFlight = this.formBuilder.group({
       no_ar: '',
@@ -116,13 +131,76 @@ export class CreateFlightAdPage {
     })
 
     this.isLoading = false;
+    this.getData()
+  }
+
+  getData() {
+    this.flightActivityService.getMasterAirline().subscribe((res: any) => {
+      let data = res.data
+
+      // data.
+    },
+      error => {
+        if (error.response) {
+          this.generalService.notification(error.response.message)
+        }
+        else {
+          this.generalService.notification("ERROR CONNECTION")
+        }
+      }
+    );
   }
 
   onSubmit(e) {
-
+    const formValue = this.formFlight.value;
+    let body = {
+      "ARRIVAL":
+      {
+        "IATA_AIRLINE_CODE": "CGK",
+        "SUFFIX": "C",
+        "LEG": "A",
+        "TERMINAL_ID": "1",
+        "STATION1": "CGK",
+        "STATION2": "CGK",
+        "STATION3": "CGK",
+        "STATION4": "CGK",
+        "ATMSATAD": "2020-12-12 00:00:00",
+        "REMARK_CODE": "BCO",
+        "AIRCRAFT_SUBTYPE": "H",
+        "NOTE_DELAY": "DELAY",
+        "FLIGHT_NUMBER": "01",
+        "AIRCRAFT_REG_NO": "CGK-100",
+        "CATEGORY_CODE": "D",
+        "STAD": "2020-12-12 00:00:00",
+        "AIRETAD": "2020-12-12 00:00:00",
+        "RUNWAY": "07R",
+        "REMARK_NOTE": "CMT"
+      },
+      "DEPARTURE": {
+        "IATA_AIRLINE_CODE": "CGK",
+        "SUFFIX": "C",
+        "LEG": "D",
+        "TERMINAL_ID": "1",
+        "STATION1": "SIN",
+        "STATION2": "SIN",
+        "STATION3": "SIN",
+        "STATION4": "SIN",
+        "ATMSATAD": "2020-12-12 00:00:00",
+        "REMARK_CODE": "BCO",
+        "AIRCRAFT_SUBTYPE": "H",
+        "NOTE_DELAY": "DELAY",
+        "FLIGHT_NUMBER": "01",
+        "AIRCRAFT_REG_NO": "CGK-100",
+        "CATEGORY_CODE": "D",
+        "STAD": "2020-12-12 00:00:00",
+        "AIRETAD": "2020-12-12 00:00:00",
+        "RUNWAY": "07R",
+        "REMARK_NOTE": "CMT"
+      }
+    }
   }
 
-  onChangeType(type){
+  onChangeType(type) {
     this.formType = type
   }
 

@@ -126,7 +126,7 @@ export class ScheduleFormPage {
     let ata_ar = moment(formValue.ata_ar, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
     let eta_der = moment(formValue.eta_der, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
     let ata_der = moment(formValue.ata_der, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
-    
+
     let body = {
       "ARRIVAL":
       {
@@ -149,6 +149,7 @@ export class ScheduleFormPage {
         "AIRETAD": eta_ar,
         "RUNWAY": flightInfo.detailTemp.arrival.RUNWAY,
         "REMARK_NOTE": formValue.remark_ar,
+        "AFSKEY": flightInfo.arrival.afskey
       },
       "DEPARTURE": {
         "IATA_AIRLINE_CODE": flightInfo.detailTemp.departure.IATA_AIRLINE_CODE,
@@ -170,6 +171,7 @@ export class ScheduleFormPage {
         "AIRETAD": eta_der,
         "RUNWAY": flightInfo.detailTemp.departure.RUNWAY,
         "REMARK_NOTE": formValue.remark_der,
+        "AFSKEY": flightInfo.departure.afskey
       }
     }
 
