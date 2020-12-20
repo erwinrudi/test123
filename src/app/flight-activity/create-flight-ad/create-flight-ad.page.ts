@@ -35,11 +35,11 @@ export class CreateFlightAdPage {
 
   flightTypeList = [
     {
-      value: 'dometic',
+      value: 'D',
       text: 'Dometic'
     },
     {
-      value: 'international',
+      value: 'I',
       text: 'International'
     },
   ];
@@ -137,6 +137,40 @@ export class CreateFlightAdPage {
   getData() {
     this.flightActivityService.getMasterAirline().subscribe((res: any) => {
       let data = res.data
+      this.runawayList = []
+      this.remarkList = []
+      data.MASTER_REMARK.map(x => {
+        let optionVal = {
+          remarkCode: x.REMARK_CODE,
+          remark: x.REMARK,
+          text: x.REMARK,
+        }
+        this.remarkList.push(optionVal)
+      })
+
+      data.MASTER_RUNAWAY.map(x => {
+        let optionVal = {
+          runwayCode: x.RUNWAY_CODE,
+          runway: x.RUNWAY_NAME,
+          text: x.RUNWAY_NAME,
+        }
+        this.runawayList.push(optionVal)
+      })
+
+      data.MASTER_SERVICE_TYPE.map(x => {
+        let optionVal = x
+        x['text'] = x.DESCRIPTION
+        this.serviceTypeList.push(optionVal)
+      })
+
+      data.MASTER_SUFFIX.map(x => {
+        let optionVal = {
+          suffixId: x.SUFFIX_ID,
+          suffixName: x.SUFFIX_NAME,
+          text: x.SUFFIX_NAME,
+        }
+        this.suffixList.push(optionVal)
+      })
 
       // data.
     },
@@ -153,51 +187,73 @@ export class CreateFlightAdPage {
 
   onSubmit(e) {
     const formValue = this.formFlight.value;
+    let flightDate_arDate = moment(formValue.flightDate_ar, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD")
+    let flightDate_arTime = moment(formValue.flightDate_ar, "YYYY-MM-DDTHH:mmZ").format("hh:mm:ss")
+    let flightDate_ar = flightDate_arDate + " " + flightDate_arTime
+
+    let flightDate_derDate = moment(formValue.flightDate_der, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD")
+    let flightDate_derTime = moment(formValue.flightDate_der, "YYYY-MM-DDTHH:mmZ").format("hh:mm:ss")
+    let flightDate_der = flightDate_derDate + " " + flightDate_derTime
+    
     let body = {
       "ARRIVAL":
       {
-        "IATA_AIRLINE_CODE": "CGK",
-        "SUFFIX": "C",
-        "LEG": "A",
-        "TERMINAL_ID": "1",
-        "STATION1": "CGK",
-        "STATION2": "CGK",
-        "STATION3": "CGK",
-        "STATION4": "CGK",
-        "ATMSATAD": "2020-12-12 00:00:00",
-        "REMARK_CODE": "BCO",
-        "AIRCRAFT_SUBTYPE": "H",
-        "NOTE_DELAY": "DELAY",
-        "FLIGHT_NUMBER": "01",
-        "AIRCRAFT_REG_NO": "CGK-100",
-        "CATEGORY_CODE": "D",
-        "STAD": "2020-12-12 00:00:00",
-        "AIRETAD": "2020-12-12 00:00:00",
-        "RUNWAY": "07R",
-        "REMARK_NOTE": "CMT"
+        "IATA_AIRLINE_CODE": formValue.airline_ar,
+        "SUFFIX": formValue.suffix_ar.suffixId,
+        "LEG": "",
+        "TERMINAL_ID": formValue.terminal_ar,
+        "STATION1": formValue.station1_ar,
+        "STATION2": formValue.station2_ar,
+        "STATION3": "",
+        "STATION4": "",
+        "ATMSATAD": "",
+        "REMARK_CODE": "",
+        "AIRCRAFT_SUBTYPE": "",
+        "NOTE_DELAY": "",
+        "FLIGHT_NUMBER": formValue.no_ar,
+        "AIRCRAFT_REG_NO": formValue.registrationNumber_ar,
+        "CATEGORY_CODE": formValue.flightType_ar.value,
+        "STAD": flightDate_ar,
+        "AIRETAD": "",
+        "RUNWAY": "",
+        "REMARK_NOTE": ""
       },
       "DEPARTURE": {
-        "IATA_AIRLINE_CODE": "CGK",
-        "SUFFIX": "C",
-        "LEG": "D",
-        "TERMINAL_ID": "1",
-        "STATION1": "SIN",
-        "STATION2": "SIN",
-        "STATION3": "SIN",
-        "STATION4": "SIN",
-        "ATMSATAD": "2020-12-12 00:00:00",
-        "REMARK_CODE": "BCO",
-        "AIRCRAFT_SUBTYPE": "H",
-        "NOTE_DELAY": "DELAY",
-        "FLIGHT_NUMBER": "01",
-        "AIRCRAFT_REG_NO": "CGK-100",
-        "CATEGORY_CODE": "D",
-        "STAD": "2020-12-12 00:00:00",
-        "AIRETAD": "2020-12-12 00:00:00",
-        "RUNWAY": "07R",
-        "REMARK_NOTE": "CMT"
+        "IATA_AIRLINE_CODE": formValue.airline_ar,
+        "SUFFIX": formValue.suffix_der.suffixId,
+        "LEG": "",
+        "TERMINAL_ID": formValue.terminal_der,
+        "STATION1": formValue.station1_der,
+        "STATION2": formValue.station2_der,
+        "STATION3": "",
+        "STATION4": "",
+        "ATMSATAD": "",
+        "REMARK_CODE": "",
+        "AIRCRAFT_SUBTYPE": "",
+        "NOTE_DELAY": "",
+        "FLIGHT_NUMBER": formValue.no_der,
+        "AIRCRAFT_REG_NO": formValue.registrationNumber_der,
+        "CATEGORY_CODE": formValue.flightType_der.value,
+        "STAD": flightDate_der,
+        "AIRETAD": "",
+        "RUNWAY": "",
+        "REMARK_NOTE": ""
       }
     }
+
+    this.flightActivityService.submitAirline(body).subscribe((res: any) => {
+      this.generalService.notification("SUKSES")
+      this.generalService.goBack();
+    },
+      error => {
+        if (error.response) {
+          this.generalService.notification(error.response.message)
+        }
+        else {
+          this.generalService.notification("ERROR CONNECTION")
+        }
+      }
+    );
   }
 
   onChangeType(type) {

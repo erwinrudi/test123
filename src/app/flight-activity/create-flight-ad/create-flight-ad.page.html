@@ -28,16 +28,14 @@
                 </div>
 
                 <div *ngIf="formType == '0'" style="padding: 10px 20px;">
-                    <div class="select-container">
+                    <div class="textbox-container">
                         <ion-label class="input-label">Airline</ion-label>
-                        <div class="input-select-cont">
-                            <ion-select formControlName="airline_ar" interface="action-sheet" class="input-select"
-                                placeholder="Select One">
-                                <ion-select-option *ngFor="let airlines of airlineList" [value]="airlines">
-                                    {{airlines.text}}</ion-select-option>
-                            </ion-select>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="airline_ar" class="input-text" placeholder="e.g Number">
+                            </ion-input>
                         </div>
                     </div>
+
 
                     <div class="textbox-container">
                         <ion-label class="input-label">No</ion-label>
@@ -50,10 +48,10 @@
                     <div class="select-container">
                         <ion-label class="input-label">Suffix</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="suffix_ar" interface="action-sheet" class="input-select"
+                            <ion-select formControlName="suffix_ar" interface="popover" class="input-select"
                                 placeholder="Select One">
-                                <ion-select-option *ngFor="let airlines of airlineList" [value]="airlines">
-                                    {{airlines.text}}</ion-select-option>
+                                <ion-select-option *ngFor="let suffix of suffixList" [value]="suffix">
+                                    {{suffix.text}}</ion-select-option>
                             </ion-select>
                         </div>
                     </div>
@@ -78,14 +76,11 @@
                         </div>
                     </div>
 
-                    <div class="select-container">
+                    <div class="textbox-container">
                         <ion-label class="input-label">Terminal</ion-label>
-                        <div class="input-select-cont">
-                            <ion-select formControlName="terminal_ar" interface="action-sheet" class="input-select"
-                                placeholder="Select One">
-                                <ion-select-option *ngFor="let terminals of terminalList" [value]="terminals">
-                                    {{terminals.text}}</ion-select-option>
-                            </ion-select>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="terminal_ar" class="input-text" placeholder="e.g Number">
+                            </ion-input>
                         </div>
                     </div>
 
@@ -113,30 +108,27 @@
                         </div>
                     </div>
 
-                    <div class="select-container">
+                    <div class="textbox-container">
                         <ion-label class="input-label">Station 1</ion-label>
-                        <div class="input-select-cont">
-                            <ion-select formControlName="station1_ar" interface="action-sheet" class="input-select"
-                                placeholder="Select One">
-                                <ion-select-option *ngFor="let stations of stationList" [value]="stations">
-                                    {{stations.text}}</ion-select-option>
-                            </ion-select>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="station1_ar" class="input-text" placeholder="e.g Number">
+                            </ion-input>
                         </div>
                     </div>
 
-                    <div class="select-container">
+                    
+                    <div class="textbox-container">
                         <ion-label class="input-label">Station 2</ion-label>
-                        <div class="input-select-cont">
-                            <ion-select formControlName="station2_ar" interface="action-sheet" class="input-select"
-                                placeholder="Select One">
-                                <ion-select-option *ngFor="let stations of stationList" [value]="stations">
-                                    {{stations.text}}</ion-select-option>
-                            </ion-select>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="station2_ar" class="input-text" placeholder="e.g Number">
+                            </ion-input>
                         </div>
                     </div>
+
                 </div>
 
                 <div *ngIf="formType == '1'" style="padding: 10px 20px;">
+                 
                     <div class="textbox-container">
                         <ion-label class="input-label">No</ion-label>
                         <div class="input-text-cont">
@@ -148,10 +140,10 @@
                     <div class="select-container">
                         <ion-label class="input-label">Suffix</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="suffix_der" interface="action-sheet" class="input-select"
+                            <ion-select formControlName="suffix_der" interface="popover" class="input-select"
                                 placeholder="Select One">
-                                <ion-select-option *ngFor="let airlines of airlineList" [value]="airlines">
-                                    {{airlines.text}}</ion-select-option>
+                                <ion-select-option *ngFor="let suffix of suffixList" [value]="suffix">
+                                    {{suffix.text}}</ion-select-option>
                             </ion-select>
                         </div>
                     </div>
@@ -176,14 +168,11 @@
                         </div>
                     </div>
 
-                    <div class="select-container">
+                    <div class="textbox-container">
                         <ion-label class="input-label">Terminal</ion-label>
-                        <div class="input-select-cont">
-                            <ion-select formControlName="terminal_der" interface="action-sheet" class="input-select"
-                                placeholder="Select One">
-                                <ion-select-option *ngFor="let terminals of terminalList" [value]="terminals">
-                                    {{terminals.text}}</ion-select-option>
-                            </ion-select>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="terminal_der" class="input-text" placeholder="e.g Number">
+                            </ion-input>
                         </div>
                     </div>
 
@@ -211,34 +200,30 @@
                         </div>
                     </div>
 
-                    <div class="select-container">
+                    <div class="textbox-container">
                         <ion-label class="input-label">Station 1</ion-label>
-                        <div class="input-select-cont">
-                            <ion-select formControlName="station1_der" interface="action-sheet" class="input-select"
-                                placeholder="Select One">
-                                <ion-select-option *ngFor="let stations of stationList" [value]="stations">
-                                    {{stations.text}}</ion-select-option>
-                            </ion-select>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="station1_der" class="input-text" placeholder="e.g Number">
+                            </ion-input>
                         </div>
                     </div>
 
-                    <div class="select-container">
+                    
+                    <div class="textbox-container">
                         <ion-label class="input-label">Station 2</ion-label>
-                        <div class="input-select-cont">
-                            <ion-select formControlName="station2_der" interface="action-sheet" class="input-select"
-                                placeholder="Select One">
-                                <ion-select-option *ngFor="let stations of stationList" [value]="stations">
-                                    {{stations.text}}</ion-select-option>
-                            </ion-select>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="station2_der" class="input-text" placeholder="e.g Number">
+                            </ion-input>
                         </div>
                     </div>
+
                 </div>
 
 
             </div>
             <div class="footer-style">
                 <ion-toolbar>
-                    <ion-button expand="block">Submit</ion-button>
+                    <ion-button type="submit" expand="block">Submit</ion-button>
                 </ion-toolbar>
             </div>
         </form>
