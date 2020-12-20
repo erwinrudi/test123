@@ -173,7 +173,7 @@ export class ScheduleFormPage {
       }
     }
 
-    this.flightActivityService.submitEditAirline(body).subscribe((res: any) => {
+    this.flightActivityService.submitAirline(body).subscribe((res: any) => {
       this.generalService.notification("SUKSES")
       this.generalService.goBack();
     },

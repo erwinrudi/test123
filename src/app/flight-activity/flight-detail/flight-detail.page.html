@@ -437,6 +437,12 @@
                     </ion-button>
                 </ion-toolbar>
             </div>
+            <div *ngIf="type == 'avio'" class="footer-style">
+                <ion-toolbar>
+                    <ion-button [routerLink]="['/flight/avio']" fill="outline" expand="block">Add Avio
+                    </ion-button>
+                </ion-toolbar>
+            </div>
         </span>
     </ion-content>
     <ion-content *ngIf="modal == 'estimateBilling'">

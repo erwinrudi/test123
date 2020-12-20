@@ -132,19 +132,6 @@ export class FlightDetailPage {
   }
 
   avio = {
-    id: 0,
-    arrival: {
-      startTime: '25 November 2020 9.10',
-      endTime: '25 November 2020 10.10',
-      frq: '1',
-      mov: '1'
-    },
-    departure: {
-      startTime: '26 November 2020 9.10',
-      endTime: '26 November 2020 10.10',
-      frq: '2',
-      mov: '2'
-    },
     list: [],
     avioTypeList: []
   }
@@ -400,6 +387,7 @@ export class FlightDetailPage {
           listVal['AVIO_TYPE'] = avioType
           avio.list.push(listVal);
         })
+        
         localStorage.setItem('avio', JSON.stringify(avio))
         this.avio = avio;
         resolve(true)
