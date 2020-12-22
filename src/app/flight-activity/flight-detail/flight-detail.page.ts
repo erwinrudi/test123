@@ -406,7 +406,7 @@ export class FlightDetailPage {
   }
 
   back() {
-    let url = localStorage.getItem("listUrl")
+    let url = localStorage.getItem("flightList")
     this.router.navigateByUrl(url)
   }
 

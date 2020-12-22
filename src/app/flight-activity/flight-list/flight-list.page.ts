@@ -89,7 +89,7 @@ export class FlightListPage {
     urlNext = urlNext + "?codeArrival=" + value.ARRIVAL.AFSKEY
     urlNext = urlNext + "&codeDeparture=" + value.DEPARTURE.AFSKEY
     urlNext = urlNext + "&afsKey=" + value.REMARK
-
+    localStorage.setItem("flightDetail", urlNext)
     this.router.navigateByUrl(urlNext)
   }
 

@@ -82,7 +82,7 @@ export class ScheduleSearchPage {
       }
     }
     // urlNext = encodeURI(urlNext)
-    localStorage.setItem("listUrl", urlNext)
+    localStorage.setItem("flightList", urlNext)
     this.router.navigateByUrl(urlNext)
   }
 
