@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GeneralService } from "../../general.service";
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-menu',
@@ -9,8 +10,13 @@ import { GeneralService } from "../../general.service";
 export class CreateMenuPage {
 
   constructor(
-    private generalService: GeneralService
+    private generalService: GeneralService,
+    private router: Router
   ) {}
 
   
+  back() {
+    this.router.navigateByUrl("/flight/flight-menu")
+  }
+
 }
