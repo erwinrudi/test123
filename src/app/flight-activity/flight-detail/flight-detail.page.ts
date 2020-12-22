@@ -387,7 +387,7 @@ export class FlightDetailPage {
           listVal['AVIO_TYPE'] = avioType
           avio.list.push(listVal);
         })
-        
+
         localStorage.setItem('avio', JSON.stringify(avio))
         this.avio = avio;
         resolve(true)
@@ -404,4 +404,10 @@ export class FlightDetailPage {
       );
     });
   }
+
+  back() {
+    let url = localStorage.getItem("listUrl")
+    this.router.navigateByUrl(url)
+  }
+
 }

@@ -33,7 +33,7 @@ export class ScheduleSearchPage {
   ) {
 
   }
-  
+
   ngOnInit() {
     this.formSchedule = this.formBuilder.group({
       startDate: moment().format(),
@@ -82,7 +82,12 @@ export class ScheduleSearchPage {
       }
     }
     // urlNext = encodeURI(urlNext)
+    localStorage.setItem("listUrl", urlNext)
     this.router.navigateByUrl(urlNext)
+  }
+
+  back() {
+    this.router.navigateByUrl("/flight/flight-menu")
   }
 
 }

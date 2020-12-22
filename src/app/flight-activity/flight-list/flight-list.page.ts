@@ -92,4 +92,9 @@ export class FlightListPage {
 
     this.router.navigateByUrl(urlNext)
   }
+
+  back(){
+    this.router.navigateByUrl("/flight/schedule-search")
+  }
+
 }
