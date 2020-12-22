@@ -243,7 +243,7 @@ export class CreateFlightAdPage {
 
     this.flightActivityService.submitAirline(body).subscribe((res: any) => {
       this.generalService.notification("SUKSES")
-      this.generalService.goBack();
+      this.router.navigateByUrl("/flight/create-menu")
     },
       error => {
         if (error.response) {
@@ -260,5 +260,8 @@ export class CreateFlightAdPage {
     this.formType = type
   }
 
+  back() {
+    this.router.navigateByUrl("/flight/create-menu")
+  }
 
 }

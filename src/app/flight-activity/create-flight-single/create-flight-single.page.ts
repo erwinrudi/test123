@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from '@angular/router';
 import * as moment from "moment";
 
 @Component({
@@ -96,7 +96,8 @@ export class CreateFlightSinglePage {
   ];
 
   constructor(
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     private formBuilder: FormBuilder
   ) {
 
@@ -121,5 +122,9 @@ export class CreateFlightSinglePage {
 
   onSubmit(e) {
 
+  }
+
+  back() {
+    this.router.navigateByUrl("/flight/create-menu")
   }
 }

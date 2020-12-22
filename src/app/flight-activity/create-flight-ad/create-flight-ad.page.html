@@ -2,7 +2,7 @@
     <div class="flight-create">
         <div class="header-container">
             <ion-toolbar class="toolbar-style">
-                <ion-buttons slot="start">
+                <ion-buttons (click)="back()" slot="start">
                     <ion-icon size="large" icon="chevron-back"></ion-icon>
                 </ion-buttons>
                 <ion-title class="header-title">FLIGHT ARRIVAL/DEPARTURE</ion-title>
@@ -116,7 +116,7 @@
                         </div>
                     </div>
 
-                    
+
                     <div class="textbox-container">
                         <ion-label class="input-label">Station 2</ion-label>
                         <div class="input-text-cont">
@@ -128,7 +128,7 @@
                 </div>
 
                 <div *ngIf="formType == '1'" style="padding: 10px 20px;">
-                 
+
                     <div class="textbox-container">
                         <ion-label class="input-label">No</ion-label>
                         <div class="input-text-cont">
@@ -208,7 +208,7 @@
                         </div>
                     </div>
 
-                    
+
                     <div class="textbox-container">
                         <ion-label class="input-label">Station 2</ion-label>
                         <div class="input-text-cont">
