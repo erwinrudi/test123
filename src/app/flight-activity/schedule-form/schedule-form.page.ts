@@ -194,5 +194,8 @@ export class ScheduleFormPage {
     this.formType = type
   }
 
-
+  back() {
+    let url = localStorage.getItem("flightDetail")
+    this.router.navigateByUrl(url)
+  }
 }
