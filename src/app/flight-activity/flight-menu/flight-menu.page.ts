@@ -10,6 +10,8 @@ export class FlightMenuPage {
 
   constructor(
     private generalService: GeneralService
-  ) {}
+  ) {
+    debugger
+  }
 
 }

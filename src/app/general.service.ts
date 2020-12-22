@@ -12,6 +12,7 @@ import { LoadingController } from '@ionic/angular';
 @Injectable()
 export class GeneralService {
     readonly apiUrl: string = environment.apiUrl;
+    readonly urlImg: string = environment.urlImg;
     loaderToShow: any;
 
     constructor(

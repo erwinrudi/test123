@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://labunictive.angkasapura2.co.id/ap2_aero_api',
+  urlImg: ''
 };
 
 /*
