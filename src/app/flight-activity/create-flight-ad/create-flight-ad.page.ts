@@ -200,7 +200,7 @@ export class CreateFlightAdPage {
       {
         "IATA_AIRLINE_CODE": formValue.airline_ar,
         "SUFFIX": formValue.suffix_ar.suffixId,
-        "LEG": "",
+        "LEG": "A",
         "TERMINAL_ID": formValue.terminal_ar,
         "STATION1": formValue.station1_ar,
         "STATION2": formValue.station2_ar,
@@ -221,7 +221,7 @@ export class CreateFlightAdPage {
       "DEPARTURE": {
         "IATA_AIRLINE_CODE": formValue.airline_ar,
         "SUFFIX": formValue.suffix_der.suffixId,
-        "LEG": "",
+        "LEG": "D",
         "TERMINAL_ID": formValue.terminal_der,
         "STATION1": formValue.station1_der,
         "STATION2": formValue.station2_der,

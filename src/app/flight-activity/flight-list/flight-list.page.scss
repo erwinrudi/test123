@@ -48,6 +48,9 @@
 			&.complete {
 				color: #27AE60;
 			}
+			&.incomplete {
+				color: red;
+			}
 			&.destination {
 				color: #146CAB;
 			}

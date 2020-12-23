@@ -24,8 +24,9 @@
                                     </div>
                                 </ion-col>
                                 <ion-col size="4">
-                                    <div class="content-flight right">
-                                        <span class="status-style complete">Complete</span>
+                                    <div class="content-flight right" *ngIf="data.ARRIVAL">
+                                        <span *ngIf="data.ARRIVAL.STATUS == 'COMPLETE'"  class="status-style complete">{{ data?.ARRIVAL?.STATUS }}</span>
+                                        <span *ngIf="data.ARRIVAL.STATUS == 'INCOMPLETE'"  class="status-style incomplete">{{ data?.ARRIVAL?.STATUS }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
@@ -35,7 +36,7 @@
                                         <span class="title-style-1">Arrival</span>
                                     </div>
                                 </ion-col>
-                                <ion-col size="6">
+                                <ion-col *ngIf="data.ARRIVAL" size="6">
                                     <div class="content-flight right">
                                         <span class="title-style-1">{{ data?.ARRIVAL?.FLIGHT_NO }}</span>
                                         <span *ngIf="data.ARRIVAL.CATEGORY_CODE == 'I'" class="status-style int"> Int
@@ -54,7 +55,7 @@
                                         <span class="title-style-1">Departure</span>
                                     </div>
                                 </ion-col>
-                                <ion-col size="6">
+                                <ion-col *ngIf="data.DEPARTURE" size="6">
                                     <div class="content-flight right">
                                         <span class="title-style-1">{{ data?.DEPARTURE?.FLIGHT_NO }}</span>
                                         <span *ngIf="data.DEPARTURE.CATEGORY_CODE == 'I'" class="status-style int"> Int
