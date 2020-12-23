@@ -60,7 +60,7 @@ export class FlightListPage {
     this.props.map((prop, index) => {
       if (params[prop.field]) {
         if (prop.field == 'startdate' || prop.field == 'enddate') {
-          tempProp[index].value = moment(params[prop.field], "YYYY-MM-DDTHH:mmZ").format("YYYY/MM/DD")
+          tempProp[index].value = moment(params[prop.field], "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD")
         }
         else {
           tempProp[index].value = params[prop.field]
