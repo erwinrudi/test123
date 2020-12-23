@@ -214,7 +214,7 @@ export class FlightDetailPage {
         arrival.to = arrivalTemp.STATION2
         arrival.ata = arrivalTemp.ATMSATAD
         arrival.eta = arrivalTemp.AIRETAD
-        arrival.regNo = arrivalTemp.AIRCRAFT_REG_NO + " - " + arrivalTemp.AIRCRAFT_TYPE
+        arrival.regNo = arrivalTemp.AIRCRAFT_REG_NO
         arrival.remark = arrival.remark
         arrival.afskey = arrival.afskey
         arrival.typeFlight = arrivalTemp.CATEGORY_CODE
@@ -228,7 +228,7 @@ export class FlightDetailPage {
         departure.to = departureTemp.STATION2
         departure.ata = departureTemp.ATMSATAD
         departure.eta = departureTemp.AIRETAD
-        departure.regNo = departureTemp.AIRCRAFT_REG_NO + " - " + departureTemp.AIRCRAFT_TYPE
+        departure.regNo = departureTemp.AIRCRAFT_REG_NO
         departure.remark = departure.remark
         departure.afskey = departure.afskey
         departure.typeFlight = departureTemp.CATEGORY_CODE
@@ -319,7 +319,7 @@ export class FlightDetailPage {
         Object.keys(data.VALUE).forEach(function (key) {
           let optionVal = {
             value: key,
-            text: data.VALUE[key]
+            text: key + " " + data.VALUE[key]
           }
           movement.moveTypeList.push(optionVal)
         });

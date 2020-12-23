@@ -86,14 +86,17 @@ export class FlightListPage {
 
   onClickList(value) {
     let urlNext = "/flight/flight-detail"
-    urlNext = urlNext + "?codeArrival=" + value.ARRIVAL.AFSKEY
-    urlNext = urlNext + "&codeDeparture=" + value.DEPARTURE.AFSKEY
-    urlNext = urlNext + "&afsKey=" + value.REMARK
+    let arrival = value.ARRIVAL.AFSKEY ? value.ARRIVAL.AFSKEY : ""
+    let derpature = value.DEPARTURE.AFSKEY ? value.DEPARTURE.AFSKEY : ""
+    let afs = value.REMARK ? value.REMARK : ""
+    urlNext = urlNext + "?codeArrival=" + arrival
+    urlNext = urlNext + "&codeDeparture=" + derpature
+    urlNext = urlNext + "&afsKey=" + afs
     localStorage.setItem("flightDetail", urlNext)
     this.router.navigateByUrl(urlNext)
   }
 
-  back(){
+  back() {
     this.router.navigateByUrl("/flight/schedule-search")
   }
 
