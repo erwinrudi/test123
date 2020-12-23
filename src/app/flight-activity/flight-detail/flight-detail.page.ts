@@ -88,29 +88,29 @@ export class FlightDetailPage {
     type: 'arrival',
     id: 0,
     arrival: {
-      adult: '',
-      child: '',
-      infant: '',
-      transit: '',
-      transfer: '',
-      ctew: '',
-      exCrew: '',
-      divert: '',
-      missed: '',
-      counter: ''
+      adult: '0',
+      child: '0',
+      infant: '0',
+      transit: '0',
+      transfer: '0',
+      ctew: '0',
+      exCrew: '0',
+      divert: '0',
+      missed: '0',
+      counter: '0'
     },
 
     departure: {
-      adult: '',
-      child: '',
-      infant: '',
-      transit: '',
-      transfer: '',
-      ctew: '',
-      exCrew: '',
-      divert: '',
-      missed: '',
-      counter: ''
+      adult: '0',
+      child: '0',
+      infant: '0',
+      transit: '0',
+      transfer: '0',
+      ctew: '0',
+      exCrew: '0',
+      divert: '0',
+      missed: '0',
+      counter: '0'
     }
   };
 
@@ -269,46 +269,49 @@ export class FlightDetailPage {
         let arrivalCounter = 0;
         let departureCounter = 0;
 
-        arrival.adult = arrivalTemp.ADULT ? arrivalTemp.ADULT : 0;
-        arrivalCounter = arrivalCounter + parseInt(arrival.adult)
-        arrival.child = arrivalTemp.CHILD ? arrivalTemp.CHILD : 0;
-        arrivalCounter = arrivalCounter + parseInt(arrival.child)
-        arrival.ctew = arrivalTemp.CREW ? arrivalTemp.CREW : 0;
-        arrivalCounter = arrivalCounter + parseInt(arrival.ctew)
-        arrival.divert = arrivalTemp.DIVERT ? arrivalTemp.DIVERT: 0;
-        arrivalCounter = arrivalCounter + parseInt(arrival.divert)
-        arrival.exCrew = arrivalTemp.EXTRA_CREW ? arrivalTemp.EXTRA_CREW : 0;
-        arrivalCounter = arrivalCounter + parseInt(arrival.exCrew)
-        arrival.infant = arrivalTemp.INFANT ? arrivalTemp.INFANT : 0;
-        arrivalCounter = arrivalCounter + parseInt(arrival.infant)
-        arrival.missed = arrivalTemp.MISSED ? arrivalTemp.MISSED : 0;
-        arrivalCounter = arrivalCounter + parseInt(arrival.missed)
-        arrival.transfer = arrivalTemp.TRANSFER ? arrivalTemp.TRANSFER : 0;
-        arrivalCounter = arrivalCounter + parseInt(arrival.transfer)
-        arrival.transit = arrivalTemp.TRANSIT ? arrivalTemp.TRANSIT : 0;
-        arrivalCounter = arrivalCounter + parseInt(arrival.transit)
-        arrival.counter = arrivalCounter.toString()
+        if (arrivalTemp) {
+          arrival.adult = arrivalTemp.ADULT ? arrivalTemp.ADULT : 0;
+          arrivalCounter = arrivalCounter + parseInt(arrival.adult)
+          arrival.child = arrivalTemp.CHILD ? arrivalTemp.CHILD : 0;
+          arrivalCounter = arrivalCounter + parseInt(arrival.child)
+          arrival.ctew = arrivalTemp.CREW ? arrivalTemp.CREW : 0;
+          arrivalCounter = arrivalCounter + parseInt(arrival.ctew)
+          arrival.divert = arrivalTemp.DIVERT ? arrivalTemp.DIVERT : 0;
+          arrivalCounter = arrivalCounter + parseInt(arrival.divert)
+          arrival.exCrew = arrivalTemp.EXTRA_CREW ? arrivalTemp.EXTRA_CREW : 0;
+          arrivalCounter = arrivalCounter + parseInt(arrival.exCrew)
+          arrival.infant = arrivalTemp.INFANT ? arrivalTemp.INFANT : 0;
+          arrivalCounter = arrivalCounter + parseInt(arrival.infant)
+          arrival.missed = arrivalTemp.MISSED ? arrivalTemp.MISSED : 0;
+          arrivalCounter = arrivalCounter + parseInt(arrival.missed)
+          arrival.transfer = arrivalTemp.TRANSFER ? arrivalTemp.TRANSFER : 0;
+          arrivalCounter = arrivalCounter + parseInt(arrival.transfer)
+          arrival.transit = arrivalTemp.TRANSIT ? arrivalTemp.TRANSIT : 0;
+          arrivalCounter = arrivalCounter + parseInt(arrival.transit)
+          arrival.counter = arrivalCounter.toString()
+        }
 
-        departure.adult = departureTemp.ADULT ? departureTemp.ADULT : 0;
-        departureCounter = departureCounter + parseInt(departure.adult)
-        departure.child = departureTemp.CHILD ? departureTemp.CHILD : 0;
-        departureCounter = departureCounter + parseInt(departure.child)
-        departure.ctew = departureTemp.CREW ? departureTemp.CREW : 0;
-        departureCounter = departureCounter + parseInt(departure.ctew)
-        departure.divert = departureTemp.DIVERT ? departureTemp.DIVERT: 0;
-        departureCounter = departureCounter + parseInt(departure.divert)
-        departure.exCrew = departureTemp.EXTRA_CREW ? departureTemp.EXTRA_CREW : 0;
-        departureCounter = departureCounter + parseInt(departure.exCrew)
-        departure.infant = departureTemp.INFANT ? departureTemp.INFANT : 0;
-        departureCounter = departureCounter + parseInt(departure.infant)
-        departure.missed = departureTemp.MISSED ? departureTemp.MISSED : 0;
-        departureCounter = departureCounter + parseInt(departure.missed)
-        departure.transfer = departureTemp.TRANSFER ? departureTemp.TRANSFER : 0;
-        departureCounter = departureCounter + parseInt(departure.transfer)
-        departure.transit = departureTemp.TRANSIT ? departureTemp.TRANSIT : 0;
-        departureCounter = departureCounter + parseInt(departure.transit)
-        departure.counter = departureCounter.toString()
-
+        if (departureTemp) {
+          departure.adult = departureTemp.ADULT ? departureTemp.ADULT : 0;
+          departureCounter = departureCounter + parseInt(departure.adult)
+          departure.child = departureTemp.CHILD ? departureTemp.CHILD : 0;
+          departureCounter = departureCounter + parseInt(departure.child)
+          departure.ctew = departureTemp.CREW ? departureTemp.CREW : 0;
+          departureCounter = departureCounter + parseInt(departure.ctew)
+          departure.divert = departureTemp.DIVERT ? departureTemp.DIVERT : 0;
+          departureCounter = departureCounter + parseInt(departure.divert)
+          departure.exCrew = departureTemp.EXTRA_CREW ? departureTemp.EXTRA_CREW : 0;
+          departureCounter = departureCounter + parseInt(departure.exCrew)
+          departure.infant = departureTemp.INFANT ? departureTemp.INFANT : 0;
+          departureCounter = departureCounter + parseInt(departure.infant)
+          departure.missed = departureTemp.MISSED ? departureTemp.MISSED : 0;
+          departureCounter = departureCounter + parseInt(departure.missed)
+          departure.transfer = departureTemp.TRANSFER ? departureTemp.TRANSFER : 0;
+          departureCounter = departureCounter + parseInt(departure.transfer)
+          departure.transit = departureTemp.TRANSIT ? departureTemp.TRANSIT : 0;
+          departureCounter = departureCounter + parseInt(departure.transit)
+          departure.counter = departureCounter.toString()
+        }
         this.pax.arrival = arrival;
         this.pax.departure = departure;
 
