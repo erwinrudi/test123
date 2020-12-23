@@ -42,7 +42,6 @@ export class PaxFormPage {
       exCrew_ar: '',
       divert_ar: '',
       missed_ar: '',
-      counter_ar: '',
 
       adult_der: '',
       child_der: '',
@@ -52,8 +51,7 @@ export class PaxFormPage {
       ctew_der: '',
       exCrew_der: '',
       divert_der: '',
-      missed_der: '',
-      counter_der: ''
+      missed_der: ''
     })
     let flightInfo = null
     flightInfo = localStorage.getItem('flightInfo')
@@ -89,7 +87,6 @@ export class PaxFormPage {
         exCrew_ar: arrival.exCrew,
         divert_ar: arrival.divert,
         missed_ar: arrival.missed,
-        counter_ar: arrival.counter,
 
         adult_der: departure.adult,
         child_der: departure.child,
@@ -100,7 +97,6 @@ export class PaxFormPage {
         exCrew_der: departure.exCrew,
         divert_der: departure.divert,
         missed_der: departure.missed,
-        counter_der: departure.counter,
       })
     }
   }
