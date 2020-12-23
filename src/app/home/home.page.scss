@@ -4,7 +4,28 @@
 		position: relative;
 		margin-top: 15px;
         padding-bottom: 70px;
+            .submenu-container{
+                text-align: center;
+
+                .icon-style{
+                    width: 55%;
+                }
+
+                .text{
+                    margin-top: 10px;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 3vw;
+                    align-items: center;
+                    text-align: center;
+                }
+            }
     }
+
+    .toolbar-style {
+		--background: #146CAB;
+		--color: white;
+	}
 }
 
 .header-container {
@@ -14,6 +35,6 @@
 .header-title{
 	text-align: center;
     font-size: 5vw;
-    margin-left: -35px;
+    margin-left: 0px;
     text-transform: none !important;
 }
