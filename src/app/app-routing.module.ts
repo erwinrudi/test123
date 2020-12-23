@@ -5,7 +5,7 @@ import { GeneralService } from './general.service';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./home/tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: './home/home.module#HomePageModule'
   },
   {
     path: 'flight',
