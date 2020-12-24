@@ -119,7 +119,6 @@ export class AvioFormPage {
         "END": endTime
       }
     }
-    debugger
     this.flightActivityService.submitAvio(body).subscribe((res: any) => {
       this.generalService.notification("SUKSES")
       this.generalService.goBack();

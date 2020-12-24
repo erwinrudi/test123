@@ -100,6 +100,20 @@ export class FlightActivityService {
             .catch((error: Response) => Observable.throw(error));
     }
 
+    getEstimateBilling(paramsValue): Observable<any> {
+        let httpParams = new HttpParams();
+        httpParams = httpParams.append('afskey', paramsValue.afskey);
+        httpParams = httpParams.append('branchcode', paramsValue.branchcode);
+        return this.http
+            .get(
+                this.generalService.apiUrl + '/billing', { params: httpParams }
+            )
+            .map((response: Response) => response)
+            .catch((error: Response) => Observable.throw(error));
+    }
+
+
+
     getMasterAirline(): Observable<any> {
         return this.http
             .get(this.generalService.apiUrl + '/airline/masterdata')

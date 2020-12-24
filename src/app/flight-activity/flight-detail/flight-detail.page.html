@@ -476,111 +476,29 @@
                             </div>
                         </ion-col>
                     </ion-row>
-                    <ion-row>
-                        <ion-col size="4">
-                            <div class="content-flight">
-                                <span class="title-style-1">LANDING</span>
-                            </div>
-                        </ion-col>
-                        <ion-col size="4">
-                            <div class="content-flight center">
-                                <span class="title-style-1">80 Ton</span>
-                            </div>
-                        </ion-col>
-                        <ion-col size="4">
-                            <div class="content-flight right">
-                                <span class="title-style-1 total">IDR 610.954</span>
-                            </div>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row>
-                        <ion-col size="4">
-                            <div class="content-flight">
-                                <span class="title-style-1">LANDING</span>
-                            </div>
-                        </ion-col>
-                        <ion-col size="4">
-                            <div class="content-flight center">
-                                <span class="title-style-1">80 Ton</span>
-                            </div>
-                        </ion-col>
-                        <ion-col size="4">
-                            <div class="content-flight right">
-                                <span class="title-style-1 total">IDR 610.954</span>
-                            </div>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row>
-                        <ion-col size="4">
-                            <div class="content-flight">
-                                <span class="title-style-1">LANDING</span>
-                            </div>
-                        </ion-col>
-                        <ion-col size="4">
-                            <div class="content-flight center">
-                                <span class="title-style-1">80 Ton</span>
-                            </div>
-                        </ion-col>
-                        <ion-col size="4">
-                            <div class="content-flight right">
-                                <span class="title-style-1 total">IDR 610.954</span>
-                            </div>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row>
-                        <ion-col size="4">
-                            <div class="content-flight">
-                                <span class="title-style-1">LANDING</span>
-                            </div>
-                        </ion-col>
-                        <ion-col size="4">
-                            <div class="content-flight center">
-                                <span class="title-style-1">80 Ton</span>
-                            </div>
-                        </ion-col>
-                        <ion-col size="4">
-                            <div class="content-flight right">
-                                <span class="title-style-1 total">IDR 610.954</span>
-                            </div>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row>
-                        <ion-col size="4">
-                            <div class="content-flight">
-                                <span class="title-style-1">LANDING</span>
-                            </div>
-                        </ion-col>
-                        <ion-col size="4">
-                            <div class="content-flight center">
-                                <span class="title-style-1">80 Ton</span>
-                            </div>
-                        </ion-col>
-                        <ion-col size="4">
-                            <div class="content-flight right">
-                                <span class="title-style-1 total">IDR 610.954</span>
-                            </div>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row>
-                        <ion-col size="4">
-                            <div class="content-flight">
-                                <span class="title-style-1">LANDING</span>
-                            </div>
-                        </ion-col>
-                        <ion-col size="4">
-                            <div class="content-flight center">
-                                <span class="title-style-1">80 Ton</span>
-                            </div>
-                        </ion-col>
-                        <ion-col size="4">
-                            <div class="content-flight right">
-                                <span class="title-style-1 total">IDR 610.954</span>
-                            </div>
-                        </ion-col>
-                    </ion-row>
+
+                    <ng-container *ngFor="let data of estimateBilling.invoice; let i = index">
+                        <ion-row>
+                            <ion-col size="4">
+                                <div class="content-flight">
+                                    <span class="title-style-1">{{data.RKA_NAME}}</span>
+                                </div>
+                            </ion-col>
+                            <ion-col size="4">
+                                <div class="content-flight center">
+                                    <span class="title-style-1">{{data.PRODUCTION}} {{data.UNITS}}</span>
+                                </div>
+                            </ion-col>
+                            <ion-col size="4">
+                                <div class="content-flight right">
+                                    <span class="title-style-1 total">{{ data.REVENUE_FORMAT }}</span>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ng-container>
                     <hr style="border-top: 1px solid;" />
                     <div style="float: 'right'; margin-right: 5px; ">
-                        <span class="title-style-1 value">IDR 9.166.793</span>
+                        <span class="title-style-1 value">{{ estimateBilling.totalPrice }}</span>
                     </div>
                 </ion-grid>
             </div>

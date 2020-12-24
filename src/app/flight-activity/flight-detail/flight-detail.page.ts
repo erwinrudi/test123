@@ -136,6 +136,13 @@ export class FlightDetailPage {
     avioTypeList: []
   }
 
+  estimateBilling = {
+    invoice: [],
+    header: null,
+    total: null,
+    totalPrice: "0"
+  }
+
   constructor(
     private generalService: GeneralService,
     private activatedRoute: ActivatedRoute,
@@ -207,40 +214,47 @@ export class FlightDetailPage {
         let arrival = this.flightInfo.arrival
         let departure = this.flightInfo.departure
 
-        arrival.terminal = arrivalTemp.TERMINAL_ID;
-        arrival.flightNo = arrivalTemp.FLIGHT_NO;
-        arrival.flightType = arrivalTemp.CATEGORY_CODE == "I" ? "Int" : "Dom";
-        arrival.from = arrivalTemp.STATION1
-        arrival.to = arrivalTemp.STATION2
-        arrival.ata = arrivalTemp.ATMSATAD ? moment(arrivalTemp.ATMSATAD).format("D MMMM YYYY hh:mm") : ""
-        arrival.eta = arrivalTemp.AIRETAD ? moment(arrivalTemp.AIRETAD).format("D MMMM YYYY hh:mm") : ""
-        arrival.regNo = arrivalTemp.AIRCRAFT_REG_NO
-        arrival.remark = arrival.remark
-        arrival.afskey = arrival.afskey
-        arrival.typeFlight = arrivalTemp.CATEGORY_CODE
-        arrival.reg = arrivalTemp.AIRCRAFT_REG_NO
-        arrival.remarkNote = arrivalTemp.REMARK_NOTE ? arrivalTemp.REMARK_NOTE : ''
+        if (arrivalTemp) {
+          arrival.terminal = arrivalTemp.TERMINAL_ID;
+          arrival.flightNo = arrivalTemp.FLIGHT_NO;
+          arrival.flightType = arrivalTemp.CATEGORY_CODE == "I" ? "Int" : "Dom";
+          arrival.from = arrivalTemp.STATION1
+          arrival.to = arrivalTemp.STATION2
+          arrival.ata = arrivalTemp.ATMSATAD ? moment(arrivalTemp.ATMSATAD).format("D MMMM YYYY hh:mm") : ""
+          arrival.ata = arrival.ata == "Invalid date" ? "" : arrival.ata
+          arrival.eta = arrivalTemp.AIRETAD ? moment(arrivalTemp.AIRETAD).format("D MMMM YYYY hh:mm") : ""
+          arrival.eta = arrival.eta == "Invalid date" ? "" : arrival.eta
+          arrival.regNo = arrivalTemp.AIRCRAFT_REG_NO
+          arrival.remark = arrival.remark
+          arrival.afskey = arrival.afskey
+          arrival.typeFlight = arrivalTemp.CATEGORY_CODE
+          arrival.reg = arrivalTemp.AIRCRAFT_REG_NO
+          arrival.remarkNote = arrivalTemp.REMARK_NOTE ? arrivalTemp.REMARK_NOTE : ''
+        }
 
-        departure.terminal = departureTemp.TERMINAL_ID;
-        departure.flightNo = departureTemp.FLIGHT_NO;
-        departure.flightType = departureTemp.CATEGORY_CODE == "I" ? "Int" : "Dom";
-        departure.from = departureTemp.STATION1
-        departure.to = departureTemp.STATION2
-        departure.ata = departureTemp.ATMSATAD ? moment(departureTemp.ATMSATAD).format("D MMMM YYYY hh:mm") : ""
-        departure.eta = departureTemp.AIRETAD ? moment(departureTemp.AIRETAD).format("D MMMM YYYY hh:mm") : ""
-        departure.regNo = departureTemp.AIRCRAFT_REG_NO
-        departure.remark = departure.remark
-        departure.afskey = departure.afskey
-        departure.typeFlight = departureTemp.CATEGORY_CODE
-        departure.reg = departureTemp.AIRCRAFT_REG_NO
-        departure.remarkNote = departureTemp.REMARK_NOTE ? departureTemp.REMARK_NOTE : ''
-
+        if (departureTemp) {
+          departure.terminal = departureTemp.TERMINAL_ID;
+          departure.flightNo = departureTemp.FLIGHT_NO;
+          departure.flightType = departureTemp.CATEGORY_CODE == "I" ? "Int" : "Dom";
+          departure.from = departureTemp.STATION1
+          departure.to = departureTemp.STATION2
+          departure.ata = departureTemp.ATMSATAD ? moment(departureTemp.ATMSATAD).format("D MMMM YYYY hh:mm") : ""
+          departure.ata = departure.ata == "Invalid date" ? "" : departure.ata
+          departure.eta = departureTemp.AIRETAD ? moment(departureTemp.AIRETAD).format("D MMMM YYYY hh:mm") : ""
+          departure.eta = departure.eta == "Invalid date" ? "" : departure.eta
+          departure.regNo = departureTemp.AIRCRAFT_REG_NO
+          departure.remark = departure.remark
+          departure.afskey = departure.afskey
+          departure.typeFlight = departureTemp.CATEGORY_CODE
+          departure.reg = departureTemp.AIRCRAFT_REG_NO
+          departure.remarkNote = departureTemp.REMARK_NOTE ? departureTemp.REMARK_NOTE : ''
+        }
         this.flightInfo.arrival = arrival
         this.flightInfo.departure = departure
         let localflightInfo = JSON.stringify(this.flightInfo)
         localStorage.setItem('flightInfo', localflightInfo)
         //map UI
-        resolve(true)
+        this.getEstimateBilling();
       },
         error => {
           if (error.response) {
@@ -409,14 +423,65 @@ export class FlightDetailPage {
           listVal['MOVEMENT'] = mov;
           let avioType = avio.avioTypeList.find(type => type.value == x.SERVICE_CODE)
           listVal['AVIO_TYPE'] = avioType
-          listVal['START'] =  listVal['START'] ? moment( listVal['START']).format("D MMMM YYYY hh:mm") : ""
-          listVal['END'] =  listVal['END'] ? moment( listVal['END']).format("D MMMM YYYY hh:mm") : ""
+          listVal['START'] = listVal['START'] ? moment(listVal['START']).format("D MMMM YYYY hh:mm") : ""
+          listVal['END'] = listVal['END'] ? moment(listVal['END']).format("D MMMM YYYY hh:mm") : ""
 
           avio.list.push(listVal);
         })
 
         localStorage.setItem('avio', JSON.stringify(avio))
         this.avio = avio;
+        resolve(true)
+      },
+        error => {
+          if (error.response) {
+            this.generalService.notification(error.response.message)
+          }
+          else {
+            this.generalService.notification("ERROR CONNECTION")
+          }
+          resolve(true)
+        }
+      );
+    });
+  }
+
+  getEstimateBilling() {
+    return new Promise((resolve, reject) => {
+      let param = {
+        afskey: this.flightInfo.id,
+        branchcode: this.flightInfo.detailTemp.arrival.BRANCH_CODE
+      }
+      this.flightActivityService.getEstimateBilling(param).subscribe((res: any) => {
+        let data = res.data
+        this.estimateBilling.invoice = []
+        let totalPrice = 0
+        if (data.INVOICE) {
+          data.INVOICE.map(x => {
+            let bodyVal = x
+
+            let price = x.REVENUE_IDR ? x.REVENUE_IDR : 0
+            totalPrice = totalPrice + parseFloat(price)
+
+            let product1 = x.PRODUCTION_1 ? parseFloat(x.PRODUCTION_1) : 0
+            let product2 = x.PRODUCTION_2 ? parseFloat(x.PRODUCTION_2) : 0
+            let productTotal = product1 + product2
+            bodyVal['PRODUCTION'] = productTotal
+            let priceField = bodyVal['REVENUE_IDR'] ? bodyVal['REVENUE_IDR'] : "0"
+            bodyVal['REVENUE_FORMAT'] = this.generalService.formatterInput(priceField, "IDR ")
+
+            this.estimateBilling.invoice.push(bodyVal)
+          })
+        }
+
+        this.estimateBilling.totalPrice = this.generalService.formatterInput(totalPrice.toString(), "IDR ")
+        if (data.TOTAL_INVOICE) {
+          this.estimateBilling.total = data.TOTAL_INVOICE
+        }
+
+        if (data.HEADER) {
+          this.estimateBilling.invoice = data.INVOICE
+        }
         resolve(true)
       },
         error => {
