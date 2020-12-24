@@ -36,7 +36,7 @@ export class CreateFlightAdPage {
   flightTypeList = [
     {
       value: 'D',
-      text: 'Dometic'
+      text: 'Domestic'
     },
     {
       value: 'I',
