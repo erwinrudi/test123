@@ -43,7 +43,8 @@ export class GeneralService {
         let angkaTemp = value.split(floatPoint);
         let decimalVal = ""
         var angka;
-        if (angkaTemp.length != 0) {
+        // debugger
+        if (angkaTemp.length > 1) {
             angka = angkaTemp[0]
             angka = angka.replace(/,/g, '');
             angka = angka.replace(Currency, '');

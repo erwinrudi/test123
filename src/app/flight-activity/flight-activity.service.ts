@@ -145,6 +145,14 @@ export class FlightActivityService {
             .catch((error: Response) => Observable.throw(error));
     }
 
+    submitEstimateBilling(values): Observable<any> {
+        const body = JSON.stringify(values);
+        return this.http
+            .post(this.generalService.apiUrl + '/billing', body)
+            .map((response: Response) => response)
+            .catch((error: Response) => Observable.throw(error));
+    }
+
 
     submitAvio(values): Observable<any> {
         const body = JSON.stringify(values);
