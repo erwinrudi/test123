@@ -502,22 +502,24 @@ export class FlightDetailPage {
     this.router.navigateByUrl(url)
   }
 
-  onSubmitBilling(e) {
-    let body = {
-      "afskey": this.flightInfo.id
-    }
-    this.flightActivityService.submitEstimateBilling(body).subscribe((res: any) => {
-      this.generalService.notification("SUKSES")
-      this.back()
-    },
-      error => {
-        if (error.response) {
-          this.generalService.notification(error.response.message)
-        }
-        else {
-          this.generalService.notification("ERROR CONNECTION")
-        }
-      }
-    );
+  onSubmitBilling() {
+    // let body = {
+    //   "afskey": this.flightInfo.id
+    // }
+    // this.flightActivityService.submitEstimateBilling(body).subscribe((res: any) => {
+    //   this.generalService.notification("SUKSES")
+    //   this.back()
+    // },
+    //   error => {
+    //     if (error.response) {
+    //       this.generalService.notification(error.response.message)
+    //     }
+    //     else {
+    //       this.generalService.notification("ERROR CONNECTION")
+    //     }
+    //   }
+    // );
+    console.log("submit")
+    this.back()
   }
 }

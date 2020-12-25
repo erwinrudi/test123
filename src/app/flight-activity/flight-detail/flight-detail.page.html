@@ -428,7 +428,7 @@
             </div>
             <div *ngIf="type == 'pax'" class="footer-style">
                 <ion-toolbar>
-                    <ion-button expand="block">Submit</ion-button>
+                    <ion-button (click)="onSubmitBilling()" expand="block">Submit</ion-button>
                 </ion-toolbar>
             </div>
             <div *ngIf="type == 'movement'" class="footer-style">
