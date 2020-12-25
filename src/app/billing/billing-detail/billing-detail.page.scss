@@ -16,6 +16,77 @@
 		position: relative;
 		margin-top: 20px;
 
+		.flight-info{
+			.content-flight {
+				height: 100%;
+				display: flex;
+				width: 100%;
+				&.pax {
+					cursor: pointer;
+				}
+				&.right {
+					justify-content: flex-end;
+				}
+			}
+			.title-header {
+				font-style: normal;
+				font-weight: bold;
+				font-size: 5vw;
+				align-items: center;
+				color: #000000;
+				margin-top: auto;
+				margin-bottom: auto;
+			}
+			.title-style-1 {
+				font-style: normal;
+				font-weight: bold;
+				font-size: 3vw;
+				align-items: center;
+				color: #000000;
+				margin-top: auto;
+				margin-bottom: auto;
+				&.title-movement {
+					font-size: 3.5vw;
+				}
+				&.arrival {
+					color: #27AE60;
+				}
+				&.destination {
+					color: #146CAB;
+				}
+				&.depature {
+					color: #F2994A;
+				}
+				&.header-pax {
+					font-weight: normal;
+				}
+			}
+			.status-style {
+				font-size: 3vw;
+				text-align: right;
+				margin-top: auto;
+				margin-bottom: auto;
+				color: #000000;
+				&.complete {
+					color: #27AE60;
+				}
+				&.destination {
+					color: #146CAB;
+				}
+				&.int {
+					color: #898989;
+					margin: 0px 2px;
+				}
+				&.incomplete {
+					color: #EB5757;
+				}
+			}
+			.arrow-style {
+				font-size: 3vw;
+				margin: 0px 2px;
+				margin-top: 0.5vw;
+			}
+		}
 
 		.estimate-billing{
 			position: relative;
