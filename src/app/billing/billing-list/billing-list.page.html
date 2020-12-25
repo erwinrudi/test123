@@ -19,7 +19,7 @@
                 </ion-row>
             </ion-grid>
             <ng-container *ngFor="let data of billingList; let i = index">
-                <ion-card>
+                <ion-card (click)="onClickList(data)">
                     <ion-card-content>
                         <ion-grid>
                             <ion-row>

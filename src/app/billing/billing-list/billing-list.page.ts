@@ -98,9 +98,12 @@ export class BillingListPage {
   }
 
   getData() {
-
+    
   }
 
+  onClickList(value) {
+    this.router.navigateByUrl("/billing/billing-detail")
+  }
   
   back() {
     this.router.navigateByUrl("/billing/billing-search")
