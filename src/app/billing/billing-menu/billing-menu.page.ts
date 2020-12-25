@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GeneralService } from "../../general.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-billing-menu',
@@ -9,7 +10,11 @@ import { GeneralService } from "../../general.service";
 export class BillingMenuPage {
 
   constructor(
-    private generalService: GeneralService
+    private generalService: GeneralService,
+    private router: Router
   ) {}
 
+  back(){
+    this.router.navigateByUrl("/")
+  }
 }
