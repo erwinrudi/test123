@@ -23,7 +23,7 @@ export class InvoiceSearchPage {
   ) {
 
   }
-  
+
   ngOnInit() {
     this.formInvoice = this.formBuilder.group({
       startDate: '',
@@ -37,7 +37,7 @@ export class InvoiceSearchPage {
   onSubmit(e) {
     const formValue = this.formInvoice.value;
 
-    let urlNext = "/flight/flight-list"
+    let urlNext = "/billing/invoice-list"
     let nullParam = true
     if (formValue.startDate != "") {
       urlNext = urlNext + "?startDate=" + formValue.startDate
@@ -62,7 +62,11 @@ export class InvoiceSearchPage {
       }
     }
     // urlNext = encodeURI(urlNext)
+    localStorage.setItem("invoiceList", urlNext)
     this.router.navigateByUrl(urlNext)
   }
 
+  back(){
+    this.router.navigateByUrl("/billing/billing-menu")
+  }
 }
