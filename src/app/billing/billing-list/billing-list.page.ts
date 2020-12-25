@@ -100,4 +100,9 @@ export class BillingListPage {
   getData() {
 
   }
+
+  
+  back() {
+    this.router.navigateByUrl("/billing/billing-search")
+  }
 }

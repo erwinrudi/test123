@@ -86,4 +86,7 @@ export class BillingSearchPage {
     this.router.navigateByUrl(urlNext)
   }
 
+  back(){
+    this.router.navigateByUrl("/billing/billing-menu")
+  }
 }
