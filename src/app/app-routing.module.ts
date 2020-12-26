@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'billing',
     loadChildren: './billing/billing.module#BillingPageModule'
   },
+  {
+    path: 'report',
+    loadChildren: './report/report.module#ReportPageModule'
+  },
 ];
 @NgModule({
   imports: [
