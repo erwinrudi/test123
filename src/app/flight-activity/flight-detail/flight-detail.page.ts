@@ -196,6 +196,10 @@ export class FlightDetailPage {
     this.pax.type = val
   }
 
+  onChangeCargoType(val) {
+    this.cargo.type = val
+  }
+
   showModal(content = null) {
     this.modal = content;
   }
