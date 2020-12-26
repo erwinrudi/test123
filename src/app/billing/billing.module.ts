@@ -10,7 +10,7 @@ import { InvoiceSearchPage } from './invoice-search/invoice-search.page';
 import { BillingListPage } from './billing-list/billing-list.page';
 import { BillingDetailPage } from './billing-detail/billing-detail.page';
 import { InvoiceListPage } from './invoice-list/invoice-list.page';
-
+import { InvoiceDetailPage } from './invoice-detail/invoice-detail.page';
 import { BillingRoutingModule } from './billing-routing.module';
 
 @NgModule({
@@ -27,7 +27,8 @@ import { BillingRoutingModule } from './billing-routing.module';
     InvoiceSearchPage,
     BillingListPage,
     BillingDetailPage,
-    InvoiceListPage
+    InvoiceListPage,
+    InvoiceDetailPage
   ]
 })
 export class BillingPageModule {}

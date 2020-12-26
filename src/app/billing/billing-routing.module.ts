@@ -8,7 +8,7 @@ import { BillingDetailPage } from './billing-detail/billing-detail.page';
 
 import { InvoiceSearchPage } from './invoice-search/invoice-search.page';
 import { InvoiceListPage } from './invoice-list/invoice-list.page';
-
+import { InvoiceDetailPage } from './invoice-detail/invoice-detail.page';
 
 const routes: Routes = [
   {
@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'invoice-list',
     component: InvoiceListPage,
+  },
+  {
+    path: 'invoice-detail',
+    component: InvoiceDetailPage,
   },
 ];
 
