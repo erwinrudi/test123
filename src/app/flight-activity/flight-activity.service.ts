@@ -70,6 +70,24 @@ export class FlightActivityService {
             .catch((error: Response) => Observable.throw(error));
     }
 
+    getFlightCargo(paramsValue): Observable<any> {
+        let httpParams = new HttpParams();
+        paramsValue.map(x => {
+            if (x.value != "" && x.field == 'codeArrival') {
+                httpParams = httpParams.append('arrivalcode', x.value);
+            }
+            if (x.value != "" && x.field == 'codeDeparture') {
+                httpParams = httpParams.append('departurecode', x.value);
+            }
+        })
+        return this.http
+            .get(
+                this.generalService.apiUrl + '/cargo', { params: httpParams }
+            )
+            .map((response: Response) => response)
+            .catch((error: Response) => Observable.throw(error));
+    }
+
     getFlightMovement(paramsValue): Observable<any> {
         let httpParams = new HttpParams();
         paramsValue.map(x => {

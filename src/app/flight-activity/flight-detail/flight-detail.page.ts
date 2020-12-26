@@ -42,6 +42,10 @@ export class FlightDetailPage {
       value: 'pax',
       text: 'Pax'
     },
+    {
+      value: 'cargo',
+      text: 'Cargo'
+    },
   ];
 
   type = "movement";
@@ -83,6 +87,21 @@ export class FlightDetailPage {
       remarkNote: ''
     }
   };
+
+  cargo = {
+    type: 'arrival',
+    id: 0,
+    arrival: {
+      baggage: '0',
+      cargo: '0',
+      pos: '0'
+    },
+    departure: {
+      baggage: '0',
+      cargo: '0',
+      pos: '0'
+    }
+  }
 
   pax = {
     type: 'arrival',
@@ -157,7 +176,8 @@ export class FlightDetailPage {
         Promise.all([
           this.getDetail(),
           this.getPax(),
-          this.getMovement()
+          this.getMovement(),
+          this.getCargo()
         ]).then(([]) => {
         })
       })
@@ -194,6 +214,7 @@ export class FlightDetailPage {
         if (prop.field == 'codeDeparture') {
           this.flightInfo.departure.afskey = params[prop.field]
           this.pax.id = params[prop.field]
+          this.cargo.id = params[prop.field]
         }
         tempProp[index].value = params[prop.field]
       }
@@ -332,6 +353,47 @@ export class FlightDetailPage {
         let localPax = JSON.stringify(this.pax)
         localStorage.setItem('pax', localPax)
         //map UI
+        resolve(true)
+      },
+        error => {
+          if (error.response) {
+            this.generalService.notification(error.response.message)
+          }
+          else {
+            this.generalService.notification("ERROR CONNECTION")
+          }
+          resolve(true)
+        }
+      );
+    });
+  }
+
+  getCargo() {
+    return new Promise((resolve, reject) => {
+      this.flightActivityService.getFlightCargo(this.props).subscribe((res: any) => {
+        let data = res.data
+        let arrivalTemp = data.ARRIVAL;
+        let departureTemp = data.DEPARTURE;
+
+        let arrival = this.cargo.arrival;
+        let departure = this.cargo.departure;
+
+        if (arrivalTemp) {
+          arrival.baggage = arrivalTemp.BAGGAGE ? arrivalTemp.BAGGAGE : 0
+          arrival.cargo = arrivalTemp.CARGO ? arrivalTemp.CARGO : 0
+          arrival.pos = arrivalTemp.POS ? departureTemp.POS : 0
+        }
+        if (departureTemp) {
+          departure.baggage = departureTemp.BAGGAGE ? departureTemp.BAGGAGE : 0
+          departure.cargo = departureTemp.CARGO ? departureTemp.CARGO : 0
+          departure.pos = departureTemp.POS ? departureTemp.POS : 0
+        }
+
+        this.cargo.arrival = arrival;
+        this.cargo.departure = departure;
+        console.log(this.cargo)
+        let localCargo = JSON.stringify(this.cargo)
+        localStorage.setItem('cargo', localCargo)
         resolve(true)
       },
         error => {
