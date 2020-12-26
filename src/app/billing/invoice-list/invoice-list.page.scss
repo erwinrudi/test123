@@ -60,6 +60,39 @@
 			margin-top: 0.5vw;
 		}
 	}
+
+	.footer-style {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		z-index: 9999;
+		padding: 10px;
+		background: white;
+		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+
+		.content-flight {
+			height: 100%;
+			display: flex;
+			width: 100%;
+			&.right {
+				justify-content: flex-end;
+			}
+		}
+
+		.title-style-1 {
+			font-style: normal;
+			font-weight: bold;
+			font-size: 4vw;
+			align-items: center;
+			color: #000000;
+			margin-top: auto;
+			margin-bottom: auto;
+			&.detail {
+				color: #146CAB;
+			}
+		}
+	}
+	
 	.toolbar-style {
 		--background: #146CAB;
 		--color: white;
