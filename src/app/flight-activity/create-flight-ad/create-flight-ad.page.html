@@ -46,6 +46,28 @@
                     </div>
 
                     <div class="select-container">
+                        <ion-label class="input-label">Service Type</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="serviceType_ar" interface="popover" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let serviceType of serviceTypeList" [value]="serviceType">
+                                    {{serviceType.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">Run Away</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="runaway_ar" interface="popover" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let runaway of runawayList" [value]="runaway">
+                                    {{runaway.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
                         <ion-label class="input-label">Suffix</ion-label>
                         <div class="input-select-cont">
                             <ion-select formControlName="suffix_ar" interface="popover" class="input-select"
@@ -90,19 +112,31 @@
                             <ion-row>
                                 <ion-col>
                                     <ion-datetime formControlName="flightDate_ar" class="input-date none-icon"
-                                        displayFormat="DD-MMMM-YYYY"></ion-datetime>
+                                        displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
                                 </ion-col>
                             </ion-row>
                         </div>
                     </div>
 
                     <div class="datepick-container">
-                        <ion-label class="input-label">Flight Time</ion-label>
+                        <ion-label class="input-label">ATA</ion-label>
                         <div class="input-date-cont">
                             <ion-row>
                                 <ion-col>
-                                    <ion-datetime formControlName="flightTime_ar" class="input-date none-icon"
-                                        displayFormat="hh:mm"></ion-datetime>
+                                    <ion-datetime formControlName="ata_ar" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </div>
+
+                    <div class="datepick-container">
+                        <ion-label class="input-label">ETA</ion-label>
+                        <div class="input-date-cont">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-datetime formControlName="eta_ar" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
                                 </ion-col>
                             </ion-row>
                         </div>
@@ -125,6 +159,33 @@
                         </div>
                     </div>
 
+                    <div class="select-container">
+                        <ion-label class="input-label">Remark</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="remark_ar" interface="popover" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let remark of remarkList" [value]="remark">
+                                    {{remark.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Remark Note</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="remarkNote_ar" class="input-text" placeholder="">
+                            </ion-input>
+                        </div>
+                    </div>
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Note Delay</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="noteDelay_ar" class="input-text" placeholder="">
+                            </ion-input>
+                        </div>
+                    </div>
                 </div>
 
                 <div *ngIf="formType == '1'" style="padding: 10px 20px;">
@@ -134,6 +195,28 @@
                         <div class="input-text-cont">
                             <ion-input formControlName="no_der" class="input-text" placeholder="e.g Number">
                             </ion-input>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">Service Type</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="serviceType_der" interface="popover" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let serviceType of serviceTypeList" [value]="serviceType">
+                                    {{serviceType.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">Run Away</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="runaway_der" interface="popover" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let runaway of runawayList" [value]="runaway">
+                                    {{runaway.text}}</ion-select-option>
+                            </ion-select>
                         </div>
                     </div>
 
@@ -189,12 +272,24 @@
                     </div>
 
                     <div class="datepick-container">
-                        <ion-label class="input-label">Flight Time</ion-label>
+                        <ion-label class="input-label">ATA</ion-label>
                         <div class="input-date-cont">
                             <ion-row>
                                 <ion-col>
-                                    <ion-datetime formControlName="flightTime_der" class="input-date none-icon"
-                                        displayFormat="hh:mm"></ion-datetime>
+                                    <ion-datetime formControlName="ata_der" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </div>
+
+                    <div class="datepick-container">
+                        <ion-label class="input-label">ETA</ion-label>
+                        <div class="input-date-cont">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-datetime formControlName="eta_der" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
                                 </ion-col>
                             </ion-row>
                         </div>
@@ -213,6 +308,34 @@
                         <ion-label class="input-label">Station 2</ion-label>
                         <div class="input-text-cont">
                             <ion-input formControlName="station2_der" class="input-text" placeholder="e.g Number">
+                            </ion-input>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">Remark</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="remark_der" interface="popover" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let remark of remarkList" [value]="remark">
+                                    {{remark.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Remark Note</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="remarkNote_der" class="input-text" placeholder="">
+                            </ion-input>
+                        </div>
+                    </div>
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Note Delay</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="noteDelay_der" class="input-text" placeholder="">
                             </ion-input>
                         </div>
                     </div>

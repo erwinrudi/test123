@@ -18,21 +18,6 @@ export class CreateFlightAdPage {
 
   formType = 0;
 
-  airlineList = [
-    {
-      value: 'garuda',
-      text: 'Garuda'
-    },
-    {
-      value: 'city_link',
-      text: 'City Link'
-    },
-    {
-      value: 'lion_air',
-      text: 'Lion Air'
-    },
-  ]
-
   flightTypeList = [
     {
       value: 'D',
@@ -43,52 +28,6 @@ export class CreateFlightAdPage {
       text: 'International'
     },
   ];
-
-  terminalList = [
-    {
-      value: '1',
-      text: '1'
-    },
-    {
-      value: '2',
-      text: '2'
-    },
-    {
-      value: '3',
-      text: '3'
-    },
-    {
-      value: '4',
-      text: '4'
-    },
-    {
-      value: '5',
-      text: '5'
-    }
-  ];
-
-  stationList = [
-    {
-      value: '1',
-      text: '1'
-    },
-    {
-      value: '2',
-      text: '2'
-    },
-    {
-      value: '3',
-      text: '3'
-    },
-    {
-      value: '4',
-      text: '4'
-    },
-    {
-      value: '5',
-      text: '5'
-    }
-  ]
 
   suffixList = []
   remarkList = []
@@ -111,23 +50,35 @@ export class CreateFlightAdPage {
       no_ar: '',
       airline_ar: '',
       suffix_ar: '',
+      runaway_ar: '',
+      remark_ar: '',
+      serviceType_ar: '',
       registrationNumber_ar: '',
       flightType_ar: '',
       terminal_ar: '',
       flightDate_ar: '',
-      flightTime_ar: '',
+      ata_ar: '',
+      eta_ar: '',
       station1_ar: '',
       station2_ar: '',
+      remarkNote_ar: '',
+      noteDelay_ar: '',
 
       no_der: '',
       suffix_der: '',
+      runaway_der: '',
+      remark_der: '',
+      serviceType_der: '',
       registrationNumber_der: '',
       flightType_der: '',
       terminal_der: '',
       flightDate_der: '',
-      flightTime_der: '',
+      ata_der: '',
+      eta_der: '',
       station1_der: '',
-      station2_der: ''
+      station2_der: '',
+      remarkNote_der: '',
+      noteDelay_der: '',
     })
 
     this.isLoading = false;
@@ -139,6 +90,9 @@ export class CreateFlightAdPage {
       let data = res.data
       this.runawayList = []
       this.remarkList = []
+      this.serviceTypeList = []
+      this.suffixList = []
+
       data.MASTER_REMARK.map(x => {
         let optionVal = {
           remarkCode: x.REMARK_CODE,
@@ -159,7 +113,7 @@ export class CreateFlightAdPage {
 
       data.MASTER_SERVICE_TYPE.map(x => {
         let optionVal = x
-        x['text'] = x.DESCRIPTION
+        x['text'] = x.SUBTYPE_INVO + " - " + x.DESCRIPTION
         this.serviceTypeList.push(optionVal)
       })
 
@@ -187,14 +141,15 @@ export class CreateFlightAdPage {
 
   onSubmit(e) {
     const formValue = this.formFlight.value;
-    let flightDate_arDate = moment(formValue.flightDate_ar, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD")
-    let flightDate_arTime = moment(formValue.flightDate_ar, "YYYY-MM-DDTHH:mmZ").format("hh:mm:ss")
-    let flightDate_ar = flightDate_arDate + " " + flightDate_arTime
+    let flightDate_ar = moment(formValue.flightDate_ar, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
+    let flightDate_der = moment(formValue.flightDate_der, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
 
-    let flightDate_derDate = moment(formValue.flightDate_der, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD")
-    let flightDate_derTime = moment(formValue.flightDate_der, "YYYY-MM-DDTHH:mmZ").format("hh:mm:ss")
-    let flightDate_der = flightDate_derDate + " " + flightDate_derTime
-    
+    let ata_ar = moment(formValue.ata_ar, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
+    let ata_der = moment(formValue.ata_der, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
+
+    let eta_ar = moment(formValue.eta_ar, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
+    let eta_der = moment(formValue.eta_der, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
+
     let body = {
       "ARRIVAL":
       {
@@ -206,17 +161,17 @@ export class CreateFlightAdPage {
         "STATION2": formValue.station2_ar,
         "STATION3": "",
         "STATION4": "",
-        "ATMSATAD": "",
-        "REMARK_CODE": "",
-        "AIRCRAFT_SUBTYPE": "",
-        "NOTE_DELAY": "",
+        "ATMSATAD": ata_ar,
+        "REMARK_CODE": formValue.remark_ar.remarkCode,
+        "AIRCRAFT_SUBTYPE": formValue.serviceType_ar.AIRCRAFT_SUBTYPE,
+        "NOTE_DELAY": formValue.noteDelay_ar,
         "FLIGHT_NUMBER": formValue.no_ar,
         "AIRCRAFT_REG_NO": formValue.registrationNumber_ar,
         "CATEGORY_CODE": formValue.flightType_ar.value,
         "STAD": flightDate_ar,
-        "AIRETAD": "",
-        "RUNWAY": "",
-        "REMARK_NOTE": ""
+        "AIRETAD": eta_ar,
+        "RUNWAY": formValue.runaway_ar.runwayCode,
+        "REMARK_NOTE": formValue.remarkNote_ar
       },
       "DEPARTURE": {
         "IATA_AIRLINE_CODE": formValue.airline_ar,
@@ -227,17 +182,17 @@ export class CreateFlightAdPage {
         "STATION2": formValue.station2_der,
         "STATION3": "",
         "STATION4": "",
-        "ATMSATAD": "",
-        "REMARK_CODE": "",
-        "AIRCRAFT_SUBTYPE": "",
-        "NOTE_DELAY": "",
+        "ATMSATAD": ata_der,
+        "REMARK_CODE": formValue.remark_der.remarkCode,
+        "AIRCRAFT_SUBTYPE": formValue.serviceType_der.AIRCRAFT_SUBTYPE,
+        "NOTE_DELAY": formValue.noteDelay_der,
         "FLIGHT_NUMBER": formValue.no_der,
         "AIRCRAFT_REG_NO": formValue.registrationNumber_der,
         "CATEGORY_CODE": formValue.flightType_der.value,
         "STAD": flightDate_der,
-        "AIRETAD": "",
-        "RUNWAY": "",
-        "REMARK_NOTE": ""
+        "AIRETAD": eta_der,
+        "RUNWAY":formValue.runaway_der.runwayCode,
+        "REMARK_NOTE": formValue.remarkNote_der
       }
     }
 
