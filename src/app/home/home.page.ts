@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as moment from "moment";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,18 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(
+      private activatedRoute: ActivatedRoute
+  ) {
+    this.getQueryParams();
+  }
+
+  getQueryParams() {
+    const params = this.activatedRoute.snapshot.queryParams;
+    if(typeof params.token != "undefined") {
+      let getToken = params.token;
+      alert(getToken);
+    }
+  }
 
 }
