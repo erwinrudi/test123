@@ -191,7 +191,7 @@ export class CreateFlightAdPage {
         "CATEGORY_CODE": formValue.flightType_der.value,
         "STAD": flightDate_der,
         "AIRETAD": eta_der,
-        "RUNWAY":formValue.runaway_der.runwayCode,
+        "RUNWAY": formValue.runaway_der.runwayCode,
         "REMARK_NOTE": formValue.remarkNote_der
       }
     }
