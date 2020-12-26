@@ -385,7 +385,7 @@ export class FlightDetailPage {
         if (arrivalTemp) {
           arrival.baggage = arrivalTemp.BAGGAGE ? arrivalTemp.BAGGAGE : 0
           arrival.cargo = arrivalTemp.CARGO ? arrivalTemp.CARGO : 0
-          arrival.pos = arrivalTemp.POS ? departureTemp.POS : 0
+          arrival.pos = arrivalTemp.POS ? arrivalTemp.POS : 0
         }
         if (departureTemp) {
           departure.baggage = departureTemp.BAGGAGE ? departureTemp.BAGGAGE : 0
@@ -395,7 +395,7 @@ export class FlightDetailPage {
 
         this.cargo.arrival = arrival;
         this.cargo.departure = departure;
-        console.log(this.cargo)
+        
         let localCargo = JSON.stringify(this.cargo)
         localStorage.setItem('cargo', localCargo)
         resolve(true)

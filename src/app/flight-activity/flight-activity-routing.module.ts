@@ -11,6 +11,7 @@ import { ScheduleFormPage } from './schedule-form/schedule-form.page';
 import { PaxFormPage } from './pax-form/pax-form.page';
 import { MovementFormPage } from './movement-form/movement-form.page';
 import { AvioFormPage } from './avio-form/avio-form.page';
+import { CargoFormPage } from './cargo-form/cargo-form.page';
 
 const routes: Routes = [
   {
@@ -52,6 +53,14 @@ const routes: Routes = [
   {
     path: 'pax',
     component: PaxFormPage,
+  },
+  {
+    path: 'cargo/:id',
+    component: CargoFormPage,
+  },
+  {
+    path: 'cargo',
+    component: CargoFormPage,
   },
   {
     path: 'movement/:id',
