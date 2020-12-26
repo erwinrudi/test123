@@ -9,6 +9,7 @@ import { BillingSearchPage } from './billing-search/billing-search.page';
 import { InvoiceSearchPage } from './invoice-search/invoice-search.page';
 import { BillingListPage } from './billing-list/billing-list.page';
 import { BillingDetailPage } from './billing-detail/billing-detail.page';
+import { InvoiceListPage } from './invoice-list/invoice-list.page';
 
 import { BillingRoutingModule } from './billing-routing.module';
 
@@ -25,7 +26,8 @@ import { BillingRoutingModule } from './billing-routing.module';
     BillingSearchPage,
     InvoiceSearchPage,
     BillingListPage,
-    BillingDetailPage
+    BillingDetailPage,
+    InvoiceListPage
   ]
 })
 export class BillingPageModule {}

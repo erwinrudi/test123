@@ -2,9 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BillingMenuPage } from './billing-menu/billing-menu.page';
 import { BillingSearchPage } from './billing-search/billing-search.page';
-import { InvoiceSearchPage } from './invoice-search/invoice-search.page';
+
 import { BillingListPage } from './billing-list/billing-list.page';
 import { BillingDetailPage } from './billing-detail/billing-detail.page';
+
+import { InvoiceSearchPage } from './invoice-search/invoice-search.page';
+import { InvoiceListPage } from './invoice-list/invoice-list.page';
+
 
 const routes: Routes = [
   {
@@ -26,7 +30,11 @@ const routes: Routes = [
   {
     path: 'invoice-search',
     component: InvoiceSearchPage,
-  }
+  },
+  {
+    path: 'invoice-list',
+    component: InvoiceListPage,
+  },
 ];
 
 @NgModule({

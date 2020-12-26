@@ -5,11 +5,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-billing-list',
-  templateUrl: 'billing-list.page.html',
-  styleUrls: ['billing-list.page.scss']
+  selector: 'app-invoice-list',
+  templateUrl: 'invoice-list.page.html',
+  styleUrls: ['invoice-list.page.scss']
 })
-export class BillingListPage {
+export class InvoiceListPage {
 
   isLoading: boolean;
 
@@ -24,10 +24,6 @@ export class BillingListPage {
     },
     {
       field: 'flightNumber',
-      value: ''
-    },
-    {
-      field: 'status',
       value: ''
     }
   ];
@@ -107,10 +103,10 @@ export class BillingListPage {
   }
 
   onClickList(value) {
-    this.router.navigateByUrl("/billing/billing-detail")
+    this.router.navigateByUrl("/billing/invoice-detail")
   }
   
   back() {
-    this.router.navigateByUrl("/billing/billing-search")
+    this.router.navigateByUrl("/billing/invoice-search")
   }
 }
