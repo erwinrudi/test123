@@ -40,7 +40,7 @@ export class HomePage {
     );
   }
 
-  ngOnInit(){
+  ngOnInit() {
 
   }
 
@@ -48,27 +48,27 @@ export class HomePage {
     const params = this.activatedRoute.snapshot.queryParams;
     if (typeof params.token != "undefined") {
       let getToken = params.token;
-      localStorage.setItem('token', getToken)
-      this.setToken()
-      this.router.navigateByUrl('/');
-      // this.homeService.getDataUser(getToken).subscribe((rows: any) => {
-
-      // },
-      //   error => {
-      //     if (error.response) {
-      //       this.generalService.notification(error.response.message)
-      //     }
-      //     else {
-      //       this.generalService.notification("ERROR CONNECTION")
-      //     }
-      //   }
-      // );
+      localStorage.clear();
+      localStorage.setItem("oldtoken", getToken)
+      this.homeService.getDataUser(getToken).subscribe((rows: any) => {
+        let data = rows.data
+        localStorage.setItem("token", data.token)
+        this.setPermission(data.permission)
+        this.router.navigate(['/']);
+      },
+        error => {
+          if (error.error) {
+            this.generalService.notification(error.error.message)
+          }
+          else {
+            this.generalService.notification("ERROR CONNECTION")
+          }
+        }
+      );
     }
   }
 
-  setToken() {
-    let tempPermissions = "[{\"MENU_KEY\":\"flightact\",\"MENU_NAME\":\"Flight Activity\",\"create\":1,\"read\":1,\"update\":1,\"delete\":0},{\"MENU_KEY\":\"avio\",\"MENU_NAME\":\"Avio\",\"create\":0,\"read\":0,\"update\":0,\"delete\":0},{\"MENU_KEY\":\"pax\",\"MENU_NAME\":\"Pax\",\"create\":0,\"read\":0,\"update\":0,\"delete\":0},{\"MENU_KEY\":\"movement\",\"MENU_NAME\":\"Movement\",\"create\":0,\"read\":0,\"update\":0,\"delete\":0},{\"MENU_KEY\":\"billing\",\"MENU_NAME\":\"Billing\",\"create\":0,\"read\":1,\"update\":0,\"delete\":0},{\"MENU_KEY\":\"report\",\"MENU_NAME\":\"Report\",\"create\":0,\"read\":0,\"update\":0,\"delete\":0}]"
-    let permis = JSON.parse(tempPermissions)
+  setPermission(permis = []) {
     let permissions = []
     permis.map(access => {
       const moduleName = access.MENU_KEY;

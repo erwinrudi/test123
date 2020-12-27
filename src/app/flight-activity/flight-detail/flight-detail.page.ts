@@ -282,8 +282,8 @@ export class FlightDetailPage {
         this.getEstimateBilling();
       },
         error => {
-          if (error.response) {
-            this.generalService.notification(error.response.message)
+          if (error.error) {
+            this.generalService.notification(error.error.message)
           }
           else {
             this.generalService.notification("ERROR CONNECTION")
@@ -360,8 +360,8 @@ export class FlightDetailPage {
         resolve(true)
       },
         error => {
-          if (error.response) {
-            this.generalService.notification(error.response.message)
+          if (error.error) {
+            this.generalService.notification(error.error.message)
           }
           else {
             this.generalService.notification("ERROR CONNECTION")
@@ -401,8 +401,8 @@ export class FlightDetailPage {
         resolve(true)
       },
         error => {
-          if (error.response) {
-            this.generalService.notification(error.response.message)
+          if (error.error) {
+            this.generalService.notification(error.error.message)
           }
           else {
             this.generalService.notification("ERROR CONNECTION")
@@ -456,8 +456,8 @@ export class FlightDetailPage {
         this.getAvio()
       },
         error => {
-          if (error.response) {
-            this.generalService.notification(error.response.message)
+          if (error.error) {
+            this.generalService.notification(error.error.message)
           }
           else {
             this.generalService.notification("ERROR CONNECTION")
@@ -500,8 +500,8 @@ export class FlightDetailPage {
         resolve(true)
       },
         error => {
-          if (error.response) {
-            this.generalService.notification(error.response.message)
+          if (error.error) {
+            this.generalService.notification(error.error.message)
           }
           else {
             this.generalService.notification("ERROR CONNECTION")
@@ -551,8 +551,8 @@ export class FlightDetailPage {
         resolve(true)
       },
         error => {
-          if (error.response) {
-            this.generalService.notification(error.response.message)
+          if (error.error) {
+            this.generalService.notification(error.error.message)
           }
           else {
             this.generalService.notification("ERROR CONNECTION")
@@ -577,8 +577,8 @@ export class FlightDetailPage {
     //   this.back()
     // },
     //   error => {
-    //     if (error.response) {
-    //       this.generalService.notification(error.response.message)
+    //     if (error.error) {
+    //       this.generalService.notification(error.error.message)
     //     }
     //     else {
     //       this.generalService.notification("ERROR CONNECTION")

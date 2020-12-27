@@ -14,7 +14,7 @@ export class GeneralService {
     readonly apiUrl: string = environment.apiUrl;
     readonly urlImg: string = environment.urlImg;
     loaderToShow: any;
-
+    token: string;
     private permissions = new Subject<any>();
     constructor(
         private router: Router,
@@ -49,6 +49,24 @@ export class GeneralService {
 
     goBack() {
         this.location.back();
+    }
+
+    isAuthenticated() {
+        // console.log('Checking Login');
+
+        // If token exist
+        if (localStorage.getItem('token')) {
+            this.token = localStorage.getItem('token'); // Get Token
+            return true
+        }
+        console.log('Token missing');
+
+        return false;
+    }
+
+    logout() {
+        localStorage.clear();
+        this.router.navigate(['/']);
     }
 
 
@@ -130,7 +148,7 @@ export class GeneralService {
         }
     }
 
-    async notification(messages = "test") {
+    async notification(messages = "ERROR CONNECTION") {
         const toast = await this.toastController.create({
             message: messages,
             duration: 3000

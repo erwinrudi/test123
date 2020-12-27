@@ -124,8 +124,8 @@ export class AvioFormPage {
       this.generalService.goBack();
     },
       error => {
-        if (error.response) {
-          this.generalService.notification(error.response.message)
+        if (error.error) {
+          this.generalService.notification(error.error.message)
         }
         else {
           this.generalService.notification("ERROR CONNECTION")

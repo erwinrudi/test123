@@ -5,7 +5,8 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpErrorResponse,
-  HttpResponse
+  HttpResponse,
+   HttpHeaders 
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import * as moment from 'moment';
@@ -25,23 +26,23 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     // so if we already have a content-type, do not
     // set it, but if we don't have one, set it to
     // default --> json
-    if (!req.headers.has('Content-Type')) {
-      if (!req.headers.has('Authorization')) {
+    // if (!req.headers.has('Content-Type')) {
+    //   if (!req.headers.has('Authorization')) {
         // Check if Request Header have Upload (For Upload)
-        req = req.clone({
-          headers: req.headers.set('Content-Type', 'application/json')
-        });
-      }
-    }
+        // req = req.clone({
+        //   headers: req.headers.set('Content-Type', 'application/json')
+        // });
+    //   }
+    // }
 
     if (token) {
-      req = req.clone({
-        headers: req.headers.set('Authorization', 'Bearer ' + token)
-      });
+      // req = req.clone({
+      //   headers: req.headers.append('Authorization', token)
+      // });
       // setting the accept header
-      req = req.clone({
-        headers: req.headers.set('Accept', 'application/json')
-      });
+      // req = req.clone({
+      //   headers: req.headers.set('Accept', 'application/json')
+      // });
     }
 
     // return next.handle(req);
