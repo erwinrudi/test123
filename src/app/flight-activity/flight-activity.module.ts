@@ -19,7 +19,7 @@ import { PaxFormPage } from './pax-form/pax-form.page';
 import { CargoFormPage } from './cargo-form/cargo-form.page';
 import { AvioFormPage } from './avio-form/avio-form.page';
 import { MovementFormPage } from './movement-form/movement-form.page';
-
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { FlightActivityRoutingModule } from './flight-activity-routing.module';
 
 @NgModule({
@@ -28,7 +28,8 @@ import { FlightActivityRoutingModule } from './flight-activity-routing.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    FlightActivityRoutingModule
+    FlightActivityRoutingModule,
+    NgxPermissionsModule.forRoot(),
   ],
   declarations: [
     FlightMenuPage,

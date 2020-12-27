@@ -25,7 +25,6 @@ export class AuthenticationGuard implements CanActivate, CanActivateChild, CanLo
   ): Observable<boolean> | Promise<boolean> | boolean {
     // handle any redirects if a user isn't authenticated
     // console.log('Guard');
-    // console.log(this.authenticationService.isAuthenticated());
     if (!this.generalService.isAuthenticated()) {
       console.log('Access Denied');
       // Redirect to login page

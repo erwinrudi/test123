@@ -89,4 +89,8 @@ export class HomePage {
     this.generalService.setPermissions(permissions);
   }
 
+  onClickFlight(){
+    let permis = this.generalService.getPermissionsLocal()
+    debugger
+  }
 }
