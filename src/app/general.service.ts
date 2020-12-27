@@ -15,6 +15,7 @@ export class GeneralService {
     readonly urlImg: string = environment.urlImg;
     loaderToShow: any;
 
+    private permissions = new Subject<any>();
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
@@ -22,6 +23,28 @@ export class GeneralService {
         public toastController: ToastController,
         public loadingController: LoadingController
     ) { }
+
+    setPermissions(permissions: any) {
+        localStorage.setItem('permissions', JSON.stringify(permissions));
+        this.permissions.next(permissions);
+    }
+
+    /**
+     * Get Permissions Local Storage for Default Value
+     */
+    getPermissionsLocal() {
+        const permissions = JSON.parse(localStorage.getItem('permissions'));
+        if (!permissions) {
+            // this.logout();
+            return [];
+        } else {
+            return permissions;
+        }
+    }
+
+    getPermissions(): Observable<any> {
+        return this.permissions.asObservable();
+    }
 
 
     goBack() {
@@ -107,7 +130,6 @@ export class GeneralService {
         }
     }
 
-
     async notification(messages = "test") {
         const toast = await this.toastController.create({
             message: messages,
@@ -115,44 +137,4 @@ export class GeneralService {
         });
         toast.present();
     }
-
-    async presentLoading(messages = "Please wait...") {
-        return this.loadingController.create({
-            message: messages
-            // duration: 5000,
-        });
-    }
-
-    async dismissLoading() {
-        return this.loadingController.dismiss();
-    }
-
-
-    async showLoading(messages = "Please wait...") {
-        return await this.loadingController.create({
-            message: messages
-            // duration: 5000,
-        }).then(a => {
-            a.present().then(() => {
-
-            });
-        });
-    }
-
-    async hideLoading() {
-        return await this.loadingController.dismiss()
-    }
-
-    showLoader() {
-        this.loaderToShow = this.loadingController.create({
-            message: 'This Loader will Not AutoHide'
-        }).then((res) => {
-            res.present();
-        });
-    }
-
-    hideLoader() {
-        this.loadingController.dismiss();
-    }
-
 }

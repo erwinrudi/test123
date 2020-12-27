@@ -17,7 +17,7 @@ export class HomeService {
         httpParams = httpParams.append('token', token);
         return this.http
             .get(
-                this.generalService.apiUrl + "/", { params: httpParams }
+                this.generalService.apiUrl + "/auth", { params: httpParams }
             )
             .map((response: Response) => response)
             .catch((error: Response) => Observable.throw(error));
