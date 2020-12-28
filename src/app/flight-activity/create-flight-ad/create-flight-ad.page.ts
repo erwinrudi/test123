@@ -48,7 +48,7 @@ export class CreateFlightAdPage {
   ngOnInit() {
     this.formFlight = this.formBuilder.group({
       no_ar: '',
-      airline_ar: '',
+      airline_ar:  ['', [Validators.required]],
       suffix_ar: '',
       runaway_ar: '',
       remark_ar: '',
