@@ -5,7 +5,6 @@ import * as moment from "moment";
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FlightActivityService } from './../flight-activity.service';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-create-flight-ad',
@@ -84,13 +83,6 @@ export class CreateFlightAdPage {
     this.isLoading = false;
     this.getData()
 
-  }
-
-  ngAfterViewInit() {
-    //Copy in all the js code from the script.js. Typescript will complain but it works just fine
-    $(document).ready(function () {
-      $('.js-example-basic-single').select2();
-    });
   }
 
   getData() {

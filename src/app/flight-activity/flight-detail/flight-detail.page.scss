@@ -49,7 +49,7 @@
 			}
 		}
 		.status-style {
-			font-size: 3vw;
+			font-size: 3.5vw;
 			text-align: right;
 			margin-top: auto;
 			margin-bottom: auto;
@@ -62,16 +62,17 @@
 			}
 			&.int {
 				color: #898989;
-				margin: 0px 2px;
+				margin: 0px 5px;
 			}
 			&.incomplete {
 				color: #EB5757;
 			}
 		}
 		.arrow-style {
-			font-size: 3vw;
-			margin: 0px 2px;
-			margin-top: 0.5vw;
+			font-size: 4.5vw;
+			margin: 0px 5px;
+			margin-top: auto;
+			margin-bottom: auto;
 		}
 	}
 	.estimate-cont {
