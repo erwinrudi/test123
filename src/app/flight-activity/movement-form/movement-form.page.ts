@@ -34,6 +34,7 @@ export class MovementFormPage {
   ) {
 
   }
+  
   ngOnInit() {
     this.formMovement = this.formBuilder.group({
       inBlock: ['', [Validators.required]],
