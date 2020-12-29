@@ -23,7 +23,7 @@ export class MovementFormPage {
   seq = 1;
   movTypeList = [];
   minDateOnBlock = "1990-01-01";
-  maxDate = "2099-12-31";
+  maxDate = "2050-12-31";
   constructor(
     private formBuilder: FormBuilder,
     private generalService: GeneralService,

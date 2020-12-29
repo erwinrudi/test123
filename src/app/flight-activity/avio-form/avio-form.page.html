@@ -13,11 +13,11 @@
             <div class="content-container">
                 <div style="padding: 10px 10px;">
                     <div class="datepick-container">
-                        <ion-label class="input-label">Start Time</ion-label>
+                        <ion-label class="input-label">Start Time *</ion-label>
                         <div class="input-date-cont">
                             <ion-row>
                                 <ion-col>
-                                    <ion-datetime formControlName="startTime" class="input-date none-icon"
+                                    <ion-datetime formControlName="startTime" max="2050" class="input-date none-icon"
                                         displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
                                 </ion-col>
                             </ion-row>
@@ -25,11 +25,11 @@
                     </div>
 
                     <div class="datepick-container">
-                        <ion-label class="input-label">End Time</ion-label>
+                        <ion-label class="input-label">End Time *</ion-label>
                         <div class="input-date-cont">
                             <ion-row>
                                 <ion-col>
-                                    <ion-datetime formControlName="endTime" class="input-date none-icon"
+                                    <ion-datetime formControlName="endTime" max="2050" class="input-date none-icon"
                                         displayFormat="DD-MMMM-YYYY hh:mm"></ion-datetime>
                                 </ion-col>
                             </ion-row>
@@ -45,7 +45,7 @@
                     </div> -->
 
                     <div class="select-container">
-                        <ion-label class="input-label">Avio Type</ion-label>
+                        <ion-label class="input-label">Avio Type *</ion-label>
                         <div class="input-select-cont">
                             <ion-select formControlName="avioType" interface="action-sheet" class="input-select"
                                 placeholder="Select One">
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="select-container">
-                        <ion-label class="input-label">Mov</ion-label>
+                        <ion-label class="input-label">Mov *</ion-label>
                         <div class="input-select-cont">
                             <ion-select formControlName="mov" interface="action-sheet" class="input-select"
                                 placeholder="Select One">
@@ -66,12 +66,19 @@
                         </div>
                     </div>
 
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Value *</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="frq" class="input-text" placeholder="">
+                            </ion-input>
+                        </div>
+                    </div>
                 </div>
 
             </div>
             <div class="footer-style">
                 <ion-toolbar>
-                    <ion-button type="submit" expand="block">Submit</ion-button>
+                    <ion-button [disabled]="!formAvio.valid || isLoading" type="submit" expand="block">Submit</ion-button>
                 </ion-toolbar>
             </div>
         </form>

@@ -33,11 +33,11 @@ export class AvioFormPage {
   }
   ngOnInit() {
     this.formAvio = this.formBuilder.group({
-      startTime: '',
-      endTime: '',
-      frq: '',
-      mov: '',
-      avioType: ''
+      startTime: ['', [Validators.required]],
+      endTime: ['', [Validators.required]],
+      frq: ['', [Validators.required]],
+      mov: ['', [Validators.required]],
+      avioType: ['', [Validators.required]],
     })
 
     this.id = this.activatedRoute.snapshot.params["id"];
@@ -72,7 +72,7 @@ export class AvioFormPage {
     this.formAvio.patchValue({
       startTime: this.avio.START,
       endTime: this.avio.END,
-      frq: '',
+      frq: this.avio.VALUE,
       mov: this.avio.MOVEMENT.id,
       avioType: this.avio.AVIO_TYPE.value
     })
@@ -83,55 +83,67 @@ export class AvioFormPage {
     let mov = this.movList.find(x => x.id == formValue.mov)
     let flightInfo = null
     flightInfo = JSON.parse(localStorage.getItem('flightInfo'))
-    let startTime = moment(formValue.startTime, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
-    let endTime = moment(formValue.endTime, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
-    let body = null
-    if (this.pageType == "edit") {
-      body = {
-        "IDDATA": this.avio.IDDATA,
-        "AFSKEY": this.avio.AFSKEY,
-        "IDDATA_SP": mov.id,
-        "AIRCRAFT_VISIT_SEQ": this.avio.AIRCRAFT_VISIT_SEQ,
-        "SERVICE_CODE": formValue.avioType,
-        "VALUE": mov.movTypeId,
-        "START": startTime,
-        "END": endTime
-      }
+    let startTime = moment(formValue.startTime).format("YYYY-MM-DD hh:mm:ss")
+    let endTime = moment(formValue.endTime).format("YYYY-MM-DD hh:mm:ss")
+
+    let minDate = moment(mov.inBlock).format("YYYY-MM-DD hh:mm:ss")
+    let maxDate = moment(mov.offBlock).format("YYYY-MM-DD hh:mm:ss")
+    
+    if (new Date(startTime) > new Date(endTime)) {
+      this.generalService.notification("End Time harus lebih besar dari Start Time")
     }
-    else{
-      let avio = null
-      avio = localStorage.getItem('avio')
-      avio = JSON.parse(avio)
-      let tempAvio = avio.list.filter(x => x.IDDATA_SP == mov.id)
-      if (tempAvio.length > 0) {
-        let tempSeq = tempAvio[tempAvio.length - 1]
-        tempSeq = parseInt(tempSeq.AIRCRAFT_VISIT_SEQ)
-        this.seq = tempSeq + 1
-      }
-      body = {
-        "IDDATA": "",
-        "AFSKEY": flightInfo.arrival.afskey,
-        "IDDATA_SP": mov.id,
-        "AIRCRAFT_VISIT_SEQ": this.seq,
-        "SERVICE_CODE": formValue.avioType,
-        "VALUE": mov.movTypeId,
-        "START": startTime,
-        "END": endTime
-      }
+    else if (new Date(startTime) < new Date(minDate) || new Date(endTime) > new Date(maxDate)) {
+      this.generalService.notification("Range tanggal harus dari" + mov.inBlock + " sampai " + mov.offBlock)
     }
-    this.flightActivityService.submitAvio(body).subscribe((res: any) => {
-      this.generalService.notification("SUKSES")
-      this.generalService.goBack();
-    },
-      error => {
-        if (error.error) {
-          this.generalService.notification(error.error.message)
-        }
-        else {
-          this.generalService.notification("ERROR CONNECTION")
+    else {
+      let body = null
+      if (this.pageType == "edit") {
+        body = {
+          "IDDATA": this.avio.IDDATA,
+          "AFSKEY": this.avio.AFSKEY,
+          "IDDATA_SP": mov.id,
+          "AIRCRAFT_VISIT_SEQ": this.avio.AIRCRAFT_VISIT_SEQ,
+          "SERVICE_CODE": formValue.avioType,
+          "VALUE": formValue.frq,
+          "START": startTime,
+          "END": endTime
         }
       }
-    );
+      else {
+        let avio = null
+        avio = localStorage.getItem('avio')
+        avio = JSON.parse(avio)
+        let tempAvio = avio.list.filter(x => x.IDDATA_SP == mov.id)
+        if (tempAvio.length > 0) {
+          let tempSeq = tempAvio[tempAvio.length - 1]
+          tempSeq = parseInt(tempSeq.AIRCRAFT_VISIT_SEQ)
+          this.seq = tempSeq + 1
+        }
+        body = {
+          "IDDATA": "",
+          "AFSKEY": flightInfo.arrival.afskey,
+          "IDDATA_SP": mov.id,
+          "AIRCRAFT_VISIT_SEQ": this.seq,
+          "SERVICE_CODE": formValue.avioType,
+          "VALUE": mov.movTypeId,
+          "START": startTime,
+          "END": endTime
+        }
+      }
+      this.flightActivityService.submitAvio(body).subscribe((res: any) => {
+        this.generalService.notification("SUKSES")
+        this.generalService.goBack();
+      },
+        error => {
+          if (error.error) {
+            this.generalService.notification(error.error.message)
+          }
+          else {
+            this.generalService.notification("ERROR CONNECTION")
+          }
+        }
+      );
+    }
   }
 
 
