@@ -5,7 +5,7 @@ import * as moment from "moment";
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FlightActivityService } from './../flight-activity.service';
-
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-create-flight-ad',
@@ -48,20 +48,20 @@ export class CreateFlightAdPage {
   ngOnInit() {
     this.formFlight = this.formBuilder.group({
       no_ar: ['', [Validators.required]],
-      airline_ar:  ['', [Validators.required]],
+      airline_ar: ['', [Validators.required]],
       suffix_ar: ['', [Validators.required]],
       runaway_ar: ['', [Validators.required]],
       remark_ar: ['', []],
       serviceType_ar: ['', [Validators.required]],
       registrationNumber_ar: ['', [Validators.required]],
       flightType_ar: ['', [Validators.required]],
-      terminal_ar:['', [Validators.required]],
-      flightDate_ar:['', [Validators.required]],
+      terminal_ar: ['', [Validators.required]],
+      flightDate_ar: ['', [Validators.required]],
       ata_ar: ['', []],
       eta_ar: ['', []],
       station1_ar: ['', [Validators.required]],
       station2_ar: ['', [Validators.required]],
-      remarkNote_ar:['', []],
+      remarkNote_ar: ['', []],
       noteDelay_ar: ['', []],
 
       no_der: ['', [Validators.required]],
@@ -71,18 +71,26 @@ export class CreateFlightAdPage {
       serviceType_der: ['', [Validators.required]],
       registrationNumber_der: ['', [Validators.required]],
       flightType_der: ['', [Validators.required]],
-      terminal_der:['', [Validators.required]],
-      flightDate_der:['', [Validators.required]],
+      terminal_der: ['', [Validators.required]],
+      flightDate_der: ['', [Validators.required]],
       ata_der: ['', []],
       eta_der: ['', []],
       station1_der: ['', [Validators.required]],
       station2_der: ['', [Validators.required]],
-      remarkNote_der:['', []],
+      remarkNote_der: ['', []],
       noteDelay_der: ['', []],
     })
 
     this.isLoading = false;
     this.getData()
+
+  }
+
+  ngAfterViewInit() {
+    //Copy in all the js code from the script.js. Typescript will complain but it works just fine
+    $(document).ready(function () {
+      $('.js-example-basic-single').select2();
+    });
   }
 
   getData() {
