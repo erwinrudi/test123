@@ -21,7 +21,7 @@ export class ScheduleFormPage {
   remarkList = []
   runawayList = []
   serviceTypeList = []
-
+  remarkNoteList = []
   flightTypeList = [
     {
       value: 'D',
@@ -45,33 +45,33 @@ export class ScheduleFormPage {
   }
   ngOnInit() {
     this.formSchedule = this.formBuilder.group({
-      terminal_ar: '',
-      flightType_ar: '',
-      suffix_ar: '',
-      runaway_ar: '',
-      serviceType_ar: '',
-      from_ar: '',
-      to_ar: '',
-      eta_ar: '',
-      ata_ar: '',
-      regNo_ar: '',
-      remark_ar: '',
-      remarkNote_ar: '',
-      noteDelay_ar: '',
+      suffix_ar: ['', [Validators.required]],
+      runaway_ar: ['', [Validators.required]],
+      remark_ar: ['', []],
+      serviceType_ar: ['', [Validators.required]],
+      regNo_ar: ['', [Validators.required]],
+      flightType_ar: ['', [Validators.required]],
+      terminal_ar: ['', [Validators.required]],
+      ata_ar: ['', []],
+      eta_ar: ['', []],
+      from_ar: ['', [Validators.required]],
+      to_ar: ['', [Validators.required]],
+      remarkNote_ar: ['', []],
+      noteDelay_ar: ['', []],
 
-      terminal_der: '',
-      flightType_der : '',
-      from_der: '',
-      suffix_der: '',
-      runaway_der: '',
-      serviceType_der: '',
-      to_der: '',
-      eta_der: '',
-      ata_der: '',
-      regNo_der: '',
-      remark_der: '',
-      remarkNote_der: '',
-      noteDelay_der: '',
+      suffix_der: ['', [Validators.required]],
+      runaway_der: ['', [Validators.required]],
+      remark_der: ['', []],
+      serviceType_der: ['', [Validators.required]],
+      regNo_der: ['', [Validators.required]],
+      flightType_der: ['', [Validators.required]],
+      terminal_der: ['', [Validators.required]],
+      ata_der: ['', []],
+      eta_der: ['', []],
+      from_der: ['', [Validators.required]],
+      to_der: ['', [Validators.required]],
+      remarkNote_der: ['', []],
+      noteDelay_der: ['', []],
     })
 
     this.getData();
@@ -118,6 +118,15 @@ export class ScheduleFormPage {
         this.suffixList.push(optionVal)
       })
 
+      data.MASTER_REMARK_NOTE.map(x => {
+        let optionVal = {
+          remarkCode: x.REMARK_CODE,
+          remark: x.REMARK,
+          text: x.REMARK,
+        }
+        this.remarkNoteList.push(optionVal)
+      })
+
       data = null
       data = localStorage.getItem('flightInfo')
       data = JSON.parse(data)
@@ -130,10 +139,13 @@ export class ScheduleFormPage {
 
       let serviceTypeTemp_ar = this.serviceTypeList.find(x => x.AIRCRAFT_SUBTYPE == data.detailTemp.arrival.AIRCRAFT_SUBTYPE)
       let serviceTypeTemp_der = this.serviceTypeList.find(x => x.AIRCRAFT_SUBTYPE == data.detailTemp.departure.AIRCRAFT_SUBTYPE)
-      
-      
+
+
       let runawayTemp_ar = this.runawayList.find(x => x.runwayCode == data.detailTemp.arrival.RUNWAY)
       let runawayTemp_der = this.runawayList.find(x => x.runwayCode == data.detailTemp.departure.RUNWAY)
+
+      let remarkCodeTemp_ar = this.remarkNoteList.find(x => x.remarkCode == data.arrival.remarkNote)
+      let remarkCodeTemp_der = this.remarkNoteList.find(x => x.remarkCode == data.departure.remarkNote)
 
       this.formSchedule.patchValue({
         terminal_ar: data.arrival.terminal,
@@ -142,7 +154,7 @@ export class ScheduleFormPage {
         eta_ar: data.arrival.eta,
         ata_ar: data.arrival.ata,
         regNo_ar: data.arrival.reg,
-        remarkNote_ar: data.arrival.remarkNote,
+        remarkNote_ar: remarkCodeTemp_ar,
         noteDelay_ar: data.detailTemp.arrival.NOTE_DELAY,
         remark_ar: remarkTemp_ar,
         suffix_ar: suffixTemp_ar,
@@ -156,7 +168,7 @@ export class ScheduleFormPage {
         eta_der: data.departure.eta,
         ata_der: data.departure.ata,
         regNo_der: data.departure.reg,
-        remarkNote_der: data.departure.remarkNote,
+        remarkNote_der: remarkCodeTemp_der,
         noteDelay_der: data.detailTemp.arrival.NOTE_DELAY,
         remark_der: remarkTemp_der,
         suffix_der: suffixTemp_der,
@@ -185,10 +197,10 @@ export class ScheduleFormPage {
     const formValue = this.formSchedule.value;
     let flightInfo = null
     flightInfo = JSON.parse(localStorage.getItem('flightInfo'))
-    let eta_ar = moment(formValue.eta_ar, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
-    let ata_ar = moment(formValue.ata_ar, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
-    let eta_der = moment(formValue.eta_der, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
-    let ata_der = moment(formValue.ata_der, "YYYY-MM-DDTHH:mmZ").format("YYYY-MM-DD hh:mm:ss")
+    let eta_ar = moment(formValue.eta_ar).format("YYYY-MM-DD hh:mm:ss")
+    let ata_ar = moment(formValue.ata_ar).format("YYYY-MM-DD hh:mm:ss")
+    let eta_der = moment(formValue.eta_der).format("YYYY-MM-DD hh:mm:ss")
+    let ata_der = moment(formValue.ata_der).format("YYYY-MM-DD hh:mm:ss")
 
     let body = {
       "ARRIVAL":
@@ -201,17 +213,17 @@ export class ScheduleFormPage {
         "STATION2": formValue.to_ar,
         "STATION3": flightInfo.detailTemp.arrival.STATION3,
         "STATION4": flightInfo.detailTemp.arrival.STATION4,
-        "ATMSATAD": formValue.ata_ar,
-        "REMARK_CODE": formValue.remark_ar.remarkCode,
+        "ATMSATAD": ata_ar,
+        "REMARK_CODE": formValue.remark_ar.remarkCode ? formValue.remark_ar.remarkCode : "",
         "AIRCRAFT_SUBTYPE": formValue.serviceType_ar.AIRCRAFT_SUBTYPE,
         "NOTE_DELAY": formValue.noteDelay_ar,
         "FLIGHT_NUMBER": flightInfo.detailTemp.arrival.FLIGHT_NO,
         "AIRCRAFT_REG_NO": formValue.regNo_ar,
         "CATEGORY_CODE": formValue.flightType_ar,
         "STAD": flightInfo.detailTemp.arrival.STAD,
-        "AIRETAD": formValue.eta_ar,
+        "AIRETAD": eta_ar,
         "RUNWAY": formValue.runaway_ar.runwayCode,
-        "REMARK_NOTE": formValue.remarkNote_ar,
+        "REMARK_NOTE": formValue.remarkNote_ar.remarkCode ? formValue.remarkNote_ar.remarkCode : "",
         "AFSKEY": flightInfo.arrival.afskey
       },
       "DEPARTURE": {
@@ -223,17 +235,17 @@ export class ScheduleFormPage {
         "STATION2": formValue.to_der,
         "STATION3": flightInfo.detailTemp.departure.STATION3,
         "STATION4": flightInfo.detailTemp.departure.STATION4,
-        "ATMSATAD": formValue.ata_der,
-        "REMARK_CODE": formValue.remark_der.remarkCode,
+        "ATMSATAD": ata_der,
+        "REMARK_CODE": formValue.remark_der.remarkCode ? formValue.remark_der.remarkCode : "",
         "AIRCRAFT_SUBTYPE": formValue.serviceType_der.AIRCRAFT_SUBTYPE,
         "NOTE_DELAY": formValue.noteDelay_der,
         "FLIGHT_NUMBER": flightInfo.detailTemp.departure.FLIGHT_NO,
         "AIRCRAFT_REG_NO": formValue.regNo_der,
         "CATEGORY_CODE": formValue.flightType_der,
         "STAD": flightInfo.detailTemp.departure.STAD,
-        "AIRETAD": formValue.eta_der,
+        "AIRETAD": eta_der,
         "RUNWAY": formValue.runaway_der.runwayCode,
-        "REMARK_NOTE": formValue.remarkNote_der,
+        "REMARK_NOTE": formValue.remarkNote_der.remarkCode ? formValue.remarkNote_der.remarkCode : "",
         "AFSKEY": flightInfo.departure.afskey
       }
     }

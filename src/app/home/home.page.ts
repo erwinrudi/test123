@@ -82,7 +82,7 @@ export class HomePage {
         permissions.push('delete_' + moduleName);
       }
       if (access.update === 1) {
-        permissions.push('update' + moduleName);
+        permissions.push('update_' + moduleName);
       }
     })
 
