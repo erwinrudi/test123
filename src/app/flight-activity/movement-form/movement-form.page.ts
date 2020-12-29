@@ -35,10 +35,10 @@ export class MovementFormPage {
   }
   ngOnInit() {
     this.formMovement = this.formBuilder.group({
-      inBlock: '',
-      offBlock: '',
-      standCode: '',
-      movType: ''
+      inBlock: ['', [Validators.required]],
+      offBlock: ['', [Validators.required]],
+      standCode: ['', [Validators.required]],
+      movType: ['', [Validators.required]]
     })
 
     this.id = this.activatedRoute.snapshot.params["id"];

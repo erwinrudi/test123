@@ -14,7 +14,7 @@
                 <div style="padding: 20px 20px;">
 
                     <div class="datepick-container">
-                        <ion-label class="input-label">In Block</ion-label>
+                        <ion-label class="input-label">Actual In Block Time/AIBT *</ion-label>
                         <div class="input-date-cont">
                             <ion-row>
                                 <ion-col>
@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="datepick-container">
-                        <ion-label class="input-label">Off Block</ion-label>
+                        <ion-label class="input-label">Actual Off Block Time / AOBT *</ion-label>
                         <div class="input-date-cont">
                             <ion-row>
                                 <ion-col>
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="select-container">
-                        <ion-label class="input-label">Stand Code</ion-label>
+                        <ion-label class="input-label">Stand Code *</ion-label>
                         <div class="input-select-cont">
                             <ion-select formControlName="standCode" interface="action-sheet" class="input-select"
                                 placeholder="Select One">
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="select-container">
-                        <ion-label class="input-label">Mov Type</ion-label>
+                        <ion-label class="input-label">Mov Type *</ion-label>
                         <div class="input-select-cont">
                             <ion-select formControlName="movType" interface="action-sheet" class="input-select"
                                 placeholder="Select One">
@@ -62,7 +62,8 @@
             </div>
             <div class="footer-style">
                 <ion-toolbar>
-                    <ion-button type="submit" expand="block">Submit</ion-button>
+                    <ion-button [disabled]="!formMovement.valid || isLoading" type="submit" expand="block">Submit
+                    </ion-button>
                 </ion-toolbar>
             </div>
         </form>
