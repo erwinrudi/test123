@@ -69,9 +69,17 @@ export class GeneralService {
         this.router.navigate(['/']);
     }
 
+    redirectHome(){
+        this.router.navigateByUrl("/")
+    }
+
     permissionCekker(value = "") {
         let permission = this.getPermissionsLocal()
-        debugger
+        let isPermis = permission.find(x => x == value)
+        if (isPermis) {
+            return true
+        }
+        return false
     }
 
     formatterValue(value = '0', maxValue = '999999999', Currency = 'Rp. ', digitSplit = 3, point = ',') {

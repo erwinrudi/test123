@@ -8,7 +8,7 @@
         <div class="content-container">
             <ion-row>
                 <ion-col *ngxPermissionsOnly="['read_flightact' , 'write_flightact']"
-                    [routerLink]="['/flight/flight-menu']" size="3">
+                   (click)="onClickFlight()" size="3">
                     <div class="submenu-container">
                         <img class="icon-style" src="./assets/svg/flightact-round.svg" alt="React Logo" />
                         <div class="text">

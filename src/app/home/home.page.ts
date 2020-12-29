@@ -89,8 +89,13 @@ export class HomePage {
     this.generalService.setPermissions(permissions);
   }
 
-  onClickFlight(){
-    let permis = this.generalService.getPermissionsLocal()
-    debugger
+  onClickFlight() {
+    let canWrite = this.generalService.permissionCekker("write_flightact")
+    if (canWrite == true) {
+      this.router.navigateByUrl("/flight/flight-menu")
+    }
+    else {
+      this.router.navigateByUrl("/flight/schedule-search")
+    }
   }
 }

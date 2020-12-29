@@ -13,14 +13,18 @@ export class FlightMenuPage {
     private generalService: GeneralService,
     private router: Router
   ) {
+    let isPermis = this.generalService.permissionCekker("write_flightact")
+    if(isPermis == false){
+      this.generalService.redirectHome()
+    }
   }
 
-  back(){
-    this.router.navigateByUrl("/")
+  back() {
+    this.generalService.redirectHome()
   }
 
-  cekPermission(){
-    this.generalService.permissionCekker("write_flightact")
+  cekPermission() {
+
   }
 
 }

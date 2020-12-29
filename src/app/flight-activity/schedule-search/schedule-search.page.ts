@@ -87,7 +87,13 @@ export class ScheduleSearchPage {
   }
 
   back() {
-    this.router.navigateByUrl("/flight/flight-menu")
+    let canWrite = this.generalService.permissionCekker("write_flightact")
+    if (canWrite == true) {
+      this.router.navigateByUrl("/flight/flight-menu")
+    }
+    else {
+      this.router.navigateByUrl("/")
+    }
   }
 
 }
