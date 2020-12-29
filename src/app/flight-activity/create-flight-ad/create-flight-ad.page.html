@@ -31,7 +31,8 @@
                     <div class="textbox-container">
                         <ion-label class="input-label">Flight *</ion-label>
                         <div class="input-text-cont">
-                            <ion-input formControlName="airline_ar" class="input-text" placeholder="e.g Number" required>
+                            <ion-input formControlName="airline_ar" class="input-text" placeholder="e.g Number"
+                                required>
                             </ion-input>
                         </div>
                     </div>
@@ -48,7 +49,7 @@
                     <div class="select-container">
                         <ion-label class="input-label">Suffix *</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="suffix_ar" interface="popover" class="input-select"
+                            <ion-select formControlName="suffix_ar" interface="interface" class="input-select"
                                 placeholder="Select One">
                                 <ion-select-option *ngFor="let suffix of suffixList" [value]="suffix">
                                     {{suffix.text}}</ion-select-option>
@@ -83,7 +84,7 @@
                             </ion-input>
                         </div>
                     </div>
-                    
+
                     <div class="datepick-container">
                         <ion-label class="input-label">Flight Date *</ion-label>
                         <div class="input-date-cont">
@@ -95,7 +96,7 @@
                             </ion-row>
                         </div>
                     </div>
-                    
+
                     <div class="textbox-container">
                         <ion-label class="input-label">Station 1 *</ion-label>
                         <div class="input-text-cont">
@@ -140,7 +141,7 @@
                     <div class="select-container">
                         <ion-label class="input-label">Remark</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="remark_ar" interface="popover" class="input-select"
+                            <ion-select formControlName="remark_ar" interface="interface" class="input-select"
                                 placeholder="Select One">
                                 <ion-select-option *ngFor="let remark of remarkList" [value]="remark">
                                     {{remark.text}}</ion-select-option>
@@ -151,7 +152,7 @@
                     <div class="select-container">
                         <ion-label class="input-label">Runway *</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="runaway_ar" interface="popover" class="input-select"
+                            <ion-select formControlName="runaway_ar" interface="interface" class="input-select"
                                 placeholder="Select One">
                                 <ion-select-option *ngFor="let runaway of runawayList" [value]="runaway">
                                     {{runaway.text}}</ion-select-option>
@@ -162,7 +163,7 @@
                     <div class="select-container">
                         <ion-label class="input-label">Service Type *</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="serviceType_ar" interface="popover" class="input-select"
+                            <ion-select formControlName="serviceType_ar" interface="interface" class="input-select"
                                 placeholder="Select One">
                                 <ion-select-option *ngFor="let serviceType of serviceTypeList" [value]="serviceType">
                                     {{serviceType.text}}</ion-select-option>
@@ -170,11 +171,14 @@
                         </div>
                     </div>
 
-                    <div class="textbox-container">
+                    <div class="select-container">
                         <ion-label class="input-label">Note Delay</ion-label>
-                        <div class="input-text-cont">
-                            <ion-input formControlName="remarkNote_ar" class="input-text" placeholder="">
-                            </ion-input>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="remarkNote_ar" interface="interface" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let remarkNote of remarkNoteList" [value]="remarkNote">
+                                    {{remarkNote.text}}</ion-select-option>
+                            </ion-select>
                         </div>
                     </div>
 
@@ -200,14 +204,11 @@
                     <div class="select-container">
                         <ion-label class="input-label">Suffix *</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="suffix_der" interface="popover" class="input-select"
+                            <ion-select formControlName="suffix_der" interface="interface" class="input-select"
                                 placeholder="Select One">
                                 <ion-select-option *ngFor="let suffix of suffixList" [value]="suffix">
                                     {{suffix.text}}</ion-select-option>
                             </ion-select>
-                            <!-- <select class="js-example-basic-single"  formControlName="suffix_der">
-                                <option *ngFor="let suffix of suffixList" [value]="suffix"> {{suffix.text}}</option>
-                              </select> -->
                         </div>
                     </div>
 
@@ -238,7 +239,7 @@
                             </ion-input>
                         </div>
                     </div>
-                    
+
                     <div class="datepick-container">
                         <ion-label class="input-label">Flight Date *</ion-label>
                         <div class="input-date-cont">
@@ -250,7 +251,7 @@
                             </ion-row>
                         </div>
                     </div>
-                    
+
                     <div class="textbox-container">
                         <ion-label class="input-label">Station 1 *</ion-label>
                         <div class="input-text-cont">
@@ -295,7 +296,7 @@
                     <div class="select-container">
                         <ion-label class="input-label">Remark</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="remark_der" interface="popover" class="input-select"
+                            <ion-select formControlName="remark_der" interface="interface" class="input-select"
                                 placeholder="Select One">
                                 <ion-select-option *ngFor="let remark of remarkList" [value]="remark">
                                     {{remark.text}}</ion-select-option>
@@ -306,7 +307,7 @@
                     <div class="select-container">
                         <ion-label class="input-label">Runway *</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="runaway_der" interface="popover" class="input-select"
+                            <ion-select formControlName="runaway_der" interface="interface" class="input-select"
                                 placeholder="Select One">
                                 <ion-select-option *ngFor="let runaway of runawayList" [value]="runaway">
                                     {{runaway.text}}</ion-select-option>
@@ -317,7 +318,7 @@
                     <div class="select-container">
                         <ion-label class="input-label">Service Type *</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="serviceType_der" interface="popover" class="input-select"
+                            <ion-select formControlName="serviceType_der" interface="interface" class="input-select"
                                 placeholder="Select One">
                                 <ion-select-option *ngFor="let serviceType of serviceTypeList" [value]="serviceType">
                                     {{serviceType.text}}</ion-select-option>
@@ -325,11 +326,14 @@
                         </div>
                     </div>
 
-                    <div class="textbox-container">
+                    <div class="select-container">
                         <ion-label class="input-label">Note Delay</ion-label>
-                        <div class="input-text-cont">
-                            <ion-input formControlName="remarkNote_der" class="input-text" placeholder="">
-                            </ion-input>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="remarkNote_der" interface="interface" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let remarkNote of remarkNoteList" [value]="remarkNote">
+                                    {{remarkNote.text}}</ion-select-option>
+                            </ion-select>
                         </div>
                     </div>
 
@@ -347,7 +351,8 @@
             </div>
             <div class="footer-style">
                 <ion-toolbar>
-                    <ion-button [disabled]="!formFlight.valid || isLoading" type="submit" expand="block">Submit</ion-button>
+                    <ion-button [disabled]="!formFlight.valid || isLoading" type="submit" expand="block">Submit
+                    </ion-button>
                 </ion-toolbar>
             </div>
         </form>

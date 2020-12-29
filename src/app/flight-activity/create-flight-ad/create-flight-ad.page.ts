@@ -32,6 +32,7 @@ export class CreateFlightAdPage {
   remarkList = []
   runawayList = []
   serviceTypeList = []
+  remarkNoteList = []
 
   constructor(
     private formBuilder: FormBuilder,
@@ -92,12 +93,13 @@ export class CreateFlightAdPage {
       this.remarkList = []
       this.serviceTypeList = []
       this.suffixList = []
+      this.remarkNoteList = []
 
       data.MASTER_REMARK.map(x => {
         let optionVal = {
           remarkCode: x.REMARK_CODE,
           remark: x.REMARK,
-          text: x.REMARK,
+          text: x.REMARK_CODE + " - " +x.REMARK,
         }
         this.remarkList.push(optionVal)
       })
@@ -126,6 +128,14 @@ export class CreateFlightAdPage {
         this.suffixList.push(optionVal)
       })
 
+      data.MASTER_REMARK_NOTE.map(x => {
+        let optionVal = {
+          remarkCode: x.REMARK_CODE,
+          remark: x.REMARK,
+          text: x.REMARK,
+        }
+        this.remarkNoteList.push(optionVal)
+      })
       // data.
     },
       error => {
@@ -162,7 +172,7 @@ export class CreateFlightAdPage {
         "STATION3": "",
         "STATION4": "",
         "ATMSATAD": ata_ar,
-        "REMARK_CODE": formValue.remark_ar.remarkCode,
+        "REMARK_CODE": formValue.remark_ar.remarkCode ? formValue.remark_ar.remarkCode : "",
         "AIRCRAFT_SUBTYPE": formValue.serviceType_ar.AIRCRAFT_SUBTYPE,
         "NOTE_DELAY": formValue.noteDelay_ar,
         "FLIGHT_NUMBER": formValue.no_ar,
@@ -171,7 +181,7 @@ export class CreateFlightAdPage {
         "STAD": flightDate_ar,
         "AIRETAD": eta_ar,
         "RUNWAY": formValue.runaway_ar.runwayCode,
-        "REMARK_NOTE": formValue.remarkNote_ar
+        "REMARK_NOTE": formValue.remarkNote_ar.remarkCode ? formValue.remarkNote_ar.remarkCode : ""
       },
       "DEPARTURE": {
         "IATA_AIRLINE_CODE": formValue.airline_ar,
@@ -183,7 +193,7 @@ export class CreateFlightAdPage {
         "STATION3": "",
         "STATION4": "",
         "ATMSATAD": ata_der,
-        "REMARK_CODE": formValue.remark_der.remarkCode,
+        "REMARK_CODE": formValue.remark_der.remarkCode ? formValue.remark_der.remarkCode : "",
         "AIRCRAFT_SUBTYPE": formValue.serviceType_der.AIRCRAFT_SUBTYPE,
         "NOTE_DELAY": formValue.noteDelay_der,
         "FLIGHT_NUMBER": formValue.no_der,
@@ -192,7 +202,7 @@ export class CreateFlightAdPage {
         "STAD": flightDate_der,
         "AIRETAD": eta_der,
         "RUNWAY": formValue.runaway_der.runwayCode,
-        "REMARK_NOTE": formValue.remarkNote_der
+        "REMARK_NOTE": formValue.remarkNote_der.remarkCode ? formValue.remarkNote_der.remarkCode : ""
       }
     }
 

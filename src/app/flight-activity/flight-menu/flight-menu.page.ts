@@ -19,4 +19,8 @@ export class FlightMenuPage {
     this.router.navigateByUrl("/")
   }
 
+  cekPermission(){
+    this.generalService.permissionCekker("write_flightact")
+  }
+
 }
