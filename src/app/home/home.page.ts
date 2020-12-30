@@ -91,10 +91,14 @@ export class HomePage {
 
   onClickFlight() {
     let canWrite = this.generalService.permissionCekker("write_flightact")
-    if (canWrite == true) {
+    let canRead = this.generalService.permissionCekker("read_flightact")
+    if (canWrite == true && canRead == true) {
       this.router.navigateByUrl("/flight/flight-menu")
     }
-    else {
+    else if (canWrite == true) {
+      this.router.navigateByUrl("/flight/create-menu")
+    }
+    else if (canRead == true) {
       this.router.navigateByUrl("/flight/schedule-search")
     }
   }

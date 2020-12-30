@@ -31,7 +31,10 @@ export class ScheduleSearchPage {
     private generalService: GeneralService,
     private location: Location
   ) {
-
+    let canRead = this.generalService.permissionCekker("read_flightact")
+    if (canRead == false) {
+      this.router.navigateByUrl("/")
+    }
   }
 
   ngOnInit() {
@@ -88,7 +91,8 @@ export class ScheduleSearchPage {
 
   back() {
     let canWrite = this.generalService.permissionCekker("write_flightact")
-    if (canWrite == true) {
+    let canRead = this.generalService.permissionCekker("read_flightact")
+    if (canWrite == true && canRead == true) {
       this.router.navigateByUrl("/flight/flight-menu")
     }
     else {

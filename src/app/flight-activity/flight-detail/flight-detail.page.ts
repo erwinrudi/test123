@@ -169,19 +169,25 @@ export class FlightDetailPage {
     private router: Router,
     private flightActivityService: FlightActivityService
   ) {
-    activatedRoute.params.subscribe(val => {
-      this.getQueryParams();
+    let canRead = this.generalService.permissionCekker("read_flightact")
+    if (canRead == false) {
+      this.router.navigateByUrl("/")
+    }
+    else {
+      activatedRoute.params.subscribe(val => {
+        this.getQueryParams();
 
-      new Promise((resolve, reject) => {
-        Promise.all([
-          this.getDetail(),
-          this.getPax(),
-          this.getMovement(),
-          this.getCargo()
-        ]).then(([]) => {
+        new Promise((resolve, reject) => {
+          Promise.all([
+            this.getDetail(),
+            this.getPax(),
+            this.getMovement(),
+            this.getCargo()
+          ]).then(([]) => {
+          })
         })
-      })
-    });
+      });
+    }
   }
 
   ngOnInit() {
@@ -395,7 +401,7 @@ export class FlightDetailPage {
 
         this.cargo.arrival = arrival;
         this.cargo.departure = departure;
-        
+
         let localCargo = JSON.stringify(this.cargo)
         localStorage.setItem('cargo', localCargo)
         resolve(true)

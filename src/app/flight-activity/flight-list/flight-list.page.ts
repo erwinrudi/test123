@@ -44,10 +44,16 @@ export class FlightListPage {
     private router: Router,
     private flightActivityService: FlightActivityService
   ) {
-    activatedRoute.params.subscribe(val => {
-      this.getQueryParams();
-      this.getData();
-    })
+    let canRead = this.generalService.permissionCekker("read_flightact")
+    if (canRead == false) {
+      this.router.navigateByUrl("/")
+    }
+    else {
+      activatedRoute.params.subscribe(val => {
+        this.getQueryParams();
+        this.getData();
+      })
+    }
   }
 
   ngOnInit() {
@@ -72,7 +78,7 @@ export class FlightListPage {
   getData() {
     this.flightActivityService.getListFlight(this.props).subscribe((rows: any) => {
       let data = rows.data
-      rows.data.map((x,index) => {
+      rows.data.map((x, index) => {
         data[index]['STADFOR'] = moment(x.ARRIVAL.STAD).format("D MMMM YYYY HH:mm")
       })
       this.flightList = data;
