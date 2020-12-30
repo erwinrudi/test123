@@ -73,7 +73,7 @@ export class FlightListPage {
     this.flightActivityService.getListFlight(this.props).subscribe((rows: any) => {
       let data = rows.data
       rows.data.map((x,index) => {
-        data[index]['STADFOR'] = moment(x.ARRIVAL.STAD).format("D MMMM YYYY hh:mm")
+        data[index]['STADFOR'] = moment(x.ARRIVAL.STAD).format("D MMMM YYYY HH:mm")
       })
       this.flightList = data;
     },

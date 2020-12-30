@@ -245,9 +245,9 @@ export class FlightDetailPage {
           arrival.flightType = arrivalTemp.CATEGORY_CODE == "I" ? "Int" : "Dom";
           arrival.from = arrivalTemp.STATION1
           arrival.to = arrivalTemp.STATION2
-          arrival.ata = arrivalTemp.ATMSATAD ? moment(arrivalTemp.ATMSATAD).format("D MMMM YYYY hh:mm") : ""
+          arrival.ata = arrivalTemp.ATMSATAD ? moment(arrivalTemp.ATMSATAD).format("D MMMM YYYY HH:mm") : ""
           arrival.ata = arrival.ata == "Invalid date" ? "" : arrival.ata
-          arrival.eta = arrivalTemp.AIRETAD ? moment(arrivalTemp.AIRETAD).format("D MMMM YYYY hh:mm") : ""
+          arrival.eta = arrivalTemp.AIRETAD ? moment(arrivalTemp.AIRETAD).format("D MMMM YYYY HH:mm") : ""
           arrival.eta = arrival.eta == "Invalid date" ? "" : arrival.eta
           arrival.regNo = arrivalTemp.AIRCRAFT_REG_NO
           arrival.remark = arrival.remark
@@ -263,9 +263,9 @@ export class FlightDetailPage {
           departure.flightType = departureTemp.CATEGORY_CODE == "I" ? "Int" : "Dom";
           departure.from = departureTemp.STATION1
           departure.to = departureTemp.STATION2
-          departure.ata = departureTemp.ATMSATAD ? moment(departureTemp.ATMSATAD).format("D MMMM YYYY hh:mm") : ""
+          departure.ata = departureTemp.ATMSATAD ? moment(departureTemp.ATMSATAD).format("D MMMM YYYY HH:mm") : ""
           departure.ata = departure.ata == "Invalid date" ? "" : departure.ata
-          departure.eta = departureTemp.AIRETAD ? moment(departureTemp.AIRETAD).format("D MMMM YYYY hh:mm") : ""
+          departure.eta = departureTemp.AIRETAD ? moment(departureTemp.AIRETAD).format("D MMMM YYYY HH:mm") : ""
           departure.eta = departure.eta == "Invalid date" ? "" : departure.eta
           departure.regNo = departureTemp.AIRCRAFT_REG_NO
           departure.remark = departure.remark
@@ -441,8 +441,8 @@ export class FlightDetailPage {
           let body = {
             id: x.IDDATA,
             title: 'Flight Activity Movement',
-            inBlock: x.ON_BLOCK_TIME ? moment(x.ON_BLOCK_TIME).format("D MMMM YYYY hh:mm") : "",
-            offBlock: x.OFF_BLOCK_TIME ? moment(x.OFF_BLOCK_TIME).format("D MMMM YYYY hh:mm") : "",
+            inBlock: x.ON_BLOCK_TIME ? moment(x.ON_BLOCK_TIME).format("D MMMM YYYY HH:mm") : "",
+            offBlock: x.OFF_BLOCK_TIME ? moment(x.OFF_BLOCK_TIME).format("D MMMM YYYY HH:mm") : "",
             standCode: x.STAND_CODE,
             movType: movType.text,
             movTypeId: movType.value,
@@ -489,8 +489,8 @@ export class FlightDetailPage {
           listVal['MOVEMENT'] = mov;
           let avioType = avio.avioTypeList.find(type => type.value == x.SERVICE_CODE)
           listVal['AVIO_TYPE'] = avioType
-          listVal['START'] = listVal['START'] ? moment(listVal['START']).format("D MMMM YYYY hh:mm") : ""
-          listVal['END'] = listVal['END'] ? moment(listVal['END']).format("D MMMM YYYY hh:mm") : ""
+          listVal['START'] = listVal['START'] ? moment(listVal['START']).format("D MMMM YYYY HH:mm") : ""
+          listVal['END'] = listVal['END'] ? moment(listVal['END']).format("D MMMM YYYY HH:mm") : ""
 
           avio.list.push(listVal);
         })

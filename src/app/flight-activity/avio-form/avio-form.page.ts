@@ -83,16 +83,16 @@ export class AvioFormPage {
     let mov = this.movList.find(x => x.id == formValue.mov)
     let flightInfo = null
     flightInfo = JSON.parse(localStorage.getItem('flightInfo'))
-    let startTime = moment(formValue.startTime).format("YYYY-MM-DD hh:mm:ss")
-    let endTime = moment(formValue.endTime).format("YYYY-MM-DD hh:mm:ss")
+    let startTime = moment(formValue.startTime).format("YYYY-MM-DD HH:mm:ss")
+    let endTime = moment(formValue.endTime).format("YYYY-MM-DD HH:mm:ss")
 
-    let minDate = moment(mov.inBlock).format("YYYY-MM-DD hh:mm:ss")
-    let maxDate = moment(mov.offBlock).format("YYYY-MM-DD hh:mm:ss")
-    
-    if (new Date(startTime) > new Date(endTime)) {
+    let minDate = moment(mov.inBlock).format("YYYY-MM-DD HH:mm:ss")
+    let maxDate = moment(mov.offBlock).format("YYYY-MM-DD HH:mm:ss")
+
+    if (moment(endTime).isSameOrBefore(startTime)) {
       this.generalService.notification("End Time harus lebih besar dari Start Time")
     }
-    else if (new Date(startTime) < new Date(minDate) || new Date(endTime) > new Date(maxDate)) {
+    else if (moment(startTime).isSameOrBefore(minDate) || moment(maxDate).isSameOrBefore(endTime)) {
       this.generalService.notification("Range tanggal harus dari" + mov.inBlock + " sampai " + mov.offBlock)
     }
     else {

@@ -197,10 +197,10 @@ export class ScheduleFormPage {
     const formValue = this.formSchedule.value;
     let flightInfo = null
     flightInfo = JSON.parse(localStorage.getItem('flightInfo'))
-    let eta_ar = moment(formValue.eta_ar).format("YYYY-MM-DD hh:mm:ss")
-    let ata_ar = moment(formValue.ata_ar).format("YYYY-MM-DD hh:mm:ss")
-    let eta_der = moment(formValue.eta_der).format("YYYY-MM-DD hh:mm:ss")
-    let ata_der = moment(formValue.ata_der).format("YYYY-MM-DD hh:mm:ss")
+    let eta_ar = moment(formValue.eta_ar).format("YYYY-MM-DD HH:mm:ss")
+    let ata_ar = moment(formValue.ata_ar).format("YYYY-MM-DD HH:mm:ss")
+    let eta_der = moment(formValue.eta_der).format("YYYY-MM-DD HH:mm:ss")
+    let ata_der = moment(formValue.ata_der).format("YYYY-MM-DD HH:mm:ss")
 
     let body = {
       "ARRIVAL":
