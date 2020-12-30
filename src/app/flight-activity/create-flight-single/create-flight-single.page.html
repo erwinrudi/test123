@@ -11,49 +11,48 @@
         <form [formGroup]="formFlight" (ngSubmit)="onSubmit($event)" novalidate>
             <div class="content-container">
                 <div style="padding: 20px 20px;">
-
-                    <div class="select-container">
-                        <ion-label class="input-label">Airline</ion-label>
-                        <div class="input-select-cont">
-                            <ion-select formControlName="airline" interface="action-sheet" class="input-select"
-                                placeholder="Select One">
-                                <ion-select-option *ngFor="let airlines of airlineList" [value]="airlines">
-                                    {{airlines.text}}</ion-select-option>
-                            </ion-select>
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Flight *</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="airline_ar" class="input-text" placeholder="e.g Number"
+                                required>
+                            </ion-input>
                         </div>
                     </div>
 
+
                     <div class="textbox-container">
-                        <ion-label class="input-label">No</ion-label>
+                        <ion-label class="input-label">No *</ion-label>
                         <div class="input-text-cont">
-                            <ion-input formControlName="no" class="input-text" placeholder="e.g Number">
+                            <ion-input formControlName="no_ar" class="input-text" placeholder="e.g Number">
                             </ion-input>
                         </div>
                     </div>
 
                     <div class="select-container">
-                        <ion-label class="input-label">Suffix</ion-label>
+                        <ion-label class="input-label">Suffix *</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="suffix" interface="action-sheet" class="input-select"
+                            <ion-select formControlName="suffix_ar" interface="interface" class="input-select"
                                 placeholder="Select One">
-                                <ion-select-option *ngFor="let airlines of airlineList" [value]="airlines">
-                                    {{airlines.text}}</ion-select-option>
+                                <ion-select-option *ngFor="let suffix of suffixList" [value]="suffix">
+                                    {{suffix.text}}</ion-select-option>
                             </ion-select>
                         </div>
                     </div>
 
                     <div class="textbox-container">
-                        <ion-label class="input-label">Registration Number</ion-label>
+                        <ion-label class="input-label">Registration Number *</ion-label>
                         <div class="input-text-cont">
-                            <ion-input formControlName="registrationNumber" class="input-text" placeholder="e.g Number">
+                            <ion-input formControlName="registrationNumber_ar" class="input-text"
+                                placeholder="e.g Number">
                             </ion-input>
                         </div>
                     </div>
 
                     <div class="select-container">
-                        <ion-label class="input-label">Flight Type</ion-label>
+                        <ion-label class="input-label">Dom Int *</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="flightType" interface="action-sheet" class="input-select"
+                            <ion-select formControlName="flightType_ar" interface="action-sheet" class="input-select"
                                 placeholder="Select One">
                                 <ion-select-option *ngFor="let flightTypes of flightTypeList" [value]="flightTypes">
                                     {{flightTypes.text}}</ion-select-option>
@@ -61,78 +60,124 @@
                         </div>
                     </div>
 
-                    <div class="select-container">
-                        <ion-label class="input-label">Terminal</ion-label>
-                        <div class="input-select-cont">
-                            <ion-select formControlName="terminal" interface="action-sheet" class="input-select"
-                                placeholder="Select One">
-                                <ion-select-option *ngFor="let terminals of terminalList" [value]="terminals">
-                                    {{terminals.text}}</ion-select-option>
-                            </ion-select>
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Terminal *</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="terminal_ar" class="input-text" placeholder="e.g Number">
+                            </ion-input>
                         </div>
                     </div>
 
                     <div class="datepick-container">
-                        <ion-label class="input-label">Flight Date</ion-label>
+                        <ion-label class="input-label">Flight Date *</ion-label>
                         <div class="input-date-cont">
                             <ion-row>
                                 <ion-col>
-                                    <ion-datetime formControlName="flightDate" class="input-date none-icon"
-                                        displayFormat="DD-MMMM-YYYY"></ion-datetime>
+                                    <ion-datetime formControlName="flightDate_ar" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY HH:mm"></ion-datetime>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </div>
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Station 1 *</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="station1_ar" class="input-text" placeholder="e.g Number">
+                            </ion-input>
+                        </div>
+                    </div>
+
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Station 2 *</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="station2_ar" class="input-text" placeholder="e.g Number">
+                            </ion-input>
+                        </div>
+                    </div>
+
+                    <div class="datepick-container">
+                        <ion-label class="input-label">Actual Landing Time-ALDT</ion-label>
+                        <div class="input-date-cont">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-datetime formControlName="ata_ar" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY HH:mm"></ion-datetime>
                                 </ion-col>
                             </ion-row>
                         </div>
                     </div>
 
                     <div class="datepick-container">
-                        <ion-label class="input-label">Flight Time</ion-label>
+                        <ion-label class="input-label">Estimate Landing Time-ELDT</ion-label>
                         <div class="input-date-cont">
                             <ion-row>
                                 <ion-col>
-                                    <ion-datetime formControlName="flightTime" class="input-date none-icon"
-                                        displayFormat="HH:mm"></ion-datetime>
+                                    <ion-datetime formControlName="eta_ar" class="input-date none-icon"
+                                        displayFormat="DD-MMMM-YYYY HH:mm"></ion-datetime>
                                 </ion-col>
                             </ion-row>
                         </div>
                     </div>
 
                     <div class="select-container">
-                        <ion-label class="input-label">Station 1</ion-label>
+                        <ion-label class="input-label">Remark</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="station1" interface="action-sheet" class="input-select"
+                            <ion-select formControlName="remark_ar" interface="interface" class="input-select"
                                 placeholder="Select One">
-                                <ion-select-option *ngFor="let stations of stationList" [value]="stations">
-                                    {{stations.text}}</ion-select-option>
+                                <ion-select-option *ngFor="let remark of remarkList" [value]="remark">
+                                    {{remark.text}}</ion-select-option>
                             </ion-select>
                         </div>
                     </div>
 
                     <div class="select-container">
-                        <ion-label class="input-label">Station 2</ion-label>
+                        <ion-label class="input-label">Runway *</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="station2" interface="action-sheet" class="input-select"
+                            <ion-select formControlName="runaway_ar" interface="interface" class="input-select"
                                 placeholder="Select One">
-                                <ion-select-option *ngFor="let stations of stationList" [value]="stations">
-                                    {{stations.text}}</ion-select-option>
+                                <ion-select-option *ngFor="let runaway of runawayList" [value]="runaway">
+                                    {{runaway.text}}</ion-select-option>
                             </ion-select>
                         </div>
                     </div>
 
                     <div class="select-container">
-                        <ion-label class="input-label">Flight City</ion-label>
+                        <ion-label class="input-label">Service Type *</ion-label>
                         <div class="input-select-cont">
-                            <ion-select formControlName="flightCity" interface="action-sheet" class="input-select"
+                            <ion-select formControlName="serviceType_ar" interface="interface" class="input-select"
                                 placeholder="Select One">
-                                <ion-select-option *ngFor="let flightCities of flightCityList" [value]="flightCities">
-                                    {{flightCities.text}}</ion-select-option>
+                                <ion-select-option *ngFor="let serviceType of serviceTypeList" [value]="serviceType">
+                                    {{serviceType.text}}</ion-select-option>
                             </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="select-container">
+                        <ion-label class="input-label">Note Delay</ion-label>
+                        <div class="input-select-cont">
+                            <ion-select formControlName="remarkNote_ar" interface="interface" class="input-select"
+                                placeholder="Select One">
+                                <ion-select-option *ngFor="let remarkNote of remarkNoteList" [value]="remarkNote">
+                                    {{remarkNote.text}}</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="textbox-container">
+                        <ion-label class="input-label">Desc Delay</ion-label>
+                        <div class="input-text-cont">
+                            <ion-input formControlName="noteDelay_ar" class="input-text" placeholder="">
+                            </ion-input>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="footer-style">
                 <ion-toolbar>
-                    <ion-button type="submit" expand="block">Submit</ion-button>
+                    <ion-button [disabled]="!formFlight.valid || isLoading" type="submit" expand="block">Submit
+                    </ion-button>
                 </ion-toolbar>
             </div>
         </form>

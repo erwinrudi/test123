@@ -25,8 +25,10 @@
                                 </ion-col>
                                 <ion-col size="4">
                                     <div class="content-flight right" *ngIf="data.ARRIVAL">
-                                        <span *ngIf="data.ARRIVAL.STATUS == 'COMPLETE'"  class="status-style complete">{{ data?.ARRIVAL?.STATUS }}</span>
-                                        <span *ngIf="data.ARRIVAL.STATUS == 'INCOMPLETE'"  class="status-style incomplete">{{ data?.ARRIVAL?.STATUS }}</span>
+                                        <span *ngIf="data.ARRIVAL.STATUS == 'COMPLETE'" class="status-style complete">{{
+                                            data?.ARRIVAL?.STATUS }}</span>
+                                        <span *ngIf="data.ARRIVAL.STATUS == 'INCOMPLETE'"
+                                            class="status-style incomplete">{{ data?.ARRIVAL?.STATUS }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
@@ -65,6 +67,13 @@
                                         <span class="status-style destination">{{ data?.DEPARTURE?.STATION1 }}</span>
                                         <ion-icon class="arrow-style" icon="arrow-forward-outline"></ion-icon> <span
                                             class="status-style destination">{{ data?.DEPARTURE?.STATION2 }}</span>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <div class="content-flight">
+                                        <span class="title-style-1">Status: {{ data.ARRIVAL?.STATUS_REMARK?.STATUS }} - {{ data.ARRIVAL?.STATUS_REMARK?.DESC_EN }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
