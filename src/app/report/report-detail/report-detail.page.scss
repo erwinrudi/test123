@@ -15,6 +15,30 @@
 	.content-container {
 		position: relative;
 		margin-top: 20px;
+
+		.content-flight {
+			height: 100%;
+			display: flex;
+			width: 100%;
+			&.right {
+				justify-content: flex-end;
+			}
+		}
+		.title-style-1 {
+			font-style: normal;
+			font-weight: bold;
+			font-size: 3.5vw;
+			align-items: center;
+			color: #000000;
+			margin-top: auto;
+			margin-bottom: auto;
+		}
+		.status-style {
+			font-size: 3.5vw;
+			margin-top: auto;
+			margin-bottom: auto;
+			color: #000000;
+		}
 	}
 	.toolbar-style {
 		--background: transparent;
