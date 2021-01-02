@@ -1,48 +1,100 @@
-<ion-content>
-    <div class="flight-create-list">
-        <div class="header-container">
-            <ion-toolbar class="toolbar-style">
-                <ion-buttons (click)="back()" slot="start">
-                    <ion-icon size="large" icon="chevron-back"></ion-icon>
-                </ion-buttons>
-                <ion-title class="header-title">CREATE FLIGHT ACTIVITY</ion-title>
-            </ion-toolbar>
-        </div>
-        <div class="content-container">
-            <div class="list-container">
-                <ion-row [routerLink]="['/flight/create-ad']">
-                    <ion-col size="10">
-                        <div class="header-style">
-                            Flight Arrival/Departure
-                        </div>
-                        <div class="title-style">
-                            Lorem ipsum dolor sit amet, consectetur
-                        </div>
-                    </ion-col>
-                    <ion-col>
-                        <div class="content-flight right">
-                            <ion-icon class="logo-style" icon="chevron-forward"></ion-icon>
-                        </div>
-                    </ion-col>
-                </ion-row>
-                <hr style="margin: 15px 0px;" />
-                <ion-row (click)="singleClick()">
-                    <ion-col size="10">
-                        <div class="header-style">
-                            Single Flight
-                        </div>
-                        <div class="title-style">
-                            Lorem ipsum dolor sit amet, consectetur
-                        </div>
-                    </ion-col>
-                    <ion-col>
-                        <div class="content-flight right">
-                            <ion-icon class="logo-style" icon="chevron-forward"> </ion-icon>
-                        </div>
-                    </ion-col>
-                </ion-row>
-                <hr style="margin: 15px 0px;" />
+<ng-container *ngIf="showSingle == false">
+    <ion-content>
+        <div class="flight-create-list">
+            <div class="header-container">
+                <ion-toolbar class="toolbar-style">
+                    <ion-buttons (click)="back()" slot="start">
+                        <ion-icon size="large" icon="chevron-back"></ion-icon>
+                    </ion-buttons>
+                    <ion-title class="header-title">CREATE FLIGHT ACTIVITY</ion-title>
+                </ion-toolbar>
+            </div>
+            <div class="content-container">
+                <div class="list-container">
+                    <ion-row [routerLink]="['/flight/create-ad']">
+                        <ion-col size="10">
+                            <div class="header-style">
+                                Flight Arrival/Departure
+                            </div>
+                            <div class="title-style">
+                                Lorem ipsum dolor sit amet, consectetur
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div class="content-flight right">
+                                <ion-icon class="logo-style" icon="chevron-forward"></ion-icon>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <hr style="margin: 15px 0px;" />
+                    <ion-row (click)="singleClick()">
+                        <ion-col size="10">
+                            <div class="header-style">
+                                Single Flight
+                            </div>
+                            <div class="title-style">
+                                Lorem ipsum dolor sit amet, consectetur
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div class="content-flight right">
+                                <ion-icon class="logo-style" icon="chevron-forward"> </ion-icon>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <hr style="margin: 15px 0px;" />
+                </div>
             </div>
         </div>
-    </div>
-</ion-content>
+    </ion-content>
+</ng-container>
+<ng-container *ngIf="showSingle == true">
+    <ion-content>
+        <div class="flight-create-list">
+            <div class="header-container">
+                <ion-toolbar class="toolbar-style">
+                    <ion-buttons (click)="singleClick()" slot="start">
+                        <ion-icon size="large" icon="chevron-back"></ion-icon>
+                    </ion-buttons>
+                    <ion-title class="header-title">CREATE FLIGHT ACTIVITY</ion-title>
+                </ion-toolbar>
+            </div>
+            <div class="content-container">
+                <div class="list-container">
+                    <ion-row (click)="redirectSingle('A')">
+                        <ion-col size="10">
+                            <div class="header-style">
+                                Arrival
+                            </div>
+                            <div class="title-style">
+                                Lorem ipsum dolor sit amet, consectetur
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div class="content-flight right">
+                                <ion-icon class="logo-style" icon="chevron-forward"></ion-icon>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <hr style="margin: 15px 0px;" />
+                    <ion-row (click)="redirectSingle('D')">
+                        <ion-col size="10">
+                            <div class="header-style">
+                              Departure
+                            </div>
+                            <div class="title-style">
+                                Lorem ipsum dolor sit amet, consectetur
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div class="content-flight right">
+                                <ion-icon class="logo-style" icon="chevron-forward"> </ion-icon>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <hr style="margin: 15px 0px;" />
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ng-container>
