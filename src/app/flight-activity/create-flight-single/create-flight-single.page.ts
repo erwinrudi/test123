@@ -149,7 +149,7 @@ export class CreateFlightSinglePage {
       "STATION3": "",
       "STATION4": "",
       "ATMSATAD": ata_ar,
-      "REMARK_CODE": formValue.remark_ar.remarkCode ? formValue.remark_ar.remarkCode : "",
+      "REMARK_CODE": formValue.remark_ar && formValue.remark_ar != "" ? formValue.remark_ar.remarkCode : "",
       "AIRCRAFT_SUBTYPE": formValue.serviceType_ar.AIRCRAFT_SUBTYPE,
       "NOTE_DELAY": formValue.noteDelay_ar,
       "FLIGHT_NUMBER": formValue.no_ar,
@@ -158,7 +158,7 @@ export class CreateFlightSinglePage {
       "STAD": flightDate_ar,
       "AIRETAD": eta_ar,
       "RUNWAY": formValue.runaway_ar.runwayCode,
-      "REMARK_NOTE": formValue.remarkNote_ar.remarkCode ? formValue.remarkNote_ar.remarkCode : ""
+      "REMARK_NOTE": formValue.remarkNote_ar && formValue.remarkNote_ar != "" ? formValue.remarkNote_ar.remarkCode : ""
     }
   }
 

@@ -175,7 +175,7 @@ export class CreateFlightAdPage {
         "STATION3": "",
         "STATION4": "",
         "ATMSATAD": ata_ar,
-        "REMARK_CODE": formValue.remark_ar.remarkCode ? formValue.remark_ar.remarkCode : "",
+        "REMARK_CODE": formValue.remark_ar && formValue.remark_ar != "" ? formValue.remark_ar.remarkCode : "",
         "AIRCRAFT_SUBTYPE": formValue.serviceType_ar.AIRCRAFT_SUBTYPE,
         "NOTE_DELAY": formValue.noteDelay_ar,
         "FLIGHT_NUMBER": formValue.no_ar,
@@ -184,7 +184,7 @@ export class CreateFlightAdPage {
         "STAD": flightDate_ar,
         "AIRETAD": eta_ar,
         "RUNWAY": formValue.runaway_ar.runwayCode,
-        "REMARK_NOTE": formValue.remarkNote_ar.remarkCode ? formValue.remarkNote_ar.remarkCode : ""
+        "REMARK_NOTE": formValue.remarkNote_ar && formValue.remarkNote_ar != "" ? formValue.remarkNote_ar.remarkCode : ""
       },
       "DEPARTURE": {
         "IATA_AIRLINE_CODE": formValue.airline_ar,
@@ -196,7 +196,7 @@ export class CreateFlightAdPage {
         "STATION3": "",
         "STATION4": "",
         "ATMSATAD": ata_der,
-        "REMARK_CODE": formValue.remark_der.remarkCode ? formValue.remark_der.remarkCode : "",
+        "REMARK_CODE": formValue.remark_der && formValue.remark_der != "" ? formValue.remark_der.remarkCode : "",
         "AIRCRAFT_SUBTYPE": formValue.serviceType_der.AIRCRAFT_SUBTYPE,
         "NOTE_DELAY": formValue.noteDelay_der,
         "FLIGHT_NUMBER": formValue.no_der,
@@ -205,7 +205,7 @@ export class CreateFlightAdPage {
         "STAD": flightDate_der,
         "AIRETAD": eta_der,
         "RUNWAY": formValue.runaway_der.runwayCode,
-        "REMARK_NOTE": formValue.remarkNote_der.remarkCode ? formValue.remarkNote_der.remarkCode : ""
+        "REMARK_NOTE": formValue.remarkNote_der && formValue.remarkNote_der != "" ? formValue.remarkNote_der.remarkCode : ""
       }
     }
 

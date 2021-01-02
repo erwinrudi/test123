@@ -214,7 +214,7 @@ export class ScheduleFormPage {
         "STATION3": flightInfo.detailTemp.arrival.STATION3,
         "STATION4": flightInfo.detailTemp.arrival.STATION4,
         "ATMSATAD": ata_ar,
-        "REMARK_CODE": formValue.remark_ar.remarkCode ? formValue.remark_ar.remarkCode : "",
+        "REMARK_CODE": formValue.remark_ar && formValue.remark_ar != "" ? formValue.remark_ar.remarkCode : "",
         "AIRCRAFT_SUBTYPE": formValue.serviceType_ar.AIRCRAFT_SUBTYPE,
         "NOTE_DELAY": formValue.noteDelay_ar,
         "FLIGHT_NUMBER": flightInfo.detailTemp.arrival.FLIGHT_NO,
@@ -223,7 +223,7 @@ export class ScheduleFormPage {
         "STAD": flightInfo.detailTemp.arrival.STAD,
         "AIRETAD": eta_ar,
         "RUNWAY": formValue.runaway_ar.runwayCode,
-        "REMARK_NOTE": formValue.remarkNote_ar.remarkCode ? formValue.remarkNote_ar.remarkCode : "",
+        "REMARK_NOTE": formValue.remarkNote_ar && formValue.remarkNote_ar != "" ? formValue.remarkNote_ar.remarkCode : "",
         "AFSKEY": flightInfo.arrival.afskey
       },
       "DEPARTURE": {
@@ -236,7 +236,7 @@ export class ScheduleFormPage {
         "STATION3": flightInfo.detailTemp.departure.STATION3,
         "STATION4": flightInfo.detailTemp.departure.STATION4,
         "ATMSATAD": ata_der,
-        "REMARK_CODE": formValue.remark_der.remarkCode ? formValue.remark_der.remarkCode : "",
+        "REMARK_CODE": formValue.remark_der && formValue.remark_der != "" ? formValue.remark_der.remarkCode : "",
         "AIRCRAFT_SUBTYPE": formValue.serviceType_der.AIRCRAFT_SUBTYPE,
         "NOTE_DELAY": formValue.noteDelay_der,
         "FLIGHT_NUMBER": flightInfo.detailTemp.departure.FLIGHT_NO,
@@ -245,7 +245,7 @@ export class ScheduleFormPage {
         "STAD": flightInfo.detailTemp.departure.STAD,
         "AIRETAD": eta_der,
         "RUNWAY": formValue.runaway_der.runwayCode,
-        "REMARK_NOTE": formValue.remarkNote_der.remarkCode ? formValue.remarkNote_der.remarkCode : "",
+        "REMARK_NOTE": formValue.remarkNote_der && formValue.remarkNote_der != "" ? formValue.remarkNote_der.remarkCode : "",
         "AFSKEY": flightInfo.departure.afskey
       }
     }
