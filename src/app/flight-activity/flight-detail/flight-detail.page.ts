@@ -585,14 +585,15 @@ export class FlightDetailPage {
           data.INVOICE.map(x => {
             let bodyVal = x
 
-            let price = x.REVENUE_IDR ? x.REVENUE_IDR : 0
-            totalPrice = totalPrice + parseFloat(price)
+            let price = x.REVENUE_TAX ? x.REVENUE_TAX : 0
+            price = Math.round(parseFloat(price))
+            totalPrice = totalPrice + price
 
             let product1 = x.PRODUCTION_1 ? parseFloat(x.PRODUCTION_1) : 0
             let product2 = x.PRODUCTION_2 ? parseFloat(x.PRODUCTION_2) : 0
             let productTotal = product1 + product2
             bodyVal['PRODUCTION'] = productTotal
-            let priceField = bodyVal['REVENUE_IDR'] ? bodyVal['REVENUE_IDR'] : "0"
+            let priceField = price.toString()
             bodyVal['REVENUE_FORMAT'] = this.generalService.formatterInput(priceField, "IDR ")
 
             this.estimateBilling.invoice.push(bodyVal)
