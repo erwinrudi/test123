@@ -201,14 +201,7 @@ export class ReportListPage {
   }
 
   onClickList(value) {
-    let urlNext = "/flight/flight-detail"
-    let arrival = value.ARRIVAL.AFSKEY ? value.ARRIVAL.AFSKEY : ""
-    let derpature = value.DEPARTURE.AFSKEY ? value.DEPARTURE.AFSKEY : ""
-    let afs = value.REMARK ? value.REMARK : ""
-    urlNext = urlNext + "?codeArrival=" + arrival
-    urlNext = urlNext + "&codeDeparture=" + derpature
-    urlNext = urlNext + "&afsKey=" + afs
-    localStorage.setItem("flightDetail", urlNext)
+    let urlNext = "/report/report-detail"
     this.router.navigateByUrl(urlNext)
   }
 
