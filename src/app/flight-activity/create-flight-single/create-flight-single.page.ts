@@ -21,7 +21,7 @@ export class CreateFlightSinglePage {
   serviceTypeList = []
   remarkNoteList = []
   leg = "A";
-
+  branch = "";
   constructor(
     private formBuilder: FormBuilder,
     private generalService: GeneralService,
@@ -30,7 +30,7 @@ export class CreateFlightSinglePage {
     private router: Router,
     private flightActivityService: FlightActivityService
   ) {
-
+    this.branch = localStorage.getItem('branch')
   }
   ngOnInit() {
     this.formFlight = this.formBuilder.group({
@@ -56,7 +56,16 @@ export class CreateFlightSinglePage {
     if (typeof params.leg != "undefined") {
       this.leg = params.leg.toUpperCase();
     }
-    console.log(this.leg)
+    if (this.leg == "A") {
+      this.formFlight.patchValue({
+        station2_ar: this.branch
+      })
+    }
+    if (this.leg == "D") {
+      this.formFlight.patchValue({
+        station1_ar: this.branch
+      })
+    }
     this.isLoading = false;
     this.getData()
   }
@@ -83,7 +92,7 @@ export class CreateFlightSinglePage {
         let optionVal = {
           runwayCode: x.RUNWAY_CODE,
           runway: x.RUNWAY_NAME,
-          text: x.RUNWAY_NAME,
+          text: x.RUNWAY_CODE + " - " + x.RUNWAY_NAME,
         }
         this.runawayList.push(optionVal)
       })
@@ -98,7 +107,7 @@ export class CreateFlightSinglePage {
         let optionVal = {
           suffixId: x.SUFFIX_ID,
           suffixName: x.SUFFIX_NAME,
-          text: x.SUFFIX_NAME,
+          text: x.SUFFIX_ID + " - " + x.SUFFIX_NAME,
         }
         this.suffixList.push(optionVal)
       })
@@ -107,7 +116,7 @@ export class CreateFlightSinglePage {
         let optionVal = {
           remarkCode: x.REMARK_CODE,
           remark: x.REMARK,
-          text: x.REMARK,
+          text: x.REMARK_CODE + " - " + x.REMARK,
         }
         this.remarkNoteList.push(optionVal)
       })

@@ -151,6 +151,9 @@ export class FlightDetailPage {
   update_avio = false
   update_pax = false
   update_cargo = false
+  write_movement = false
+  write_avio = false
+  read_billing = false
   //permission
 
   constructor(
@@ -160,6 +163,7 @@ export class FlightDetailPage {
     private router: Router,
     private flightActivityService: FlightActivityService
   ) {
+    this.typeList = []
     let canRead = this.generalService.permissionCekker("read_flightact")
     if (canRead == false) {
       this.router.navigateByUrl("/")
@@ -173,6 +177,8 @@ export class FlightDetailPage {
         this.update_pax = this.generalService.permissionCekker("update_pax")
         this.update_avio = this.generalService.permissionCekker("update_avio")
         this.update_cargo = this.generalService.permissionCekker("update_cargo")
+        this.write_movement = this.generalService.permissionCekker("write_movement")
+        this.write_avio = this.generalService.permissionCekker("write_avio")
 
         let getFunction = []
         let canReadPax = this.generalService.permissionCekker("read_pax")
@@ -277,11 +283,11 @@ export class FlightDetailPage {
           arrival.terminal = arrivalTemp.TERMINAL_ID;
           arrival.flightNo = arrivalTemp.FLIGHT_NO;
           arrival.flightType = arrivalTemp.CATEGORY_CODE == "I" ? "Int" : "Dom";
-          arrival.from = arrivalTemp.STATION1
-          arrival.to = arrivalTemp.STATION2
-          arrival.ata = arrivalTemp.ATMSATAD ? moment(arrivalTemp.ATMSATAD).format("D MMMM YYYY HH:mm") : ""
+          arrival.from = arrivalTemp.STATION2
+          arrival.to = arrivalTemp.STATION1
+          arrival.ata = arrivalTemp.ATMSATAD ? moment(arrivalTemp.ATMSATAD).format("D MMM YYYY HH:mm") : ""
           arrival.ata = arrival.ata == "Invalid date" ? "" : arrival.ata
-          arrival.eta = arrivalTemp.AIRETAD ? moment(arrivalTemp.AIRETAD).format("D MMMM YYYY HH:mm") : ""
+          arrival.eta = arrivalTemp.AIRETAD ? moment(arrivalTemp.AIRETAD).format("D MMM YYYY HH:mm") : ""
           arrival.eta = arrival.eta == "Invalid date" ? "" : arrival.eta
           arrival.regNo = arrivalTemp.AIRCRAFT_REG_NO
           arrival.remark = arrival.remark
@@ -297,9 +303,9 @@ export class FlightDetailPage {
           departure.flightType = departureTemp.CATEGORY_CODE == "I" ? "Int" : "Dom";
           departure.from = departureTemp.STATION1
           departure.to = departureTemp.STATION2
-          departure.ata = departureTemp.ATMSATAD ? moment(departureTemp.ATMSATAD).format("D MMMM YYYY HH:mm") : ""
+          departure.ata = departureTemp.ATMSATAD ? moment(departureTemp.ATMSATAD).format("D MMM YYYY HH:mm") : ""
           departure.ata = departure.ata == "Invalid date" ? "" : departure.ata
-          departure.eta = departureTemp.AIRETAD ? moment(departureTemp.AIRETAD).format("D MMMM YYYY HH:mm") : ""
+          departure.eta = departureTemp.AIRETAD ? moment(departureTemp.AIRETAD).format("D MMM YYYY HH:mm") : ""
           departure.eta = departure.eta == "Invalid date" ? "" : departure.eta
           departure.regNo = departureTemp.AIRCRAFT_REG_NO
           departure.remark = departure.remark
@@ -314,6 +320,7 @@ export class FlightDetailPage {
         localStorage.setItem('flightInfo', localflightInfo)
         //map UI
         let canReadBilling = this.generalService.permissionCekker("read_billing")
+        this.read_billing = canReadBilling
         if (canReadBilling == true) {
           this.getEstimateBilling();
         }
@@ -478,7 +485,7 @@ export class FlightDetailPage {
         data.STAND_CODE.map(x => {
           let optionVal = x
           optionVal['value'] = optionVal.STAND_CODE
-          optionVal['text'] = optionVal.STAND_CODE
+          optionVal['text'] = optionVal.STAND_TYPE +" - "+ optionVal.STAND_CODE
 
           movement.standCodeList.push(optionVal)
         })

@@ -27,7 +27,7 @@ export class CreateFlightAdPage {
       text: 'International'
     },
   ];
-
+  branch = ""
   suffixList = []
   remarkList = []
   runawayList = []
@@ -42,7 +42,7 @@ export class CreateFlightAdPage {
     private router: Router,
     private flightActivityService: FlightActivityService
   ) {
-
+    this.branch = localStorage.getItem('branch')
   }
 
   ngOnInit() {
@@ -83,7 +83,10 @@ export class CreateFlightAdPage {
 
     this.isLoading = false;
     this.getData()
-
+    this.formFlight.patchValue({
+      station2_ar: this.branch,
+      station1_der: this.branch
+    })
   }
 
   getData() {
@@ -99,7 +102,7 @@ export class CreateFlightAdPage {
         let optionVal = {
           remarkCode: x.REMARK_CODE,
           remark: x.REMARK,
-          text: x.REMARK_CODE + " - " +x.REMARK,
+          text: x.REMARK_CODE + " - " + x.REMARK,
         }
         this.remarkList.push(optionVal)
       })
@@ -108,7 +111,7 @@ export class CreateFlightAdPage {
         let optionVal = {
           runwayCode: x.RUNWAY_CODE,
           runway: x.RUNWAY_NAME,
-          text: x.RUNWAY_NAME,
+          text: x.RUNWAY_CODE + " - " + x.RUNWAY_NAME,
         }
         this.runawayList.push(optionVal)
       })
@@ -123,7 +126,7 @@ export class CreateFlightAdPage {
         let optionVal = {
           suffixId: x.SUFFIX_ID,
           suffixName: x.SUFFIX_NAME,
-          text: x.SUFFIX_NAME,
+          text: x.SUFFIX_ID + " - " + x.SUFFIX_NAME,
         }
         this.suffixList.push(optionVal)
       })
@@ -132,7 +135,7 @@ export class CreateFlightAdPage {
         let optionVal = {
           remarkCode: x.REMARK_CODE,
           remark: x.REMARK,
-          text: x.REMARK,
+          text: x.REMARK_CODE + " - " + x.REMARK,
         }
         this.remarkNoteList.push(optionVal)
       })

@@ -89,7 +89,7 @@ export class ScheduleFormPage {
         let optionVal = {
           remarkCode: x.REMARK_CODE,
           remark: x.REMARK,
-          text: x.REMARK,
+          text: x.REMARK_CODE + " - " + x.REMARK,
         }
         this.remarkList.push(optionVal)
       })
@@ -98,7 +98,7 @@ export class ScheduleFormPage {
         let optionVal = {
           runwayCode: x.RUNWAY_CODE,
           runway: x.RUNWAY_NAME,
-          text: x.RUNWAY_NAME,
+          text: x.RUNWAY_CODE + " - " + x.RUNWAY_NAME,
         }
         this.runawayList.push(optionVal)
       })
@@ -113,7 +113,7 @@ export class ScheduleFormPage {
         let optionVal = {
           suffixId: x.SUFFIX_ID,
           suffixName: x.SUFFIX_NAME,
-          text: x.SUFFIX_NAME,
+          text: x.SUFFIX_ID + " - " + x.SUFFIX_NAME,
         }
         this.suffixList.push(optionVal)
       })
@@ -122,7 +122,7 @@ export class ScheduleFormPage {
         let optionVal = {
           remarkCode: x.REMARK_CODE,
           remark: x.REMARK,
-          text: x.REMARK,
+          text: x.REMARK_CODE + " - " + x.REMARK,
         }
         this.remarkNoteList.push(optionVal)
       })
@@ -209,8 +209,8 @@ export class ScheduleFormPage {
         "SUFFIX": formValue.suffix_ar.suffixId,
         "LEG": flightInfo.detailTemp.arrival.LEG,
         "TERMINAL_ID": formValue.terminal_ar,
-        "STATION1": formValue.from_ar,
-        "STATION2": formValue.to_ar,
+        "STATION2": formValue.from_ar,
+        "STATION1": formValue.to_ar,
         "STATION3": flightInfo.detailTemp.arrival.STATION3,
         "STATION4": flightInfo.detailTemp.arrival.STATION4,
         "ATMSATAD": ata_ar,

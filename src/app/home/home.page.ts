@@ -53,6 +53,7 @@ export class HomePage {
       this.homeService.getDataUser(getToken).subscribe((rows: any) => {
         let data = rows.data
         localStorage.setItem("token", data.token)
+        localStorage.setItem("branch", data.branch_code)
         this.setPermission(data.permission)
         this.router.navigate(['/']);
       },

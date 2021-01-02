@@ -34,7 +34,7 @@ export class MovementFormPage {
   ) {
 
   }
-  
+
   ngOnInit() {
     this.formMovement = this.formBuilder.group({
       inBlock: ['', [Validators.required]],
@@ -99,10 +99,10 @@ export class MovementFormPage {
     let flightInfo = null
     flightInfo = JSON.parse(localStorage.getItem('flightInfo'))
     let body = null
-    if (new Date(formValue.inBlock) > new Date(formValue.offBlock)) {
+    if (moment(formValue.offBlock).isSameOrBefore(formValue.inBlock)) {
       this.generalService.notification("AIBT harus lebih kecil dari AOBT")
     }
-    else if (new Date(formValue.inBlock) < new Date(this.minDateOnBlock)) {
+    else if (moment(formValue.inBlock).isSameOrBefore(this.minDateOnBlock)) {
       this.generalService.notification("Min AIBT " + this.minDateOnBlock)
     }
     else {

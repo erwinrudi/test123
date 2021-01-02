@@ -52,12 +52,24 @@
                             <ion-row>
                                 <ion-col size="6">
                                     <div class="content-flight">
-                                        <span class="title-style-1">ATA : {{ flightInfo.arrival.ata }}</span>
+                                        <span class="title-style-1">Actual Landing Time</span>
                                     </div>
                                 </ion-col>
                                 <ion-col size="6">
                                     <div class="content-flight right">
-                                        <span class="title-style-1">ETA : {{ flightInfo.arrival.eta }}</span>
+                                        <span class="title-style-1">Estimate Landing Time</span>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="6">
+                                    <div class="content-flight">
+                                        <span class="title-style-1">{{ flightInfo.arrival.ata }}</span>
+                                    </div>
+                                </ion-col>
+                                <ion-col size="6">
+                                    <div class="content-flight right">
+                                        <span class="title-style-1">{{ flightInfo.arrival.eta }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
@@ -102,12 +114,24 @@
                             <ion-row>
                                 <ion-col size="6">
                                     <div class="content-flight">
-                                        <span class="title-style-1">ATA : {{ flightInfo.departure.ata }}</span>
+                                        <span class="title-style-1">Actual Landing Time</span>
                                     </div>
                                 </ion-col>
                                 <ion-col size="6">
                                     <div class="content-flight right">
-                                        <span class="title-style-1">ETA : {{ flightInfo.departure.eta }}</span>
+                                        <span class="title-style-1">Estimate Landing Time</span>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="6">
+                                    <div class="content-flight">
+                                        <span class="title-style-1">{{ flightInfo.departure.ata }}</span>
+                                    </div>
+                                </ion-col>
+                                <ion-col size="6">
+                                    <div class="content-flight right">
+                                        <span class="title-style-1">{{ flightInfo.departure.eta }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>
@@ -494,7 +518,7 @@
                     </ng-container>
 
 
-                    <div *ngIf="type == 'pax'" (click)="showModal('estimateBilling')" class="estimate-cont">
+                    <div *ngIf="type == 'pax' && read_billing == true" (click)="showModal('estimateBilling')" class="estimate-cont">
                         <ion-icon icon="document-text-outline" class="icon-estimate-flight-style"></ion-icon> <span
                             class="text-style">Estimate Billing Info</span>
                     </div>
@@ -505,13 +529,13 @@
                     <ion-button (click)="onSubmitBilling()" expand="block">Submit</ion-button>
                 </ion-toolbar>
             </div>
-            <div *ngIf="type == 'movement'" class="footer-style">
+            <div *ngIf="type == 'movement' && write_movement == true" class="footer-style">
                 <ion-toolbar>
                     <ion-button [routerLink]="['/flight/movement']" fill="outline" expand="block">Add Movement
                     </ion-button>
                 </ion-toolbar>
             </div>
-            <div *ngIf="type == 'avio'" class="footer-style">
+            <div *ngIf="type == 'avio' && write_avio == true" class="footer-style">
                 <ion-toolbar>
                     <ion-button [routerLink]="['/flight/avio']" fill="outline" expand="block">Add Avio
                     </ion-button>
