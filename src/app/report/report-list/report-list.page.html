@@ -1,0 +1,77 @@
+<ion-content>
+    <div class="report-info">
+        <div class="header-container">
+            <ion-toolbar class="toolbar-style">
+                <ion-buttons (click)="back()" slot="start">
+                    <ion-icon size="large" icon="chevron-back"></ion-icon>
+                </ion-buttons>
+                <ion-title class="header-title">Estimated Billing</ion-title>
+            </ion-toolbar>
+        </div>
+        <div class="content-container">
+            <ng-container>
+                <div class="header-tabs-cont">
+                    <ng-container *ngFor="let tabs of tabList; let i = index">
+                        <div class="contain-tabs" (click)="tabsClick(tabs)" [ngClass]="{'active' : tabsChoose == tabs}">
+                            {{tabs}}
+                        </div>
+                    </ng-container>
+                </div>
+            </ng-container>
+            <ng-container *ngFor="let data of reportList[tabsChoose]; let i = index">
+                <ion-card (click)="onClickList(data)">
+                    <ion-card-content>
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col size="6">
+                                    <div class="content-flight">
+                                        <span class="status-style">25 November 2020</span>
+                                    </div>
+                                </ion-col>
+                                <ion-col size="6">
+                                    <div class="content-flight right">
+                                        <span class="status-style complete">Complete</span>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <div class="content-flight">
+                                        <span class="title-style-1">Flight : XYZ123</span>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="7">
+                                    <div class="content-flight">
+                                        <span class="title-style-1">Total : </span>
+                                        <span class="title-style-1"> IDR 9.166.793</span>
+                                    </div>
+                                </ion-col>
+                                <ion-col size="5">
+                                    <div class="content-flight right">
+                                        <span class="status-style detail">Detail</span>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-card-content>
+                </ion-card>
+            </ng-container>
+        </div>
+        <ion-toolbar class="footer-style">
+            <ion-row>
+                <ion-col size="6">
+                    <div class="content-flight">
+                        <span class="title-style-1">Total :</span>
+                    </div>
+                </ion-col>
+                <ion-col size="6">
+                    <div class="content-flight right">
+                        <span class="title-style-1 detail">IDR 12381238</span>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-toolbar>
+    </div>
+</ion-content>

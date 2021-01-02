@@ -1,0 +1,134 @@
+
+.report-info {
+	// .background-header {
+	//     position: fixed;
+	//     width: 150%;
+	//     height: 50%;
+	//     left: -25%;
+	//     top: -20%;
+	//     border-radius: 50%;
+	//     background: #146CAB;
+	//     z-index: 0;
+	// }
+	.header-container {
+		position: relative;
+	}
+	.content-container {
+		position: relative;
+		margin-top: 25px;
+		
+		.header-tabs-cont{
+			display: inline-flex;
+			width: 100vw;
+			padding-left: 5vw;
+			padding-right: 5vw;
+			height: 30px;
+			box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.06);
+			margin-bottom: 20px;
+			.contain-tabs{
+				
+				font-style: normal;
+				font-weight: bold;
+				text-align: center;
+				font-size: 3.5vw;
+				width: 30vw;
+				align-items: center;
+				color: #000000;
+
+				&.active{
+					border-bottom: 5px solid #146CAB;
+				}
+			}
+		}
+		.content-flight {
+			height: 100%;
+			display: flex;
+			width: 100%;
+			&.right {
+				justify-content: flex-end;
+			}
+		}
+		.logo-style {
+			width: 9vw;
+		}
+		.title-style-1 {
+			font-style: normal;
+			font-weight: bold;
+			font-size: 3vw;
+			align-items: center;
+			color: #000000;
+			margin-top: auto;
+			margin-bottom: auto;
+			&.detail {
+				font-size: 3.5vw;
+				color: #146CAB;
+			}
+		}
+		.status-style {
+			font-size: 3vw;
+			text-align: right;
+			margin-top: auto;
+			margin-bottom: auto;
+			color:black;
+			&.complete {
+				color: #27AE60;
+			}
+			&.detail {
+				color: #146CAB;
+				font-weight: bold;
+			}
+		}
+		.arrow-style {
+			font-size: 3vw;
+			margin: 0px 2px;
+			margin-top: 0.5vw;
+		}
+	}
+
+	.footer-style {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		z-index: 9999;
+		padding: 10px;
+		background: white;
+		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+
+		.content-flight {
+			height: 100%;
+			display: flex;
+			width: 100%;
+			&.right {
+				justify-content: flex-end;
+			}
+		}
+
+		.title-style-1 {
+			font-style: normal;
+			font-weight: bold;
+			font-size: 4vw;
+			align-items: center;
+			color: #000000;
+			margin-top: auto;
+			margin-bottom: auto;
+			&.detail {
+				color: #146CAB;
+			}
+		}
+	}
+	
+	.toolbar-style {
+		--background: #146CAB;
+		--color: white;
+	}
+}
+
+.header-container {
+    position: relative;
+}
+
+.header-title{
+    text-align: center;
+    margin-left: -38px;
+    text-transform: none !important;
+}

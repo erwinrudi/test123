@@ -48,7 +48,7 @@ export class ReportSearchPage {
   onSubmit(e) {
     const formValue = this.formReport.value;
 
-    let urlNext = "/billing/billing-list"
+    let urlNext = "/report/report-list"
     let nullParam = true
     if (formValue.startDate != "") {
       urlNext = urlNext + "?startDate=" + formValue.startDate
@@ -82,7 +82,7 @@ export class ReportSearchPage {
       }
     }
     // urlNext = encodeURI(urlNext)
-    localStorage.setItem("billingList", urlNext)
+    localStorage.setItem("reportList", urlNext)
     this.router.navigateByUrl(urlNext)
   }
 
