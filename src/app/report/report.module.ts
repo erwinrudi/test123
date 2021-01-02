@@ -8,6 +8,7 @@ import { ReportService } from './report.service';
 
 import { ReportSearchPage } from './report-search/report-search.page';
 import { ReportListPage } from './report-list/report-list.page';
+import { ReportDetailPage } from './report-detail/report-detail.page';
 
 import { ReportRoutingModule } from './report-routing.module';
 
@@ -21,7 +22,8 @@ import { ReportRoutingModule } from './report-routing.module';
   ],
   declarations: [
     ReportSearchPage,
-    ReportListPage
+    ReportListPage,
+    ReportDetailPage
   ],
   providers: [
     ReportService
