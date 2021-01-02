@@ -87,6 +87,6 @@ export class ReportSearchPage {
   }
 
   back(){
-    this.router.navigateByUrl("/billing/billing-menu")
+    this.router.navigateByUrl("/")
   }
 }
