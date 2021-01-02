@@ -56,7 +56,7 @@
                             <div class="input-select-cont">
                                 <ion-select formControlName="status" interface="action-sheet" class="input-select"
                                     placeholder="Select One">
-                                    <ion-select-option *ngFor="let statusOp of statusList" [value]="statusOp">
+                                    <ion-select-option *ngFor="let statusOp of statusList" [value]="statusOp.value">
                                         {{statusOp.text}}</ion-select-option>
                                 </ion-select>
                             </div>

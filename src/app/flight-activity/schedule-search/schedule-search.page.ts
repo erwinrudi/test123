@@ -15,6 +15,10 @@ export class ScheduleSearchPage {
   isLoading: boolean;
   statusList = [
     {
+      value: '',
+      text: 'All'
+    },
+    {
       value: 'complete',
       text: 'Complete'
     },
@@ -77,11 +81,11 @@ export class ScheduleSearchPage {
     }
     if (formValue.status != "") {
       if (nullParam == true) {
-        urlNext = urlNext + "?status=" + formValue.status.value
+        urlNext = urlNext + "?status=" + formValue.status
         nullParam = false
       }
       else {
-        urlNext = urlNext + "&status=" + formValue.status.value
+        urlNext = urlNext + "&status=" + formValue.status
       }
     }
     // urlNext = encodeURI(urlNext)
