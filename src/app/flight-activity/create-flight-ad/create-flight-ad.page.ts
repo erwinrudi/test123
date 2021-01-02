@@ -139,6 +139,12 @@ export class CreateFlightAdPage {
         }
         this.remarkNoteList.push(optionVal)
       })
+
+      // let flightType = this.flightTypeList[0]
+      // this.formFlight.patchValue({
+      //   flightType_der: flightType,
+      //   flightType_ar: flightType
+      // })
       // data.
     },
       error => {
