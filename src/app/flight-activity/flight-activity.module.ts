@@ -30,6 +30,7 @@ import { FlightActivityRoutingModule } from './flight-activity-routing.module';
     ReactiveFormsModule,
     FlightActivityRoutingModule,
     NgxPermissionsModule.forRoot(),
+    NgxPermissionsModule.forChild(),
   ],
   declarations: [
     FlightMenuPage,

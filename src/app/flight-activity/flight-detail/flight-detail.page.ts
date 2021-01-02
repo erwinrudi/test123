@@ -29,26 +29,9 @@ export class FlightDetailPage {
   ];
 
 
-  typeList = [
-    {
-      value: 'movement',
-      text: 'Movement'
-    },
-    {
-      value: 'avio',
-      text: 'Avio'
-    },
-    {
-      value: 'pax',
-      text: 'Pax'
-    },
-    {
-      value: 'cargo',
-      text: 'Cargo'
-    },
-  ];
+  typeList = [];
 
-  type = "movement";
+  type = "";
 
   flightInfo = {
     id: '',
@@ -87,7 +70,7 @@ export class FlightDetailPage {
       remarkNote: ''
     }
   };
-
+ 
   cargo = {
     type: 'arrival',
     id: 0,
@@ -162,6 +145,14 @@ export class FlightDetailPage {
     totalPrice: "0"
   }
 
+  //permission
+  update_flightact = false
+  update_movement = false
+  update_avio = false
+  update_pax = false
+  update_cargo = false
+  //permission
+
   constructor(
     private generalService: GeneralService,
     private activatedRoute: ActivatedRoute,
@@ -177,13 +168,50 @@ export class FlightDetailPage {
       activatedRoute.params.subscribe(val => {
         this.getQueryParams();
 
+        this.update_flightact = this.generalService.permissionCekker("update_flightact")
+        this.update_movement = this.generalService.permissionCekker("update_movement")
+        this.update_pax = this.generalService.permissionCekker("update_pax")
+        this.update_avio = this.generalService.permissionCekker("update_avio")
+        this.update_cargo = this.generalService.permissionCekker("update_cargo")
+
+        let getFunction = []
+        let canReadPax = this.generalService.permissionCekker("read_pax")
+        let canReadMovement = this.generalService.permissionCekker("read_movement")
+        let canReadCargo = this.generalService.permissionCekker("read_cargo")
+
+        getFunction.push(this.getDetail())
+        if (canReadMovement == true) {
+          this.typeList.push(
+            {
+              value: 'movement',
+              text: 'Movement'
+            }
+          )
+          getFunction.push(this.getMovement())
+        }
+        if (canReadPax == true) {
+          this.typeList.push(
+            {
+              value: 'pax',
+              text: 'Pax'
+            }
+          )
+          getFunction.push(this.getPax())
+        }
+        if (canReadCargo == true) {
+          this.typeList.push(
+            {
+              value: 'cargo',
+              text: 'Cargo'
+            }
+          )
+          getFunction.push(this.getCargo())
+        }
+        if (this.typeList.length > 0) {
+          this.type = this.typeList[0].value
+        }
         new Promise((resolve, reject) => {
-          Promise.all([
-            this.getDetail(),
-            this.getPax(),
-            this.getMovement(),
-            this.getCargo()
-          ]).then(([]) => {
+          Promise.all(getFunction).then(([]) => {
           })
         })
       });
@@ -285,7 +313,11 @@ export class FlightDetailPage {
         let localflightInfo = JSON.stringify(this.flightInfo)
         localStorage.setItem('flightInfo', localflightInfo)
         //map UI
-        this.getEstimateBilling();
+        let canReadBilling = this.generalService.permissionCekker("read_billing")
+        if (canReadBilling == true) {
+          this.getEstimateBilling();
+        }
+
       },
         error => {
           if (error.error) {
@@ -421,6 +453,15 @@ export class FlightDetailPage {
 
   getMovement() {
     return new Promise((resolve, reject) => {
+      let canReadAvio = this.generalService.permissionCekker("read_avio")
+      if (canReadAvio == true) {
+        this.typeList.push(
+          {
+            value: 'avio',
+            text: 'Avio'
+          }
+        )
+      }
       this.flightActivityService.getFlightMovement(this.props).subscribe((res: any) => {
         let data = res.data
         let movement = this.movement
@@ -459,7 +500,9 @@ export class FlightDetailPage {
         movement.landing = data.LANDING[0]
         localStorage.setItem('movement', JSON.stringify(movement))
         this.movement = movement
-        this.getAvio()
+        if (canReadAvio == true) {
+          this.getAvio()
+        }
       },
         error => {
           if (error.error) {
@@ -468,7 +511,10 @@ export class FlightDetailPage {
           else {
             this.generalService.notification("ERROR CONNECTION")
           }
-          this.getAvio()
+
+          if (canReadAvio == true) {
+            this.getAvio()
+          }
         }
       );
     });
