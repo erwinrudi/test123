@@ -52,6 +52,13 @@
                                 </ion-col>
                             </ion-row>
                             <ion-row>
+                                <ion-col size="12">
+                                    <div class="content-flight">
+                                        <span class="title-style-1">Status: {{ data.ARRIVAL?.STATUS_REMARK?.STATUS }} - {{ data.ARRIVAL?.STATUS_REMARK?.DESC_EN }}</span>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
                                 <ion-col size="4">
                                     <div class="content-flight">
                                         <span class="title-style-1">Departure</span>
@@ -73,7 +80,7 @@
                             <ion-row>
                                 <ion-col size="12">
                                     <div class="content-flight">
-                                        <span class="title-style-1">Status: {{ data.ARRIVAL?.STATUS_REMARK?.STATUS }} - {{ data.ARRIVAL?.STATUS_REMARK?.DESC_EN }}</span>
+                                        <span class="title-style-1">Status: {{ data.DEPARTURE?.STATUS_REMARK?.STATUS }} - {{ data.ARRIVAL?.STATUS_REMARK?.DESC_EN }}</span>
                                     </div>
                                 </ion-col>
                             </ion-row>

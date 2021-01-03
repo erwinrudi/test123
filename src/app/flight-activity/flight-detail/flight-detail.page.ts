@@ -163,7 +163,7 @@ export class FlightDetailPage {
     private router: Router,
     private flightActivityService: FlightActivityService
   ) {
-    this.typeList = []
+   
     let canRead = this.generalService.permissionCekker("read_flightact")
     if (canRead == false) {
       this.router.navigateByUrl("/")
@@ -171,7 +171,7 @@ export class FlightDetailPage {
     else {
       activatedRoute.params.subscribe(val => {
         this.getQueryParams();
-
+        this.typeList = []
         this.update_flightact = this.generalService.permissionCekker("update_flightact")
         this.update_movement = this.generalService.permissionCekker("update_movement")
         this.update_pax = this.generalService.permissionCekker("update_pax")

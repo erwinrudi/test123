@@ -22,7 +22,7 @@ export class MovementFormPage {
   standCodeList = [];
   seq = 1;
   movTypeList = [];
-  minDateOnBlock = "1990-01-01";
+  minDateOnBlock = "1990-01-01 01:01";
   maxDate = "2050-12-31";
   constructor(
     private formBuilder: FormBuilder,
@@ -58,7 +58,7 @@ export class MovementFormPage {
       if (movement.tempList.length > 0) {
         let tempSeq = movement.tempList[movement.tempList.length - 1]
         let minOnBlock = tempSeq.OFF_BLOCK_TIME
-        minOnBlock = moment(minOnBlock).format("YYYY-MM-DD")
+        minOnBlock = moment(minOnBlock).format("YYYY-MM-DD HH:mm")
         this.minDateOnBlock = minOnBlock
         tempSeq = parseInt(tempSeq.AIRCRAFT_VISIT_SEQ)
         this.seq = tempSeq + 1
@@ -82,7 +82,7 @@ export class MovementFormPage {
       if (indexMov > 0) {
         let movBefore = movement.tempList[indexMov - 1]
         let minOnBlock = movBefore.OFF_BLOCK_TIME
-        minOnBlock = moment(minOnBlock).format("YYYY-MM-DD")
+        minOnBlock = moment(minOnBlock).format("YYYY-MM-DD HH:mm")
         this.minDateOnBlock = minOnBlock
       }
       this.formMovement.patchValue({
