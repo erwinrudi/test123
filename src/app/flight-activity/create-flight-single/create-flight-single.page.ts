@@ -20,6 +20,16 @@ export class CreateFlightSinglePage {
   runawayList = []
   serviceTypeList = []
   remarkNoteList = []
+  flightTypeList = [
+    {
+      value: 'D',
+      text: 'Domestic'
+    },
+    {
+      value: 'I',
+      text: 'International'
+    },
+  ];
   leg = "A";
   branch = "";
   constructor(
@@ -160,6 +170,20 @@ export class CreateFlightSinglePage {
       "RUNWAY": formValue.runaway_ar.runwayCode,
       "REMARK_NOTE": formValue.remarkNote_ar && formValue.remarkNote_ar != "" ? formValue.remarkNote_ar.remarkCode : ""
     }
+
+    this.flightActivityService.submitSingleAirline(body).subscribe((res: any) => {
+      this.generalService.notification("SUKSES")
+      this.router.navigateByUrl("/flight/create-menu")
+    },
+      error => {
+        if (error.error) {
+          this.generalService.notification(error.error.message)
+        }
+        else {
+          this.generalService.notification("ERROR CONNECTION")
+        }
+      }
+    );
   }
 
   back() {
